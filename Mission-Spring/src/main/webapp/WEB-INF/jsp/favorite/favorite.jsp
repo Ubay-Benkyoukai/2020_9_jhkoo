@@ -26,7 +26,7 @@
 				},
 				success : function(){
 					$(btn).attr('disabled', true)
-					$(btn).val("  등록 완료   ")
+					$(btn).val("  登録 完了   ") //등록완료
 				},
 				error : function(){
 					alert('fail')
@@ -52,7 +52,7 @@
 				},
 				success : function(){
 					$(btn).attr('disabled', true)
-					$(btn).val("  해지 완료   ")
+					$(btn).val("  解約 完了   ")  //해지완료
 				},
 				error : function(){
 					alert('fail')
@@ -70,10 +70,10 @@
 <br>
 <br>
 	<div class="section-title text-center">
-         <h3>최근 이체 목록<span>입니다 </span>
+         <h3>最近の送金目録<span>です。 </span>
          </h3>
          
-         <h4 style="color:red">자주 찾는 계좌를 즐겨찾기에 추가하세요</h4>
+         <h4 style="color:red">よく使う口座をブックマークに追加してください。</h4>
     </div>
 <br>
 <div class="container table-wrapper" style="width:60%">
@@ -83,9 +83,9 @@
   <table class="table table-hover fl-table">
     <thead>
       <tr>
-        <th>거래 대상</th>
-        <th>거래 계좌번호</th>
-        <th>즐겨찾기</th>
+        <th>取引対象</th>
+        <th>取引口座番号</th>
+        <th>ブックマーク</th>
       </tr>
     </thead>
     <tbody>
@@ -100,8 +100,8 @@
   		<td>
   		  <input type="button" class="addFavoriteBtn btn-style-one" id="${ loginVO.id }.${ account.toAccountNumber }.${ account.toName }" 
   		     <c:if test="${account.favoriteFlag.equals(\"1\") }">disabled </c:if>
-  		     <c:if test="${ account.favoriteFlag.equals(\"1\") }">value="즐겨찾기 등록 완료"</c:if>
-  		     <c:if test="${ account.favoriteFlag.equals(\"0\") }">value="즐겨찾기  등록하기"</c:if> 
+  		     <c:if test="${ account.favoriteFlag.equals(\"1\") }">value="ブックマーク 登録 完了"</c:if>
+  		     <c:if test="${ account.favoriteFlag.equals(\"0\") }">value="ブックマーク  登録する "</c:if> 
   		     >
   		</td>
   
@@ -120,16 +120,16 @@
   
   <div class="section-title text-center">
  
-         <h4>즐겨찾는 계좌</h4>
+         <h4>ブックマーク口座</h4>
     </div>
   
   <br>
   <table class="table table-hover fl-table">
     <thead>
       <tr>
-        <th>거래 대상</th>
-        <th>거래 계좌번호</th>
-        <th>즐겨찾기</th>
+        <th>取引対象</th>
+        <th>取引口座番号</th>
+        <th>ブックマーク</th>
       </tr>
     </thead>
     <tbody>
@@ -144,8 +144,8 @@
   		<td>
   		  <input type="button" class="deleteFavoriteBtn btn-style-one" id="${ loginVO.id }.${ account.toAccountNumber }.${ account.toName }" 
   		     <c:if test="${account.favoriteFlag.equals(\"0\") }">disabled </c:if>
-  		     <c:if test="${ account.favoriteFlag.equals(\"0\") }">value="즐겨찾기 해지 완료"</c:if>
-  		     <c:if test="${ account.favoriteFlag.equals(\"1\") }">value="즐겨찾기  해지하기"</c:if> 
+  		     <c:if test="${ account.favoriteFlag.equals(\"0\") }">value="ブックマーク解除 完了"</c:if>
+  		     <c:if test="${ account.favoriteFlag.equals(\"1\") }">value="ブックマーク解除する"</c:if> 
   		     >
   		</td>
   

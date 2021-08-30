@@ -6,7 +6,7 @@ public class ReplyVO {
 	private int boardNo;
 	private String content;
 	private String writer;
-	private String regDate;
+	private String regDate; 
 	
 	public int getNo() {
 		return no;

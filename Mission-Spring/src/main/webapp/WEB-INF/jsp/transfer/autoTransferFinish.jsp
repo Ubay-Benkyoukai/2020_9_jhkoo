@@ -21,8 +21,8 @@
 			<div class="col-sm-12 col-xs-12">
 				<div class="image-content">
 					<div class="section-title text-center">
-						<h3>예약 이체가
-							<span>정상 처리 되었습니다.</span>
+						<h3>予約送金が
+							<span>正常に処理されました。</span> <!-- 예약이체가 정상적으로 처리되었습니다. -->
 						</h3>
 						<p></p>
 						
@@ -31,7 +31,7 @@
 						
 				<div class="col-md-12 col-sm-12 col-xs-12">         
 				    <div class="form-group text-center">
-				        <button onclick="goAccount()" class="btn-style-one">계좌 관리 페이지 가기</button>
+				        <button onclick="goAccount()" class="btn-style-one">口座管理ページへ</button>
 				    </div>
 				</div>		
 						

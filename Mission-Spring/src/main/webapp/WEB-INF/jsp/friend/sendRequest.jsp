@@ -9,7 +9,7 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
 
-	Kakao.init('8bc9b77c19ddac3da1ce99aed34ab243'); // 카카오 로그인 버튼을 생성합니다.
+	Kakao.init('8bc9b77c19ddac3da1ce99aed34ab243'); // 카카오 로그인 버튼을 생성합니다.　カカオログインボタンを生成します。
     function sendTo() {
 
          Kakao.Link.sendCustom({
@@ -17,9 +17,9 @@
              //url: /hanati/participant/invite/${param}      //param은 안심계좌번호
              templateArgs: {
                     name : '${loginVO.name}',
-                    content : '하나'
+                    content : 'HANA'
              },   callback: function(){
-                  alert("초대 메세지가 전송되었습니다");
+                  alert("招待メッセージが送信されました。");
                   
                }
            })
@@ -37,30 +37,30 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="contact-area style-two">
                     <div class="section-title">
-                        <h3>친구에게 <span>도전 <br> 공유를 요청하세요</span></h3>
+                        <h3>友達に <span>挑戦 <br> 共有を要請してください。</span></h3>
                     </div>
                     <form:form commandName="friendVO" method="post" class="default-form contact-form">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                             	<div class="form-group">
                             		<form:hidden path="id" value="${ loginVO.id }" />
-                                    <h4>보내는 이 : ${ loginVO.id }</h4>
+                                    <h4>送る人 : ${ loginVO.id }</h4>
                                 </div>
                                                            
                             </div>
                             
                             <div class="col-md-12 col-sm-12 col-xs-12">
                             	<div class="form-group">
-                            		<form:input path="friendId" placeholder="친구 아이디를 입력하세요"/>
+                            		<form:input path="friendId" placeholder="友達IDを入力してください。"/>
                             	</div>
                             </div>
                             
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <form:textarea path="content" placeholder="친구에게 보낼 한 마디" />
+                                    <form:textarea path="content" placeholder="友達に送る一言" />
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn-style-one" onclick="sendTo()">요청 보내기</button>
+                                    <button type="submit" class="btn-style-one" onclick="sendTo()">要請を送る</button>
                                     
                                 </div>                            
                             </div>

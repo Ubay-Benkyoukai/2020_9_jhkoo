@@ -15,8 +15,8 @@
   <div class="footer-bottom">
     <div class="container clearfix">
       <div class="copyright-text">
-        <p>&copy; 하나금융티아이
-          <a href="index.html">교육생 구재희</a>
+        <p>&copy; ハナ金融
+          <a href="index.html">教育生</a>
         </p>
       </div>
       <ul class="footer-bottom-link">

@@ -20,10 +20,10 @@
 <section class="service-section bg-gray section">
     <div class="container">
         <div class="section-title text-center">
-            <h3>계좌이체
-                <span>하기</span>
+            <h3>振り込み
+                <span>をする</span>
             </h3>
-            <p>계좌이체할 통장을 선택하세요</p>
+            <p>振り込みをする通帳を選択してください。</p>  <!-- 계좌이체할 통장을 선택하세요 -->
         </div>
         <div class="row items-container clearfix">
         
@@ -34,9 +34,9 @@
                     
                     <div class="image-content text-center" onclick="location.href='${pageContext.request.contextPath }/transfer/${ account.getAccountNumber() }'" >
                         <h6>${ account.getBankBookKey() }</h6>
-                        <p>    번호 : ${ account.getAccountNumber() }<br>
-                        	      잔액 : ${ String.format("%,d", account.getBalance()) }원 <br>
-                                                             별칭 : ${ account.getNickName() }</p>
+                        <p>    口座番号 : ${ account.getAccountNumber() }<br>
+                        	      残額 : ${ String.format("%,d", account.getBalance()) }￥ <br>
+                                                             別称 : ${ account.getNickName() }</p>
                     </div>
 
                 </div>
@@ -48,7 +48,7 @@
     </div>
 <div class="col-md-12 col-sm-12 col-xs-12">         
     <div class="form-group text-center">
-        <button onclick="goFavoriteList()" class="btn-style-one">즐겨찾는 계좌 목록 관리</button>
+        <button onclick="goFavoriteList()" class="btn-style-one">ブックマークされた口座リストの管理</button>
     </div>
 </div>
 </section>
