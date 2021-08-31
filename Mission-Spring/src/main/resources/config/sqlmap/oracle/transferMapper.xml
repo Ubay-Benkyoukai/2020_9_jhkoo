@@ -8,18 +8,17 @@
 
   	<!-- 이체 보낼 상대의 이름 -->
   	<select id="accountOwner" parameterType="String" resultType="String">
-	  	select m.name 
-	     from member m left join dw_account d
-	      on m.id = d.id
-	     where d.account_number = #{accountNumber}
+	  	SELECT m.name 
+	     FROM member m LEFT JOIN dw_account d
+	      ON m.id = d.id
+	     WHERE d.account_number = #{accountNumber}
   	</select>
   	
   	<!-- 내 계좌에 이체 내역 남기기 -->
   	<insert id="addMyLog" parameterType="transferVO">
-  		insert into dw_card_log
-  			(log_pk, account_number, amount, log_type_key, to_account_number, to_name)
-  		 values(seq_dw_card_log_pk.nextval,
-  		 		#{accountNumber},
+  		INSERT INTO dw_card_log
+  			(account_number, amount, log_type_key, to_account_number, to_name)
+  		VALUES(	#{accountNumber},
   		 		#{toAmount},
   		 		#{toType},
   		 		#{toAccountNumber},
@@ -29,10 +28,9 @@
   	
   	<!-- 상대 계좌에  입금 내역 남기기-->
   	<insert id="addYourLog" parameterType="transferVO">
-  		insert into dw_card_log
-  			(log_pk, account_number, amount, log_type_key, to_account_number, to_name)
-  		 values(seq_dw_card_log_pk.nextval,
-  		 		#{toAccountNumber},
+  		INSERT INTO dw_card_log
+  			(account_number, amount, log_type_key, to_account_number, to_name)
+  		 VALUES(#{toAccountNumber},
   		 		#{toAmount},
   		 		'1',
   		 		#{accountNumber},
@@ -42,60 +40,60 @@
   	
   	<!-- 내 계좌 잔액 업데이트. 출금 -->
   	<update id="withdrawal" parameterType="transferVO">
-  		update dw_account
-  		 set
+  		UPDATE dw_account
+  		 SET
   		  balance = balance - #{toAmount}
-  		 where account_number = #{accountNumber}
+  		 WHERE account_number = #{accountNumber}
   	</update>
   	
   	<!-- 상대 계좌 잔액 업데이트. 입금 -->
   	<update id="deposit" parameterType="transferVO">
-  		update dw_account
-  		 set
+  		UPDATE dw_account
+  		 SET
   		  balance = balance + #{toAmount}
-  		 where account_number = #{toAccountNumber}
+  		 WHERE account_number = #{toAccountNumber}
   	</update>
   	
   	<!-- 예약 이체 테이블에 insert -->
   	<insert id="autoTransfer1" parameterType="transferVO">
-  		insert into auto_transfer(log_pk, account_number, my_name, to_type, to_name, to_account_number, to_amount, auto_trans_day)
-  		 values(seq_auto_transfer.nextval, #{accountNumber}, #{myName}, #{toType}, #{toName}, #{toAccountNumber}, #{toAmount}, #{autoTransDay}) 
+  		INSERT INTO auto_transfer(account_number, my_name, to_type, to_name, to_account_number, to_amount, auto_trans_day)
+  		 VALUES(#{accountNumber}, #{myName}, #{toType}, #{toName}, #{toAccountNumber}, #{toAmount}, #{autoTransDay}) 
   	</insert>
   	
   	<!-- 예약 이체 리스트 가져오기  -->
   	<select id="autoTransferList" resultType="transferVO">
-  		select account_number as accountNumber, my_name as myName, to_type as toType ,
+  		SELECT account_number as accountNumber, my_name as myName, to_type as toType ,
   			   to_name as toName, to_account_number as toAccountNumber, to_amount as toAmount, auto_trans_day as autoTransDay
-  		 from auto_transfer
+  		 FROM auto_transfer
   	</select>
   	
   	<!-- 적금 계좌에 입금내역 남기기 -->
-  	<select id="addSavingsLog" parameterType="transferVO">
-  		insert into savings_account_log(log_pk, account_number, amount)
-  		 values(seq_savings_log_pk.nextval, #{toAccountNumber}, #{toAmount})
-  	</select>
+  	<insert id="addSavingsLog" parameterType="transferVO">
+  		INSERT INTO savings_account_log(account_number, amount)
+  		 VALUES(#{toAccountNumber}, #{toAmount})
+  	</insert>
   	
   	<!-- 적금 잔액 업데이트 -->
   	<update id="savings" parameterType="transferVO">
-  		update savings_account
-  		 set balance = balance + #{toAmount}
-  		 where account_number = #{toAccountNumber}
+  		UPDATE savings_account
+  		 SET balance = balance + #{toAmount}
+  		 WHERE account_number = #{toAccountNumber}
   		  
   	</update>
   	
   	
   	<!-- 예약 이체 해지 -->
   	<delete id="autoTransferDelete" parameterType="String">
-  		delete from auto_transfer
-  		 where to_account_number = #{accountNumber}
+  		DELETE FROM auto_transfer
+  		 WHERE to_account_number = #{accountNumber}
   	</delete>
   	
   	
   	<!-- 카드번호로 계좌번호 가져오기 -->
   	<select id="getAccountNumByCardNum" resultType="String" parameterType="String">
-  		select account_number as accountNumber
-  			from card
-  			where card_number = #{cardNumber}
+  		SELECT account_number AS accountNumber
+  			FROM card
+  			WHERE card_number = #{cardNumber}
   	</select>
   	
 </mapper>

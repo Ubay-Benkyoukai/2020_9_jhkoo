@@ -1,199 +1,265 @@
---testing query
-insert into member(id, name, password, phone, email, address, age_group, gender, property_status, job_key)
-  		values('test', 'test', '1234', '010-1111-2222', 'abc@abc.com', 'aassdd', '10대', '여', '5천만원 미만', '주부');
-SELECT * FROM `member`;
-DROP TABLE `missiondb`.`member`;
---------------------member table -----------------------
-CREATE TABLE `missiondb`.`member` (
-  `id` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `type` VARCHAR(45),
-  `phone` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `address` VARCHAR(45) NOT NULL,
-  `age_group` VARCHAR(45) NOT NULL,
-  `gender` VARCHAR(45) NOT NULL,
-  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `property_status` VARCHAR(45) NOT NULL,
-  `job_key` VARCHAR(45) NOT NULL,
-  `cash` INT,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
--- 'type' varchar
--- 今は、insertの時、nameには韓国語だけ入られます。修正必要
-
-------------------cash_manage table-----------------------
-
-CREATE TABLE `missiondb`.`cash_manage` (
-  `no` INT NOT NULL,
-  `id` VARCHAR(45) NOT NULL,
-  `cash` INT NOT NULL,
-  `log_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`no`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+SELECT * from member;
+SELECT * from dw_card_log;
+SELECT * from dw_account;
 
 
 
-------------------user_challenge table--------------------
+CREATE TABLE `member` (
+	`id`	varchar(45)	NOT NULL,
+	`name`	varchar(45)	NOT NULL,
+	`password`	varchar(45)	NOT NULL,
+	`type`	varchar(45)	NULL,
+	`phone`	varchar(45)	NOT NULL,
+	`email`	varchar(45)	NOT NULL,
+	`address`	varchar(200)	NOT NULL,
+	`age_group`	varchar(45)	NOT NULL,
+	`gender`	varchar(45)	NOT NULL,
+	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`property_status`	varchar(45)	NOT NULL,
+	`job_key`	varchar(45)	NOT NULL,
+	`cash`	int	NULL,
+	`last_visit_date`	TIMESTAMP	NULL,
+	`kakao_id`	varchar(45)	NULL,
+	`email_key`	varchar(45)	NULL,
+	PRIMARY KEY (`id`)
+);
 
-CREATE TABLE `missiondb`.`user_challenge` (
-  `challenge_pk` INT NOT NULL,
-  `id` VARCHAR(45) NOT NULL,
-  `challenge_name` VARCHAR(45) NOT NULL,
-  `challenge_end_date` VARCHAR(45) NOT NULL,
-  `challenge_type` VARCHAR(45) NOT NULL,
-  `target_amount` INT NOT NULL,
-  `nowBalanceByType` INT,
-  PRIMARY KEY (`challenge_pk`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_as_ci;
+CREATE TABLE `cash_manage` (
+	`no`	int	NOT NULL AUTO_INCREMENT,
+	`id`	varchar(45)	NOT NULL,
+	`cash`	varchar(45)	NOT NULL,
+	`log_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`content`	varchar(200)	NULL,
+	PRIMARY KEY (`no`,`id`)
+);
 
+CREATE TABLE `favorite` (
+	`no`	int	NOT NULL AUTO_INCREMENT,
+	`id`	varchar(45)	NOT NULL,
+	`to_account_number`	varchar(45)	NOT NULL,
+	`to_name`	varchar(45)	NOT NULL,
+	`favorite_flag`	varchar(45)	NOT NULL,
+	PRIMARY KEY (`no`,`id`)
+);
 
-------------------favorite_account table-------------------
-CREATE TABLE `missiondb`.`favorite_account` (
-  `no` INT NOT NULL,
-  `id` VARCHAR(45) NOT NULL,
-  `to_account_number` VARCHAR(45) NOT NULL,
-  `to_name` VARCHAR(45) NOT NULL,
-  `favorite_flag` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`no`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+CREATE TABLE `user_challenge` (
+	`challege_pk`	int	NOT NULL AUTO_INCREMENT,
+	`id`	varchar(45)	NOT NULL,
+	`challenge_name`	varchar(45)	NOT NULL,
+	`challenge_end_date`	varchar(45)	NULL,
+	`challenge_type`	varchar(45)	NOT NULL,
+	`target_amount`	int	NOT NULL,
+	PRIMARY KEY (`challege_pk`,`id`)
+);
 
+CREATE TABLE `friend` (
+	`no`	int	NOT NULL AUTO_INCREMENT,
+	`id`	varchar(45)	NOT NULL,
+	`friend_id`	varchar(45)	NOT NULL,
+	`content`	varchar(200)	NULL,
+	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`agree_flag`	varchar(45)	NULL,
+	PRIMARY KEY (`no`,`id`)
+);
 
--------------------friend_request table--------------------
-CREATE TABLE `missiondb`.`friend_request` (
-  `no` INT NOT NULL,
-  `id` VARCHAR(45) NOT NULL,
-  `friend_id` VARCHAR(45) NOT NULL,
-  `content` VARCHAR(200) NOT NULL,
-  `reg_date` VARCHAR(45) NOT NULL,
-  `agree_flag` VARCHAR(45) NOT NULL,
-  `friend_name` VARCHAR(45) NOT NULL,
-  `expenditure_this_month` INT NOT NULL,
-  PRIMARY KEY (`no`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
----------------------mail table-------------------------------
-CREATE TABLE `missiondb`.`mail` (
-  `no` INT NOT NULL, --uncertain, github imgには存在 > VOには無い 
-  `id` VARCHAR(45) NOT NULL,
-  `to_mail` VARCHAR(45) NOT NULL,
-  `title` VARCHAR(45) NOT NULL,
-  `content` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`no`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
-
-
-----------------------dw_account-------------------------
-CREATE TABLE `missiondb`.`dw_account` (
-  `account_number` VARCHAR(45) NOT NULL,
-  `id` VARCHAR(45) NOT NULL,
-  `account_password` VARCHAR(45) NOT NULL,
-  `balance` INT NOT NULL,
-  `bank_book_key` VARCHAR(45) NOT NULL,
-  `nick_name` VARCHAR(45) NOT NULL,
-  `reg_date` TIMESTAMP NOT NULL,
-  `main_account` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`account_number`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
------------------------------------------------
+CREATE TABLE `mail` (
+	`no`	int	NOT NULL AUTO_INCREMENT,
+	`id`	varchar(45)	NOT NULL,
+	`to_mail`	varchar(45)	NOT NULL,
+	`title`	varchar(45)	NOT NULL,
+	`content`	varchar(200)	NOT NULL,
+	PRIMARY KEY (`no`,`id`)
+);
 
 
----------------savings_account-----------------
+CREATE TABLE `savings_account` (
+	`account_number`	varchar(45)	NOT NULL,
+	`id`	varchar(45)	NOT NULL,
+	`account_password`	varchar(45)	NOT NULL,
+	`balance`	int	NOT NULL,
+	`bank_book_key`	varchar(45)	NOT NULL,
+	`nick_name`	varchar(45)	NOT NULL,
+	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`saving_day`	int	NULL,
+	`saving_date`	varchar(45)	NULL,
+	`auto_saving`	varchar(45)	NULL,
+	`auto_saving_bool`	varchar(45)	NULL,
+	PRIMARY KEY (`account_number`,`id`)
+);
 
-CREATE TABLE `missiondb`.`savings_account` (
-  `account_number` VARCHAR(45) NOT NULL,
-  `id` VARCHAR(45) NOT NULL,
-  `account_password` VARCHAR(45) NOT NULL,
-  `balance` INT NOT NULL,
-  `bank_book_key` VARCHAR(45) NOT NULL,
-  `nick_name` VARCHAR(45) NOT NULL,
-  `reg_date` TIMESTAMP NOT NULL,
-  `saving_day` INT NOT NULL,
-  `saving_date` VARCHAR(45) NOT NULL,
-  `auto_saving` VARCHAR(45) NOT NULL,
-  `auto_saving_bool` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`account_number`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
------------------------------------------------
+CREATE TABLE `dw_account` (
+	`account_number`	varchar(45)	NOT NULL,
+	`id`	varchar(45)	NOT NULL,
+	`account_password`	varchar(45)	NOT NULL,
+	`balance`	int	NOT NULL,
+	`bank_book_key`	varchar(45)	NOT NULL,
+	`nick_name`	varchar(45)	NOT NULL,
+	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`main_account`	varchar(45)	NOT NULL,
+	PRIMARY KEY (`account_number`,`id`)
+);
 
----------------auto_transfer-------------------
-CREATE TABLE `missiondb`.`auto_transfer` (
-  `log_pk` INT NOT NULL,          //uncertain
-  `account_number` VARCHAR(45) NOT NULL,
-  `my_name` VARCHAR(45) NOT NULL,
-  `to_type` VARCHAR(45) NOT NULL,
-  `to_name` VARCHAR(45) NOT NULL,
-  `to_account_number` VARCHAR(45) NOT NULL,
-  `to_amount` INT NOT NULL,
-  `auto_trans_day` INT NOT NULL,
-  PRIMARY KEY (`log_pk`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
------------------------------------------------
+CREATE TABLE `a_reply` (
+	`no`	int	NOT NULL AUTO_INCREMENT,
+	`board_no`	int	NOT NULL,
+	`content`	varchar(200)	NOT NULL,
+	`writer`	varchar(45)	NOT NULL,
+	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`no`)
+);
 
----------------dw_account_log------------------
-CREATE TABLE `missiondb`.`dw_account_log` (
-  `log_pk` INT NOT NULL,
-  `account_number` VARCHAR(45) NOT NULL,
-  `log_date` VARCHAR(45) NOT NULL,
-  `amount` INT NOT NULL,
-  `log_type_key` VARCHAR(45) NOT NULL,
-  `to_account_number` VARCHAR(45) NOT NULL,
-  `to_name` VARCHAR(45) NOT NULL,
-  `card_number` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`log_pk`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
------------------------------------------------
+CREATE TABLE `savings_account_log` (
+	`log_pk`	int	NOT NULL AUTO_INCREMENT,
+	`account_number`	varchar(45)	NOT NULL,
+	`log_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`amount`	int	NOT NULL,
+	PRIMARY KEY (`log_pk`,`account_number`)
+);
 
----savings_account_log-------------------------
-CREATE TABLE `missiondb`.`savings_account_log` (
-  `log_pk` INT NOT NULL,
-  `account_number` VARCHAR(45) NOT NULL,
-  `log_date` VARCHAR(45) NOT NULL,
-  `amount` INT NOT NULL,
-  PRIMARY KEY (`log_pk`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
------------------------------------------------
+CREATE TABLE `auto_transfer` (
+	`log_pk`	int	NOT NULL AUTO_INCREMENT,
+	`account_number`	varchar(45)	NOT NULL,
+	`my_name`	varchar(45)	NOT NULL,
+	`to_type`	varchar(45)	NOT NULL,
+	`to_name`	varchar(45)	NOT NULL,
+	`to_account_number`	varchar(45)	NOT NULL,
+	`to_amount`	int	NOT NULL,
+	`auto_trans_day`	int	NOT NULL,
+	PRIMARY KEY (`log_pk`,`account_number`)
+);
 
----job-----------------------------------------
-CREATE TABLE `missiondb`.`job` (
-  `key` VARCHAR(45) NOT NULL,
-  `value` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`key`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
------------------------------------------------
+CREATE TABLE `dw_card_log` (
+	`log_pk`	int	NOT NULL AUTO_INCREMENT,
+	`account_number`	varchar(45)	NOT NULL,
+	`log_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`amount`	int	NOT NULL,
+	`log_type_key`	varchar(45)	NOT NULL,
+	`to_account_number`	varchar(45)	NOT NULL,
+	`to_name`	varchar(45)	NOT NULL,
+	PRIMARY KEY (`log_pk`,`account_number`)
+);
+
+CREATE TABLE `job` (
+	`key`	VARCHAR(25)	NOT NULL,
+	`value`	VARCHAR(25)	NULL
+);
+
+CREATE TABLE `bank_book` (
+	`key`	VARCHAR(25)	NOT NULL,
+	`value`	VARCHAR(25)	NULL
+);
+
+CREATE TABLE `saving_bank_book` (
+	`key`	VARCHAR(25)	NOT NULL,
+	`value`	VARCHAR(25)	NULL,
+	`rate`	VARCHAR(25)	NULL
+);
+
+CREATE TABLE `log_type` (
+	`key`	VARCHAR(25)	NOT NULL,
+	`value`	VARCHAR(25)	NULL
+);
+
+CREATE TABLE `a_board` (
+	`no`	int	NOT NULL AUTO_INCREMENT,
+	`title`	varchar(45)	NOT NULL,
+	`writer`	varchar(45)	NOT NULL,
+	`content`	varchar(45)	NOT NULL,
+	`view_cnt`	varchar(45)	NULL,
+	`reply_cnt`	int	NULL,
+	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`no`)
+);
 
 
 
 
+ALTER TABLE `job` ADD CONSTRAINT `PK_JOB` PRIMARY KEY (
+	`key`
+);
+
+ALTER TABLE `bank_book` ADD CONSTRAINT `PK_BANK_BOOK` PRIMARY KEY (
+	`key`
+);
+
+ALTER TABLE `saving_bank_book` ADD CONSTRAINT `PK_SAVING_BANK_BOOK` PRIMARY KEY (
+	`key`
+);
+
+ALTER TABLE `log_type` ADD CONSTRAINT `PK_LOG_TYPE` PRIMARY KEY (
+	`key`
+);
+
+
+
+ALTER TABLE `cash_manage` ADD CONSTRAINT `FK_member_TO_cash_manage_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `favorite` ADD CONSTRAINT `FK_member_TO_favorite_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `user_challenge` ADD CONSTRAINT `FK_member_TO_user_challenge_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `friend` ADD CONSTRAINT `FK_member_TO_friend_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `mail` ADD CONSTRAINT `FK_member_TO_mail_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `savings_account` ADD CONSTRAINT `FK_member_TO_savings_account_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `dw_account` ADD CONSTRAINT `FK_member_TO_dw_account_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+ALTER TABLE `savings_account_log` ADD CONSTRAINT `FK_savings_account_TO_savings_account_log_1` FOREIGN KEY (
+	`account_number`
+)
+REFERENCES `savings_account` (
+	`account_number`
+);
+
+ALTER TABLE `auto_transfer` ADD CONSTRAINT `FK_dw_account_TO_auto_transfer_1` FOREIGN KEY (
+	`account_number`
+)
+REFERENCES `dw_account` (
+	`account_number`
+);
+
+ALTER TABLE `dw_card_log` ADD CONSTRAINT `FK_dw_account_TO_dw_card_log_1` FOREIGN KEY (
+	`account_number`
+)
+REFERENCES `dw_account` (
+	`account_number`
+);
 

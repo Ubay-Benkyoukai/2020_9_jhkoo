@@ -7,6 +7,7 @@
 	<resultMap type="depositAccountVO" id="depositAccountMap">
   		<result column="account_number" property="accountNumber" />
   		<result column="account_password" property="accountPassword" />
+  		<!-- no column="balance" -->
   		<result column="bank_book_key" property="bankBookKey" />
   		<result column="nick_name" property="nickName" />
   		<result column="reg_date" property="regDate" />
@@ -19,43 +20,43 @@
 
 	<!-- 입출금 계좌 정보 -->
   	<select id="selectById" resultMap="depositAccountMap" parameterType="String">
-  		select d.account_number, d.id, d.account_password, d.balance, b.value as bank_book_key, 
-  			   d.nick_name, to_char(d.reg_date, 'YYYY"년 "MM"월 "DD"일"') as reg_date, d.main_account
-  		 from dw_account d left join bank_book b
-  		 		on d.bank_book_key = b.key
-  		 where id = #{id} 
-  		 order by main_account desc
+  		SELECT d.account_number, d.id, d.account_password, d.balance, b.value as bank_book_key, 
+  			   d.nick_name, date_format(d.reg_date, '%Y년 %m월 %d일') as reg_date, d.main_account
+  		 FROM dw_account d LEFT JOIN bank_book b
+  		 		ON d.bank_book_key = b.key
+  		 WHERE id = #{id} 
+  		 ORDER BY main_account DESC
   	</select>
   	
   	<!-- 입출금 계좌 총 잔액 -->
   	<select id="totalBalanceById" resultType="int" parameterType="String">
-  		select sum(balance) 
-		 from dw_account
-		 where id = #{id}
+  		SELECT SUM(balance) 
+		 FROM dw_account
+		 WHERE id = #{id}
   	</select>
   	
   	<!-- 입출금 자유 예금 계좌 번호  -->
   	<select id="accountNumListById" parameterType="String" resultMap="depositAccountNumString">
-  		select account_number
-  		 from dw_account
-  		 where id = #{id}
+  		SELECT account_number
+  		 FROM dw_account
+  		 WHERE id = #{id}
   	</select>
   	
   	<!-- 입출금 자유 예금 상품 가입 -->
   	<insert id="insert" parameterType="depositAccountVO">
-  		insert into dw_account(account_number, 
-  		                       id, account_password, balance, bank_book_key, nick_name, main_account)
-  		                values(substr(seq_account_number.nextval,1,3) || '-' || substr(seq_account_number.currval,4,6) || '-' || substr(seq_account_number.currval,10,5),
-  		                       #{id}, #{accountPassword}, #{balance}, #{bankBookKey}, #{nickName}, 'N')
+  		INSERT INTO dw_account(account_number, id, account_password, balance, bank_book_key, nick_name, main_account)
+  		VALUES(
+  			   (SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+  		       #{id}, #{accountPassword}, #{balance}, #{bankBookKey}, #{nickName}, 'N')
   	</insert>
   	
   	<!-- 해당 계좌 정보 가져오기 -->
   	<select id="getInfo" resultMap="depositAccountMap" parameterType="String">
-  		select d.account_number, d.id, d.account_password, d.balance, b.value as bank_book_key, 
-  			   d.nick_name, to_char(d.reg_date, 'YYYY"년 "MM"월 "DD"일"') as reg_date, d.main_account
-  		 from dw_account d left join bank_book b
-  		 		on d.bank_book_key = b.key
-  		 where account_number = #{accountNumber} 
+  		SELECT d.account_number, d.id, d.account_password, d.balance, b.value as bank_book_key, 
+  			   d.nick_name, date_format(d.reg_date, '%Y년 %m월 %d일') as reg_date, d.main_account
+  		 FROM dw_account d LEFT JOIN bank_book b
+  		 	  ON d.bank_book_key = b.key
+  		 WHERE account_number = #{accountNumber} 
   	</select>
   	
   	
@@ -63,33 +64,33 @@
   	
   	<!-- 사용자의 기존 메인 계좌를 서브계좌로 만들기(계좌 상태 sub으로 초기화) -->
   	<update id="mainToSub" parameterType="String">
-  		update dw_account
-  		 set
+  		UPDATE dw_account
+  		 SET
   			main_account = 'N'
-  		 where id = #{id}
+  		 WHERE id = #{id}
   	</update>
   	
   	<!-- 해당 계좌 정보 수정 -->
   	<update id="update" parameterType="depositAccountVO">
-  		update dw_account
-  		 set 
+  		UPDATE dw_account
+  		 SET 
   			main_account = #{mainAccount},
   			nick_name = #{nickName}
-  		 where account_number = #{accountNumber}	
+  		 WHERE account_number = #{accountNumber}	
   	</update>
   	
   	<!-- 메인 계좌번호 가져오기 -->
   	<select id="getMainAccountNumber" resultType="String" parameterType="String">
-  		select account_number 
-  		 from dw_account
-  		 where main_account = 'Y' and
+  		SELECT account_number 
+  		 FROM dw_account
+  		 WHERE main_account = 'Y' AND
   		       id = #{id} 		      
   	</select>
   	
   	<!-- 계좌 삭제 -->
   	<delete id="deleteDepositAccount" parameterType="String">
-  		delete from dw_account
-  		 where account_number = #{accountNumber}
+  		DELETE FROM dw_account
+  		 WHERE account_number = #{accountNumber}
   	</delete>
   	
   	

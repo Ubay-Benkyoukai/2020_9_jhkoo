@@ -6,52 +6,51 @@
 
 	<!-- 친구 테이블 목록에 추가 -->
 	<insert id="insertRequest" parameterType="friendVO">
-		insert into friend(no, id, friend_id, content)
-		 values(seq_friend_no.nextval, #{id}, #{friendId}, #{content})
+		INSERT INTO friend(id, friend_id, content)
+		VALUES(#{id}, #{friendId}, #{content})
 	</insert>
 
 	<!-- 내가 보낸 요청 가져오기  -->
 	<select id="getRequestList" resultType="friendVO" parameterType="String">
-		select f.no, f.id, f.friend_id as friendId, m.name as friendName,f.content, 
-		       to_char(f.reg_date, 'YYYY"년 "MM"월 "DD"일"') as regDate, f.agree_flag as agreeFlag
-		 from friend f left join member m
-		      on f.friend_id = m.id
-		 where f.id = #{id}
+		SELECT f.no, f.id, f.friend_id as friendId, m.name as friendName,f.content, 
+		       date_format(f.reg_date, '%Y년 %m월 %d일') as regDate, f.agree_flag as agreeFlag
+		 FROM friend f LEFT JOIN member m
+		      ON f.friend_id = m.id
+		 WHERE f.id = #{id}
 	</select>
 	
 	
 	<!-- 내가 받은 요청 가져오기  -->
 	<select id="getRequestedList" resultType="friendVO" parameterType="String">
-		 select f.no, f.id, f.friend_id as friendId, m.name as friendName, f.content, 
-		        to_char(f.reg_date, 'YYYY"년 "MM"월 "DD"일"') as regDate, f.agree_flag as agreeFlag
-		  from friend f left join member m
-		   on f.id = m.id
-		  where f.friend_id = #{id}
+		 SELECT f.no, f.id, f.friend_id as friendId, m.name as friendName, f.content, 
+		        date_format(f.reg_date, '%Y년 %m월 %d일') as regDate, f.agree_flag as agreeFlag
+		  FROM friend f LEFT JOIN member m
+		   ON f.id = m.id
+		  WHERE f.friend_id = #{id}
 	</select>
 
 
 	<!-- 친구가 보낸 요청 승인하기 -->
 	<update id="agreeRequest" parameterType="friendVO">
-		update friend
-		 set
-		  agree_flag = #{agreeFlag}
-		 where id = #{id} and
-		       friend_id = #{friendId}
+		UPDATE friend
+		SET agree_flag = #{agreeFlag}
+			WHERE id = #{id} AND
+				  friend_id = #{friendId}
 	</update>
 	
 	
 	<!-- 친구가 보낸 요청 거절하기 -->
 	<delete id="disAgreeRequest" parameterType="friendVO">
-		delete from friend
-		 where id = #{id} and
-		       friend_id = #{friendId}
+		DELETE FROM friend
+			WHERE id = #{id} AND 
+				  friend_id = #{friendId}
 	</delete>
 
 	<!-- 내가 보낸 요청 중 승인된 친구 아이디  -->
 	<select id="getFriendsIdList1" resultType="String" parameterType="String">
-		select friend_id
-		 from friend
-		 where id = #{id} and
+		SELECT friend_id
+		 FROM friend
+		 WHERE id = #{id} AND
 		 	   agree_flag = '1'
 	</select>
 	
@@ -59,19 +58,19 @@
 	
 	<!-- 내가 받은 요청 중 승인한 친구 아이디  -->
 	<select id="getFriendsIdList2" resultType="String" parameterType="String">
-		select id
-		 from friend
-		 where friend_id = #{id} and
+		SELECT id
+		 FROM friend
+		 WHERE friend_id = #{id} AND
 		       agree_flag = '1'
 	</select>
 	
 	
 	<!-- 내가 보낸 요청 중 승인된 친구 이름  -->
 	<select id="getFriendsNameList1" resultType="String" parameterType="String">
-		select m.name as friendName 
-		 from friend f left join member m
-		      on f.friend_id = m.id
-		 where f.id = #{id} and
+		SELECT m.name as friendName 
+		 FROM friend f LEFT JOIN member m
+		      ON f.friend_id = m.id
+		 WHERE f.id = #{id} AND
 		 	   agree_flag = '1'
 	</select>
 	
@@ -79,17 +78,17 @@
 	
 	<!-- 내가 받은 요청 중 승인한 친구 이름  -->
 	<select id="getFriendsNameList2" resultType="String" parameterType="String">
-		 select m.name as friendName 
-		  from friend f left join member m
-		   on f.id = m.id
-		  where f.friend_id = #{id} and
+		 SELECT m.name as friendName 
+		  FROM friend f LEFT JOIN member m
+		   ON f.id = m.id
+		  WHERE f.friend_id = #{id} AND
 		       agree_flag = '1'
 	</select>
 
 
 	<!-- 도전 초기화 -->
 	<delete id="resetChallenge">
-		delete from friend
+		DELETE FROM friend
 	</delete>
 
 </mapper>
