@@ -26,7 +26,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="accordion-section">
     <div class="section-title">
-        <h3>내집 마련 적금 가입하기</h3>
+        <h3>マイホームを購入する貯金</h3>
     </div>
     
     
@@ -37,15 +37,15 @@
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            	최대금리 받는 방법
+                            	最大の金利を受け取る方法
                         </a>
                     </h4>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-			                        주택청약종합저축 가입하고<br>
-			                        같은 날 내집마련 더블업 적금 가입하면<br>
-			                        적금 만기때 까지 청약저축 유지함녀 금리가 두 배!
+			                        住宅請約総合貯蓄に加入し<br>
+			                        同じ日にマイホーム購入のダブルアップ貯金に加入すれば<br>
+			                        貯金が満期になるまで請約貯蓄を維持すれば金利が2倍！
                     </div>
                 </div>
             </div>
@@ -54,14 +54,14 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	상품특징
+                            	商品特徴
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-			                        주택청약종합저축을 신규 가입한 날, 단 하루 가입할 수 있는 특별한 적금 ! <br>
-			                        적금 만기시 주택청약종합저축을 보유하고 있다면 금리가 두~배 되는 적금 !       
+			                        住宅請約総合貯金を新規加入した日、たった一日加入できる特別な積立金！ <br>
+			                         積金満期時、住宅請約総合貯蓄を保有しているなら金利が2倍になる積金！     
                     </div>
                 </div>
             </div>
@@ -70,13 +70,13 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	가입대상
+                            	加入対象
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                       	 이 예금 가입일에 ㈜하나은행의 주택청약종합저축을 신규 가입한 실명의 개인 또는 개인사업자 (1인 1계좌)
+                       	 この預金加入日に（株）ハナ銀行の住宅請約総合貯蓄を新規加入した実名の個人または個人事業者（1人1口座）
                     </div>
                 </div>
             </div>
@@ -85,15 +85,15 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree">
-                            	내집마련 더블업 적금 가입 사례 
+                            	マイホーム購入のダブルアップ積金加入事例
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                        1. 주택청약 종합저출을 오늘 가입했어요!<br>
-                        2. 주택청약 종합저축에 아직 가입하지 않았어요!<br>
-                        3. 주택청약 종합저축을 어제 이미 가입했어요!(불가)<br>
+                        1. 住宅請約総合貯金に今日加入しました！<br>
+                        2. 住宅請約総合貯蓄にまだ加入していません！<br>
+                        3. 住宅請約総合貯蓄を昨日すでに加入しました！（不可）<br>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
     		
             	<div class="col-md-12 col-sm-12 col-xs-12">         
             	    <div class="form-group text-center">
-                    	<button onclick="goJoin()" class="btn-style-one">가입하기</button>
+                    	<button onclick="goJoin()" class="btn-style-one">加入する</button>
              	   </div>
             	</div>
             

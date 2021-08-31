@@ -23,8 +23,8 @@
 					str += '<tr>'
 					str +=  '<td>' + this.logDate + '</td>'
 					str +=  '<td>' + this.content + '</td>'
-					str +=  '<td>' + this.cash + '원</td>'
-					str +=  '<td><button class="delBtn" id='+ this.no +'> 삭제 </button><td>'
+					str +=  '<td>' + this.cash + '￥</td>'
+					str +=  '<td><button class="delBtn" id='+ this.no +'> 削除 </button><td>'
 					str += '</tr>'
 										
 					
@@ -48,13 +48,13 @@
 				url : '${pageContext.request.contextPath}/cash',
 				type : 'post',
 				data : {
-					// 아이디, 내용, 현금 상태 보낸 후 insert
+					// 아이디, 내용, 현금 상태 보낸 후 insert // ID、内容、現金の状態を送って insert
 					id : id,
 					content : content,
 					cash : cash
 				},
 				success : function(){
-					// insert 이후, 현금 내역 리스트 호출.
+					// insert 이후, 현금 내역 리스트 호출. 現金内訳リスト呼び出し
 					getCashList();	
 				},
 				error : function(){
@@ -76,11 +76,11 @@
 		getCashList();
 	})
 	
-	// 내역 삭제
+	// 내역 삭제 内訳削除
 	$(document).ready(function(){
 		$(document).on('click', '.delBtn', function(){
 			
-			if(!confirm('내역을 삭제하시겠습니까?')) return;
+			if(!confirm('内訳を削除しますか?')) return;
 			
 			let cashNo = $(this).attr('id');
 			
@@ -111,7 +111,7 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="contact-area style-two">
                     <div class="section-title">
-                        <h3>현금 사용 내역 <span>을 입력하세요</span></h3>
+                        <h3>現金使用内訳<span>を入力してください。</span></h3>
                     </div>
                     <form name="rform" class="default-form contact-form">
                         <div class="row">
@@ -120,17 +120,17 @@
                                 <input type="hidden" name="id" value="${ loginVO.id }">
                                 
                                 <div class="form-group">
-                                    <input type="text" name="cash" placeholder="현금 변동금액을 입력하세요">
+                                    <input type="text" name="cash" placeholder="現金変動金額を入力してください。">
                                 </div>
                                                            
                             </div>
                             
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <textarea name="content" placeholder="설명" ></textarea>
+                                    <textarea name="content" placeholder="説明" ></textarea>
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn-style-one" id="cashAddBtn">내역 추가하기</button>
+                                    <button type="submit" class="btn-style-one" id="cashAddBtn">内訳追加</button>
                                     
                                 </div>                            
                             </div>
@@ -146,9 +146,9 @@
                  <table class="table table-hover" style="width:50%">
                   <thead>
                   	<tr>
-                  		<th>기록 날짜</th>
-                  		<th>내용</th>
-                  		<th>보유 현금</th>
+                  		<th>記録の日付</th>
+                  		<th>内容</th>
+                  		<th>保有現金</th>
                   		<th>&nbsp;</th>
                   	</tr>
                   </thead>
@@ -171,7 +171,7 @@
  <div align="center">
  <button type="submit" class="btn-style-one" 
          onclick="location.href='${ pageContext.request.contextPath }/account '"
-         >돌아가기</button>
+         >戻る</button>
  </div>
 	
 <br>

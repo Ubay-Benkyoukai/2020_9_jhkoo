@@ -21,7 +21,7 @@
       </div>
       <ul class="footer-bottom-link">
         <li>
-          <a href="index.html">Home</a>
+          <a href="index.html">ホーム</a>
         </li>
         <li>
           <a href="${pageContext.request.contextPath }/card">card</a>

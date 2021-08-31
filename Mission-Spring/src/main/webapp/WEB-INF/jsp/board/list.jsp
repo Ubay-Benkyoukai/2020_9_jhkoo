@@ -27,14 +27,14 @@
 	<section>
 		<div align = "center">
 		<hr width="80%">
-		<h2>게시판 목록</h2>
+		<h2>掲示板リスト</h2>
 		<hr width="80%">		
 		<table border="1" style="width: 80%">
 			<tr>
-				<th width="7%">번호</th>
+				<th width="7%">番号</th>
 				<th>제목</th>
-				<th width="16%">글쓴이</th>
-				<th width="20%">등록일</th>
+				<th width="16%">書き手</th>
+				<th width="20%">登録日</th>
 			</tr>
 			
 			<c:forEach items="${ boardList }" var="board" varStatus="loop">
@@ -62,7 +62,7 @@
 		<%-- <button>새글등록</button>  이렇게 버튼을 통해서 가게 해주려면 javascript나 jquery 문법 필요함 --%>
 		<!-- 로그인 되어있을 때만 새 글 등록하게! -->
 		<c:if test="${ not empty loginVO }">
-			<button onclick="goWriteForm()">새 글 등록</button>  
+			<button onclick="goWriteForm()">新しい文登録</button>  
 		</c:if>
 	
 	</div>

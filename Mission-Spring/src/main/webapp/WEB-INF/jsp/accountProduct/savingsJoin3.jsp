@@ -75,7 +75,7 @@ $(document).ready(function(){
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="accordion-section">
     <div class="section-title">
-        <h3>꿈하나 적금 상품 정보</h3>
+        <h3>夢ハナ積金 商品情報</h3>
     </div>
     <div class="accordion-holder">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -83,13 +83,13 @@ $(document).ready(function(){
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            	가입기간
+                            	加入期間
                         </a>
                     </h4>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                         1년, 2년, 3년
+                         1年、2年、3年
                     </div>
                 </div>
             </div>
@@ -98,13 +98,13 @@ $(document).ready(function(){
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	가입금액
+                            	加入金額
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                      30만원 이하
+                      3万円以下
                     </div>
                 </div>
             </div>
@@ -113,13 +113,13 @@ $(document).ready(function(){
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree">
-                            	이자지급방법
+                            	利子至急方法
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                        	만기일시지급식
+                        	満期一時支払式
                     </div>
                 </div>
             </div>
@@ -147,66 +147,66 @@ $(document).ready(function(){
                 
 
                 <div class="form-group">
-                	<label>비밀번호 &nbsp;</label> <form:errors path="accountPassword" class="error" /> 
-                    <form:password path="accountPassword" class="form-control" placeholder="비밀번호 4자리를 설정하세요"/>
+                	<label>パスワード &nbsp;</label> <form:errors path="accountPassword" class="error" /> 
+                    <form:password path="accountPassword" class="form-control" placeholder="パスワード 4桁を設定してください。"/>
                     
                 </div>
                 
                 <div class="form-group">
-                	<label>신규 가입 금액 &nbsp;</label> <form:errors path="balance" class="error" />
+                	<label>新規加入金額 &nbsp;</label> <form:errors path="balance" class="error" />
                 	<form:input path="balance" class="form-control" />
                 	
                 </div>
                 
                       
                 <div class="form-group">
-                	<label>가입 기간</label> 
+                	<label>加入期間</label> 
                 	<form:select path="savingMonth">
-                		<form:option value="12">1년</form:option>
-                      	<form:option value="24">2년</form:option>
-                      	<form:option value="36">3년</form:option>
+                		<form:option value="12">1年</form:option>
+                      	<form:option value="24">2年</form:option>
+                      	<form:option value="36">3年</form:option>
                 	</form:select>
                 </div>
                 
                 <div class="form-group">
-                	<label>납부 일</label> 
+                	<label>納付日</label> 
                 	<form:select path="savingDay" class="form-control">
-                      	<form:option value="1">매월 1일</form:option>
-                      	<form:option value="15">매월 15일</form:option>
-                      	<form:option value="25">매월 28일</form:option>
+                      	<form:option value="1">毎月1日</form:option>
+                      	<form:option value="15">毎月15日</form:option>
+                      	<form:option value="25">毎月28日</form:option>
                     </form:select>
                 </div>
                 
                 <div class="form-group">
-                	<label>이자 지급 방법</label> 
-                    <form:input path="" class="form-control" value="만기 일시 지급식" readonly="true"/> 
+                	<label>利子至急方法</label> 
+                    <form:input path="" class="form-control" value="満期一時支払式" readonly="true"/> 
                 </div>
                 
                 
                 <div class="form-group">
-                	<label>적금 닉네임 &nbsp;</label> <form:errors path="nickName" class="error" />
-                    <form:input path="nickName" class="form-control" placeholder="닉네임을 입력하세요"/> 
+                	<label>積金ニックネーム &nbsp;</label> <form:errors path="nickName" class="error" />
+                    <form:input path="nickName" class="form-control" placeholder="ニックネームを入力してください。"/> 
                     
                 </div>
                 
                 
                 <div class="form-group">
-                	<label>출금 계좌</label> 
+                	<label>出金口座</label> 
                 	<form:select path="autoSaving" class="form-control"> 
                    	  <form:options items="${ depositAccountNumList }" ></form:options>                      	
                    </form:select>
                 </div>
                 
                 <div class="form-group">
-                	<label>인증번호 &nbsp;</label>
+                	<label>認証番号 &nbsp;</label>
                 	<button type="button" class="btn btn-style-one" id="certCheck">
-						인증번호 발송하기</button>	
+						認証番号 発送する</button>	
 					<div style="width:385px; float:left;">
-						<form:input id = "certification" path="certification" class="form-control"  placeholder="이메일로 발송된 인증번호를 입력하세요"/>				
+						<form:input id = "certification" path="certification" class="form-control"  placeholder="メールで送信された認証番号を入力してください。"/>				
                 	</div>
                 	<div style="width:100px; float:left;">
                 	<button type="button" class="btn btn-style-one" id="certConfirm" >
-						확인</button>
+						確認</button>
                 	</div>
                 </div>
                 
@@ -215,7 +215,7 @@ $(document).ready(function(){
                 <br>
                 
                 <div class="form-group text-center">
-                    <button type="submit" class="btn-style-one">상품 가입</button>
+                    <button type="submit" class="btn-style-one">商品加入</button>
                 </div>
 
             </div>
@@ -237,17 +237,17 @@ $(document).ready(function(){
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">이메일이 발송되었습니다.</h4>
+          <h4 class="modal-title">メールが送信されました。</h4>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-         	 이메일로 보내진 인증번호 6자리 값을 입력해주시기 바랍니다.
+         	 メールで送られた認証番号6桁の値を入力してください。
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">확인</button>          
+          <button type="button" class="btn-style-one" data-dismiss="modal">確認</button>          
         </div>
         
       </div>
@@ -260,17 +260,17 @@ $(document).ready(function(){
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">인증완료</h4>
+          <h4 class="modal-title">認証完了</h4>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-         	 이메일 인증이 완료되었습니다.
+         	 メール認証が完了しました。
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">확인</button>          
+          <button type="button" class="btn-style-one" data-dismiss="modal">確認</button>          
         </div>
         
       </div>

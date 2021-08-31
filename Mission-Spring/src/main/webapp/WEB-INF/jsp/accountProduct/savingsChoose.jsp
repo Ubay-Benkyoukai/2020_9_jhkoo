@@ -15,17 +15,17 @@
 <section class="team-section section">
     <div class="container">
         <div class="section-title text-center">
-            <h3>적금 상품을 선택해주세요</h3>
-            <p>적금 상품을 선택해주세요</p>
+            <h3>積み立て商品を選択してください。</h3>
+            <p>積み立て商品を選択してください。</p>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="team-member">
                     <img src="${pageContext.request.contextPath }/resources/assets/images/1.png" alt="doctor" class="img-responsive">
                     <div class="contents text-center">
-                        <h4>하나 원큐 적금</h4>
-                        <p>간편하게 우대금리를 제공하는 스마트폰적금</p>
-                        <a href="${pageContext.request.contextPath }/product/savingsExplain1" class="btn btn-main">개설하기</a>
+                        <h4>ハナワンキュウ積金</h4>
+                        <p>手軽に優遇金利を提供するスマートフォンの積み金</p>
+                        <a href="${pageContext.request.contextPath }/product/savingsExplain1" class="btn btn-main">概説</a>
                     </div>
                 </div>
             </div>
@@ -33,9 +33,9 @@
                 <div class="team-member">
                     <img src="${pageContext.request.contextPath }/resources/assets/images/2.png" alt="doctor" class="img-responsive">
                     <div class="contents text-center">
-                        <h4>내집마련 적금</h4>
-                        <p>내집마련의 꿈을 하나은행이 응원합니다</p>
-                        <a href="${pageContext.request.contextPath }/product/savingsExplain2" class="btn btn-main">개설하기</a>
+                        <h4>マイホームを購入する積金</h4>
+                        <p>マイホームの夢をハナ銀行が応援します</p>
+                        <a href="${pageContext.request.contextPath }/product/savingsExplain2" class="btn btn-main">概説</a>
                     </div>
                 </div>
             </div>
@@ -43,9 +43,9 @@
                 <div class="team-member">
                     <img src="${pageContext.request.contextPath }/resources/assets/images/3.png" alt="doctor" class="img-responsive">
                     <div class="contents text-center">
-                        <h4>꿈하나 적금</h4>
-                        <p>보물단지 우리아이를 위한 적금</p>
-                        <a href="${pageContext.request.contextPath }/product/savingsExplain3" class="btn btn-main">개설하기</a>
+                        <h4>夢ハナ積金</h4>
+                        <p>宝物のような我が子のための積金</p>
+                        <a href="${pageContext.request.contextPath }/product/savingsExplain3" class="btn btn-main">概説</a>
                     </div>
                 </div>
             </div>
