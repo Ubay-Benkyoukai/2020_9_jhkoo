@@ -1,22 +1,23 @@
 ＜新機能追加アイデア＞
-１．フィルターをかけて商品を推薦する機能
-２．会員加入後、利用者が多い商品推薦
-３．イベントページ　ex)景品抽選
-４．（口座管理ページに該当機能がない場合）
-	決済内訳のページに各種機能追加（月別、出入金の内訳別）
-５．1回／1日の振込限度制限
-６．家計簿機能
+
+１．フィルターをかけて商品を推薦する機能 <br>
+２．会員加入後、利用者が多い商品推薦 <br>
+３．イベントページ　ex)景品抽選 <br>
+４．（口座管理ページに該当機能がない場合） <br>
+	決済内訳のページに各種機能追加（月別、出入金の内訳別） <br>
+５．1回／1日の振込限度制限 <br>
+６．家計簿機能 <br>
 
 ========================================================
 
 해당 프로젝트로 공부 중입니다!
 
-1. project explorer
- -> properties
- -> Java Build Path
- -> Libraries
- -> Error Jar All Remove, then Apply and Close
- -> Maven Clean & Build ( Update Maven )
+1. project explorer <br>
+ -> properties <br>
+ -> Java Build Path <br>
+ -> Libraries <br>
+ -> Error Jar All Remove, then Apply and Close <br>
+ -> Maven Clean & Build ( Update Maven ) <br>
 
 ========================================================
 
