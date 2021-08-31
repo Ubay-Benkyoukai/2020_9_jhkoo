@@ -1,9 +1,3 @@
-SELECT * from member;
-SELECT * from dw_card_log;
-SELECT * from dw_account;
-
-
-
 CREATE TABLE `member` (
 	`id`	varchar(45)	NOT NULL,
 	`name`	varchar(45)	NOT NULL,
