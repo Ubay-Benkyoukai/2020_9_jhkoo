@@ -35,18 +35,18 @@
 		<c:if test='${ challengeName.substring(0,2).equals("食費") }' >
 			<input type="hidden" name="challengeType" value="3" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,2).equals("カフェ") }' >
+		<c:if test='${ challengeName.substring(0,3).equals("カフェ") }' >
 			<input type="hidden" name="challengeType" value="4" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,3).equals("コンビニ") }' >
+		<c:if test='${ challengeName.substring(0,4).equals("コンビニ") }' >
 			<input type="hidden" name="challengeType" value="5" />		
 		</c:if><c:if test='${ challengeName.substring(0,1).equals("酒") }' >
 			<input type="hidden" name="challengeType" value="6" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,2).equals("ショッピング") }' >
+		<c:if test='${ challengeName.substring(0,6).equals("ショッピング") }' >
 			<input type="hidden" name="challengeType" value="7" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,3).equals("美容") }' >
+		<c:if test='${ challengeName.substring(0,2).equals("美容") }' >
 			<input type="hidden" name="challengeType" value="9" />		
 		</c:if>	
 

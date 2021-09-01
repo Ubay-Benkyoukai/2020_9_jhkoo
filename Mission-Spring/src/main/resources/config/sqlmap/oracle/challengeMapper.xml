@@ -24,8 +24,9 @@
 
 	<!-- 내 도전 insert -->
   	<insert id="insertMyChallenge" parameterType="challengeVO">
-  		INSERT INTO user_challenge(challenge_name, id, challenge_type, target_amount)
-  		 VALUES(#{challengeName}, #{id}, #{challengeType}, #{targetAmount})
+  		INSERT INTO user_challenge(challenge_name, id, challenge_type, target_amount, challenge_end_date)
+  		 VALUES(#{challengeName}, #{id}, #{challengeType}, #{targetAmount}, 
+  		 		 date_format(CURDATE() + 1 , '%Y-%m-%d') )
   	</insert>
   	
   	
