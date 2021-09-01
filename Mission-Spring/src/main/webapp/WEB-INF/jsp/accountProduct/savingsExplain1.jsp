@@ -26,7 +26,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="accordion-section">
     <div class="section-title">
-        <h3>하나 원큐 적금 가입하기</h3>
+        <h3>ハナワンキュウ積金 加入する</h3>
     </div>
     
     
@@ -37,16 +37,16 @@
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            	최대금리 받는 방법
+                            	最大の金利を受け取る方法
                         </a>
                     </h4>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-			                         이 예금의 가입자가 아래 항목을 충족하는 경우 최대 연1.80%의 우대금리를 만기에 제공합니다. (단, 중도해지 시 미제공)<br>
-						1. 상품ㆍ서비스 마케팅동의 우대(연1.0%) : 이 예금 가입 전 ㈜하나은행 상품ㆍ서비스 마케팅동의 항목 모두를 동의한 경우<br>
-						2. 하나오픈뱅킹 등록 우대(연0.3%) : 하나오픈뱅킹 서비스를 이용 동의하고 출금계좌 등록한 경우<br>
-						3. 하나오픈뱅킹 이체 우대(연0.5%) : 하나오픈뱅킹 서비스를 통하여 다른은행 계좌에서 출금이체로 이 예금에 6회 이상 납입한 경우(월 1회만 인정)<br>
+			                        この預金の加入者が以下の項目を満たした場合、最大で年1.80%の優遇金利を満期時に提供します。 （ただし、中途解約の場合は未提供）<br>
+						1. 商品·サービスマーケティング同意優待（年1.0%）:この預金加入前（株）ハナ銀行商品·サービスマーケティング同意項目すべてに同意した場合<br>
+						2. ハナオープンバンキング登録優待(年0.3%):ハナオープンバンキングサービスを利用に同意し、出金口座に登録した場合<br>
+						3. ハナオープンバンキング振込優待(年0.5%):ハナオープンバンキングサービスを通じて他の銀行口座から出金振込でこの預金に6回以上振り込んだ場合(月1回のみ認定)。<br>
                     </div>
                 </div>
             </div>
@@ -55,14 +55,14 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	상품특징
+                            	商品特徴
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-			                        주택청약종합저축을 신규 가입한 날, 단 하루 가입할 수 있는 특별한 적금 ! <br>
-			                        적금 만기시 주택청약종합저축을 보유하고 있다면 금리가 두~배 되는 적금 !       
+			                        住宅請約総合貯金を新規加入した日、たった一日加入できる特別な積立金！ <br>
+			                        積金満期時、住宅請約総合貯蓄を保有しているなら金利が2倍になる積金！      
                     </div>
                 </div>
             </div>
@@ -71,13 +71,13 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	가입대상
+                            	加入対象
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                       	 이 예금 가입일에 ㈜하나은행의 주택청약종합저축을 신규 가입한 실명의 개인 또는 개인사업자 (1인 1계좌)
+                       	 この預金加入日に（株）ハナ銀行の住宅請約総合貯蓄を新規加入した実名の個人または個人事業者（1人1口座）
                     </div>
                 </div>
             </div>
@@ -86,15 +86,15 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree">
-                            	내집마련 더블업 적금 가입 사례 
+                            	マイホーム購入のダブルアップ積金加入事例
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                        1. 주택청약 종합저출을 오늘 가입했어요!<br>
-                        2. 주택청약 종합저축에 아직 가입하지 않았어요!<br>
-                        3. 주택청약 종합저축을 어제 이미 가입했어요!(불가)<br>
+                        1. 住宅請約総合貯金に今日加入しました！<br>
+                        2. 住宅請約総合貯蓄にまだ加入していません！<br>
+                        3. 住宅請約総合貯蓄を昨日すでに加入しました！（不可）<br>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
     		
             	<div class="col-md-12 col-sm-12 col-xs-12">         
             	    <div class="form-group text-center">
-                    	<button onclick="goJoin()" class="btn-style-one">가입하기</button>
+                    	<button onclick="goJoin()" class="btn-style-one">加入する</button>
              	   </div>
             	</div>
             

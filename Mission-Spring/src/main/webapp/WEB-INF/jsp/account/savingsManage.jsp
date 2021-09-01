@@ -28,8 +28,8 @@
 <br><br><br><br>
   
 <div class="section-title">
-    <h3>적금
-        <span>상세 정보입니다.</span>
+    <h3>積金
+        <span>詳細情報です。</span>
      </h3>
 </div> 
   
@@ -40,49 +40,49 @@
     <thead>
       
       <tr>
-        <th>적금 상품 이름</th>
+        <th>積金 商品名</th>
         <th>${ savingsAccount.getBankBookKey()}</th>
       </tr>
     </thead>
     <tbody>
     	<tr>
-    		<td>계좌 번호</td>
+    		<td>口座番号</td>
     		<td>${ savingsAccount.getAccountNumber()}</td>
     	</tr>
     	<tr>
-    		<td>만기일</td>
+    		<td>満期日</td>
     		<td>${ savingsAccount.getSavingDate()}</td>
     	</tr>
     	
     	<tr>
-    		<td>보유 잔액</td>
+    		<td>保有残額</td>
     		<td>${ String.format("%,d", savingsAccount.getBalance()) }원</td>
     	</tr>
     	<tr>
-    		<td>금리</td>
+    		<td>金利</td>
     		<td>${savingsAccount.getRate()}</td>
     	</tr>
     	<tr>
-    		<td>별칭</td>
+    		<td>別称</td>
     		<td><input name="nickName" placeholder="${ savingsAccount.getNickName()}"></td>
     	</tr>
     	<tr>
-    		<td>입금 일자</td>
+    		<td>入金日付</td>
     		<td>
 	    		<select name="savingDay">
-				    <option selected>현재 입금 일 : 매월 &nbsp; ${ savingsAccount.getSavingDay()}일 </option>
-				    <option value=1>매월 1일</option>
-				    <option value=15>매월 15일</option>
-				    <option value=28>매월 28일</option>
+				    <option selected>現入金日 : 毎月 &nbsp; ${ savingsAccount.getSavingDay()}日 </option>
+				    <option value=1>毎月1日</option>
+				    <option value=15>毎月15日</option>
+				    <option value=28>毎月28日</option>
 				</select>
 			</td>
     	</tr>
     	
     	<tr>
-    		<td>출금 계좌</td>
+    		<td>出金口座</td>
     		<td>
     			<select name="autoSaving">
-    				<option selected>현재 출금 계좌 : ${ savingsAccount.getAutoSaving() }</option>
+    				<option selected>現在 出金口座 : ${ savingsAccount.getAutoSaving() }</option>
     				<c:forEach items="${ depositAccountNumList }" var="accountNumber">
     					<option value="${accountNumber}">${accountNumber}</option>
     				</c:forEach>
@@ -91,12 +91,12 @@
     	</tr>
     	
     	<tr>
-    		<td>자동 이체 </td>
+    		<td>自動 振り込み </td>
     		<c:if test="${ savingsAccount.getAutoSavingBool() == 'N' }">
-    			<td>미사용</td>
+    			<td>未使用</td>
     		</c:if>
     		<c:if test="${ savingsAccount.getAutoSavingBool() == 'Y' }">
-    			<td>사용중</td>
+    			<td>使用中</td>
     		</c:if>
     	</tr>
     	
@@ -105,12 +105,12 @@
     </tbody>
   </table>
   
-  <button type="submit" class="btn-style-one">수정</button>
+  <button type="submit" class="btn-style-one">修整</button>
   <c:if test="${ savingsAccount.getAutoSavingBool() == 'N' }">
-	  <input type="button" value="예약 이체 설정" class="btn-style-one" data-toggle="modal" data-target="#myModal">
+	  <input type="button" value="予約振り込み設定" class="btn-style-one" data-toggle="modal" data-target="#myModal">
   </c:if>
   <c:if test="${ savingsAccount.getAutoSavingBool() == 'Y' }">
-	  <input type="button" value="예약 이체 해지" class="btn-style-one" data-toggle="modal" data-target="#myModal2">
+	  <input type="button" value="予約振り込み解約" class="btn-style-one" data-toggle="modal" data-target="#myModal2">
   </c:if>
   
 </form>         
@@ -124,18 +124,18 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">예약 이체를 설정하시겠습니까?</h4>
+          <h4 class="modal-title">予約振り込みを設定しますか?</h4>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-         	 매월 &nbsp; ${ savingsAccount.getSavingDay()}일에 등록하신 출금계좌로 부터의 이체가 예약됩니다.
+         	 毎月の &nbsp; ${ savingsAccount.getSavingDay()}日に登録していただいた口座から振り込みが予約されます。
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">취소</button>
-          <button type="button" class="btn-style-one" onclick="doAutoTransfer()">확인</button>
+          <button type="button" class="btn-style-one" data-dismiss="modal">キャンセル</button>
+          <button type="button" class="btn-style-one" onclick="doAutoTransfer()">確認</button>
         </div>
         
       </div>
@@ -149,18 +149,18 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">예약 이체를 해지하시겠습니까?</h4>
+          <h4 class="modal-title">予約振り込みを解約しますか</h4>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-         	  등록하신 출금계좌로 부터의 예약 이체가 해지됩니다.
+         	  등록된 출금계좌에서 예약이체가 해지됩니다.
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">취소</button>
-          <button type="button" class="btn-style-one" onclick="deleteAutoTransfer()">확인</button>
+          <button type="button" class="btn-style-one" data-dismiss="modal">キャンセル</button>
+          <button type="button" class="btn-style-one" onclick="deleteAutoTransfer()">確認</button>
         </div>
         
       </div>

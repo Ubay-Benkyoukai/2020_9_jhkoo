@@ -26,7 +26,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="accordion-section">
     <div class="section-title">
-        <h3>꿈하나 적금 가입하기</h3>
+        <h3>夢ハナ貯金 加入する</h3>
     </div>
     
     
@@ -37,23 +37,23 @@
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            	최대금리 받는 방법
+                            	最大の金利を受け取る方法
                         </a>
                     </h4>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-			                         아래 항목을 충족한 경우, 최대 연0.8%의 우대금리를 제공<br>
+			                         以下の項目を満たす場合、最大で年0.8%の優遇金利を提供。<br>
 
-						가입우대 : 이 예금을 최초 가입한 경우 연 0.2%<br>
-						(해지후 재가입하는 경우 제공하지 않음)<br>
-						 청약우대 : 가입일(또는 재예치일)에 주택청약종합저축을 보유한 경우 연 0.4%<br>
-						자동이체우대 : 계약기간중 (주)하나은행 입출금통장을 통하여 6회이상 월 자동이체로 적립한 경우 연 0.2%<br>
-						 카드우대 : 이 예금 가입후(또는 재예치 후)3개월이 되는 달의 말일까지 (주)하나은행 본인명의 입출금통장에서<br>
-						하나(현대)카드사의 체크카드 결제실적을 보유한 경우 연0.2%<br>
-						 아동수당우대 : 가입후(또는 재예치후) 만기전전월말 기준, ㈜하나은행 계좌로 아동수당법에서 정한 아동수당을 1회이상<br>
-						수령한 경우 연 0.2%<br>
-						(단, 보호자계좌로 수령시 수급계좌 정보를 만기(또는 재예치)전일까지 ㈜하나은행에 제공한 경우에 한함)<br>
+						加入優待:この預金を最初に加入した場合、年0.2%<br>
+						解約後再加入する場合、提供しない）<br>
+						請約優待:加入日(または再預置日)に住宅請約総合貯蓄を保有した場合、年0.4%<br>
+						自動振替優待:契約期間中(株)ハナ銀行の入出金通帳を通じて6回以上月自動振替で積み立てた場合、年0.2%<br>
+						カード優待:この預金加入後(または再預置後)3ヶ月になる月の末日まで(株)ハナ銀行本人名義の入出金通帳から<br>
+						ハナ（現代）カード会社のチェックカード決済実績を保有した場合、年0.2%<br>
+					    児童手当優遇:加入後(または再預置後)満期前の前月末基準(株)ハナ銀行口座で児童手当法で定める児童手当を1回以上<br>
+						受領した場合、年0.2%<br>
+						(但し、保護者口座で受領する際、受給口座情報を満期(または再預金)の前日まで(株)ハナ銀行に提供した場合に限る)<br>
                     </div>
                 </div>
             </div>
@@ -62,16 +62,16 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	상품특징
+                            	商品特徴
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-			                        하나(현대)카드사의 체크카드 결제실적을 보유한 경우 연0.2%<br>
-						 아동수당우대 : 가입후(또는 재예치후) 만기전전월말 기준, ㈜하나은행 계좌로 아동수당법에서 정한 아동수당을 1회이상<br>
-						수령한 경우 연 0.2%<br>
-						(단, 보호자계좌로 수령시 수급계좌 정보를 만기(또는 재예치)전일까지 ㈜하나은행에 제공한 경우에 한함)<br>       
+			                        ハナ（現代）カード会社のチェックカード決済実績を保有した場合、年0.2%<br>
+						 児童手当優遇:加入後(または再預置後)満期前の前月末基準(株)ハナ銀行口座で児童手当法で定める児童手当を1回以上<br>
+						受領した場合、年0.2%<br>
+						(但し、保護者口座で受領する際、受給口座情報を満期(または再預金)の前日まで(株)ハナ銀行に提供した場合に限る)<br>       
                     </div>
                 </div>
             </div>
@@ -80,13 +80,13 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	가입대상
+                            	商品特徴
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                       	 이 예금 가입일에 ㈜하나은행의 주택청약종합저축을 신규 가입한 실명의 개인 또는 개인사업자 (1인 1계좌)
+                       	この預金加入日に（株）ハナ銀行の住宅請約総合貯蓄を新規加入した実名の個人または個人事業者（1人1口座）
                     </div>
                 </div>
             </div>
@@ -95,18 +95,18 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree">
-                            	특별 금리
+                            	特別金利
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                     	   아래 요건을 충족하는 경우 동일 계약기간별 최대 연0.3%<br>
-						- 출생 후 1년이내, 만7세, 만13세, 만16세가 되는 해당 계약기간별 1년간 또는 동일기관, 학교 등 단체신규<br>
-						10인 이상 가입한 경우 가입 후1년간 최대 연0.3% (단체신규는 동일 영업점에서 확인하고 신규하는 경우 제공)<br>
+                     	   以下の要件を満たす場合、同一契約期間別最大年0.3%<br>
+						- 出生後1年以内、満7歳、満13歳、満16歳になる当該契約期間別1年間または同一機関、学校など団体新規<br>
+						10人以上加入した場合、加入後1年間、最大年0.3%（団体新規は同一営業店で確認し、新規の場合は提供）<br>
 						
-						희망대학입학 축하금리 : 만기 전 1년간 연2.0% 우대 (만 14세까지 희망대학 등록 가능)<br>
-						※우대금리 및 특별금리는 만기해지시 최종 적용되며, 중도해지시는 적용되지 않습니다.<br>
+						希望大学入学祝い金利:満期前の1年間、年2.0%優遇（満14歳まで希望大学登録可能）<br>
+						優待金利および特別金利は満期解約時に最終適用され、中途解約時は適用されません。<br>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
     		
             	<div class="col-md-12 col-sm-12 col-xs-12">         
             	    <div class="form-group text-center">
-                    	<button onclick="goJoin()" class="btn-style-one">가입하기</button>
+                    	<button onclick="goJoin()" class="btn-style-one">加入する</button>
              	   </div>
             	</div>
             

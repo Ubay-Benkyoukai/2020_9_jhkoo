@@ -22,10 +22,10 @@
   	
   	 -->
   	 <select id="savingsDetailList" resultMap="savingsDetailMap" parameterType="String">
-	  	select amount, to_char(log_date,'YYYY"년 "MM"월 "DD"일("hh24"시 "mi"분)"') as log_date
-			 , row_number() over(partition by account_number order by account_number) as log_pk
-	         from savings_account_log
-			 where account_number = #{accountNumber}
+	  	SELECT amount, date_format(log_date,'%Y년 %m월 %d일(%H시 %i분)') as log_date,
+			 row_number() over(partition by account_number order by account_number) as log_pk
+	         FROM savings_account_log
+			 WHERE account_number = #{accountNumber}
   	</select>
   	
   	

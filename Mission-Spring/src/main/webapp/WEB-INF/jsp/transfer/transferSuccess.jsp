@@ -21,8 +21,8 @@
 			<div class="col-sm-12 col-xs-12">
 				<div class="image-content">
 					<div class="section-title text-center">
-						<h3>이체가
-							<span>정상 처리 되었습니다.</span>
+						<h3>振り込み
+							<span>正常処理されました。</span>
 						</h3>
 						<p></p>
 						
@@ -31,7 +31,7 @@
 						
 				<div class="col-md-12 col-sm-12 col-xs-12">         
 				    <div class="form-group text-center">
-				        <button onclick="goAccount()" class="btn-style-one">계좌 관리 페이지 가기</button>
+				        <button onclick="goAccount()" class="btn-style-one">口座管理ページへ移動</button>
 				    </div>
 				</div>		
 						

@@ -122,11 +122,11 @@ function drawChart() {
   <h2>&nbsp;</h2>
   <div class="section-title text-center">
             <h3>${ savingsAccount.getBankBookKey() }
-                <span>상세 내역입니다</span>
+                <span>詳細の内訳です</span>
            	</h3> 
-            <p>총 잔액 : ${ String.format( "%,d",savingsAccount.getBalance() ) }원<br>
-                              계좌 번호 : ${ savingsAccount.getAccountNumber() }<br>
-              	별칭 : ${ savingsAccount.getNickName() }     
+            <p>総残額 : ${ String.format( "%,d",savingsAccount.getBalance() ) }￥<br>
+                              口座番号 : ${ savingsAccount.getAccountNumber() }<br>
+              	別称 : ${ savingsAccount.getNickName() }     
             </p>
   </div>
 </div>
@@ -147,12 +147,12 @@ function drawChart() {
                 	<br>
                 	<br>
                 	<div class="section-title">
-                        <h3>월 평균 입금액은<br> <span>${ String.format("%,d", savingsAccount.avgAmount ) } 원입니다.</span></h3>
+                        <h3>月平均入金額は<br> <span>${ String.format("%,d", savingsAccount.avgAmount ) } ￥です。</span></h3>
                     </div>
                 	<br>
                 	
                     <div class="section-title">
-                        <h3>만기일까지<br> <span>${ savingsAccount.getSavingMonth() }개월 남았습니다!</span></h3>
+                        <h3>満期日まで<br> <span>${ savingsAccount.getSavingMonth() }月残りました!</span></h3>
                     </div>
                     
                     <form name="rform" class="default-form contact-form">
@@ -173,9 +173,9 @@ function drawChart() {
                  <table class="table table-hover fl-table" style="width:50%">
                   <thead>
                   	<tr>
-                  		<th>날짜</th>
-                  		<th>회차</th>
-                  		<th>입금액</th>
+                  		<th>日付</th>
+                  		<th>回目</th>
+                  		<th>入金額</th>
                   	</tr>
                   </thead>
                   	
@@ -184,8 +184,8 @@ function drawChart() {
                    	<c:forEach items="${ savingsDetailList }" var="savingsDetail" varStatus="loop">
                    		<tr>
 	                   		<td>${savingsDetail.logDate }</td>
-	                   		<td>${savingsDetail.logPk }회차</td>
-	                   		<td>+ ${ String.format("%,d", savingsDetail.amount ) } 원</td>
+	                   		<td>${savingsDetail.logPk }回目</td>
+	                   		<td>+ ${ String.format("%,d", savingsDetail.amount ) } ￥</td>
 	                   	</tr>
                    	</c:forEach>
                   </tbody>
@@ -205,7 +205,7 @@ function drawChart() {
  <div align="center">
  <button type="submit" class="btn-style-one" 
          onclick="location.href='${ pageContext.request.contextPath }/account '"
-         >돌아가기</button>
+         >戻る</button>
  </div>
 	
 <br>

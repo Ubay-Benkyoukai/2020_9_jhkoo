@@ -12,7 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
 <script>
-	// 도전 신청하러~
+	// 도전 신청하러~ 挑戦の申し込み
 	function goChallenge(param){
 		location.href="${pageContext.request.contextPath }/challenge/" + param
 	}
@@ -30,10 +30,10 @@
             <div class="col-md-12">
             
                 <div class="section-title text-center">
-                    <h3>${ loginVO.getName() }님,
-                        <span> ${month}월 도전을 응원합니다! </span>
+                    <h3>${ loginVO.getName() }様,
+                        <span> ${month}月の 戦を応援します！ </span>
                     </h3>
-                    <p style="color:red">목표 지출을 설정하여 관리하세요. 매월 도전은 새로 갱신됩니다.</p>
+                    <p style="color:red">目標支出を設定して管理してください。 毎月チャレンジは更新されます。</p>
                 </div>
                 
                 <!-- Nav tabs -->
@@ -41,11 +41,11 @@
                     <ul class="nav nav-tabs" role="tablist">
                         
                         <li role="presentation">
-                            <a href="#canSelectChallenge" data-toggle="tab">도전 가능한 목록</a>
+                            <a href="#canSelectChallenge" data-toggle="tab">挑戦可能なリスト</a>
                         </li>
                          
                         <li role="presentation">
-                            <a href="#myChallenge" data-toggle="tab">진행 중인 나의 도전</a>
+                            <a href="#myChallenge" data-toggle="tab">進行中の私の挑戦</a>
                         </li>
                         
                     </ul>
@@ -55,70 +55,70 @@
                     <!--Start single tab content-->
                     <div class="team-members tab-pane fade in row" id="canSelectChallenge">
                         
-                        <c:if test='${ !myChallengeNameList.contains("식비 지출 줄이기") }'>
+                        <c:if test='${ !myChallengeNameList.contains("食費支出の削減") }'>
 	                        <div class="col-md-4 col-sm-6"
-	                             onclick="goChallenge('식비 지출 줄이기')">
+	                             onclick="goChallenge('食費支出の削減')">
 	                            <div class="team-person text-center">
 	                                <img src="${pageContext.request.contextPath }/resources/assets/images/식비.png" class="img-responsive" alt="team">
-	                                <h6>식비 지출 줄이기</h6>
-	                                <p>이번 달 식비 지출을 관리하세요</p>
+	                                <h6>食費支出の削減</h6>
+	                                <p>今月の食費支出を管理してください。</p>
 	                            </div>
 	                        </div>
 	                    </c:if>
 	                        
 
-                        <c:if test='${ !myChallengeNameList.contains("카페,간식 지출 줄이기") }'>
+                        <c:if test='${ !myChallengeNameList.contains("カフェ、おやつの 支出を減らす") }'>
 	                        <div class="col-md-4 col-sm-6"
-	                             onclick="goChallenge('카페,간식 지출 줄이기')">
+	                             onclick="goChallenge('カフェ、おやつの 支出を減らす')">
 	                            <div class="team-person text-center">
 	                                <img src="${pageContext.request.contextPath }/resources/assets/images/카페,간식.jfif" class="img-responsive" alt="team">
-	                                <h6>카페,간식 지출 줄이기</h6>
-	                                <p>이번 달 카페,간식 지출을 관리하세요</p>
+	                                <h6>カフェ、おやつの 支出を減らす</h6>
+	                                <p>今月のカフェ、おやつの支出を管理してください。</p>
 	                            </div>
 	                        </div>
 	                    </c:if>
                         
                         
-                        <c:if test='${ !myChallengeNameList.contains("편의점,마트 지출 줄이기") }'>
+                        <c:if test='${ !myChallengeNameList.contains("コンビニ、スーパー支出を減らす") }'>
 	                        <div class="col-md-4 col-sm-6"
-	                             onclick="goChallenge('편의점,마트 지출 줄이기')">
+	                             onclick="goChallenge('コンビニ、スーパー支出を減らす')">
 	                            <div class="team-person text-center">
 	                                <img src="${pageContext.request.contextPath }/resources/assets/images/편의점,마트.jpg" class="img-responsive" alt="team">
-	                                <h6>편의점,마트 지출 줄이기</h6>
-	                                <p>이번 달 편의점,마트 지출을 관리하세요</p>
+	                                <h6>コンビニ、スーパー支出を減らす</h6>
+	                                <p>今月のコンビニ、スーパーの支出を管理してください。</p>
 	                            </div>
 	                        </div>
 	                    </c:if>
 
-                        <c:if test='${ !myChallengeNameList.contains("술,유흥 지출 줄이기") }'>
+                        <c:if test='${ !myChallengeNameList.contains("酒、遊ぶ支出を減らす") }'>
 	                        <div class="col-md-4 col-sm-6"
-	                             onclick="goChallenge('술,유흥 지출 줄이기')">
+	                             onclick="goChallenge('酒、遊ぶ支出を減らす')">
 	                            <div class="team-person text-center">
 	                                <img src="${pageContext.request.contextPath }/resources/assets/images/술,유흥.jpg" class="img-responsive" alt="team">
-	                                <h6>술,유흥 지출 줄이기</h6>
-	                                <p>이번 달 술,유흥 지출을 관리하세요</p>
+	                                <h6>酒、遊ぶ支出を減らす</h6>
+	                                <p>今月の酒、遊ぶ支出を管理してください。</p>
 	                            </div>
 	                        </div>
 	                    </c:if>
 	                    
-                        <c:if test='${ !myChallengeNameList.contains("쇼핑 지출 줄이기") }'>
+                        <c:if test='${ !myChallengeNameList.contains("ショッピング支出を減らす") }'>
 	                        <div class="col-md-4 col-sm-6"
-	                             onclick="goChallenge('쇼핑 지출 줄이기')">
+	                             onclick="goChallenge('ショッピング支出を減らす')">
 	                            <div class="team-person text-center">
 	                                <img src="${pageContext.request.contextPath }/resources/assets/images/쇼핑.png" class="img-responsive" alt="team">
-	                                <h6>쇼핑 지출 줄이기</h6>
-	                                <p>이번 달 쇼핑 지출을 관리하세요</p>
+	                                <h6>ショッピング支出を減らす</h6>
+	                                <p>今月のショッピング支出を管理してください。</p>
 	                            </div>
 	                        </div>
 	                    </c:if>
 
-                        <c:if test='${ !myChallengeNameList.contains("미용 지출 줄이기") }'>
+                        <c:if test='${ !myChallengeNameList.contains("美容支出を減らす") }'>
 	                        <div class="col-md-4 col-sm-6"
-	                             onclick="goChallenge('미용 지출 줄이기')">
+	                             onclick="goChallenge('美容支出を減らす')">
 	                            <div class="team-person text-center">
 	                                <img src="${pageContext.request.contextPath }/resources/assets/images/미용.png" class="img-responsive" alt="team">
-	                                <h6>미용 지출 줄이기</h6>
-	                                <p>이번 달 미용 지출을 관리하세요</p>
+	                                <h6>美容支出を減らす</h6>
+	                                <p>今月の美容支出を管理してください。</p>
 	                            </div>
 	                        </div>
 	                    </c:if>  
@@ -132,8 +132,8 @@
 						<section class="service-section bg-gray section">
 						    <div class="container">
 						        <div class="section-title text-center">
-						            <h3>도전
-						                <span>진행 상황</span>
+						            <h3>挑戦の
+						                <span>進行状況</span>
 						            </h3>
 						        </div>
 						        <div class="row items-container clearfix">
@@ -147,24 +147,24 @@
 						                        <h6 style="color:white">${ challenge.challengeName }</h6>
 						                        
 						                        <c:if test="${ challenge.challengeFail == true }">
-						                        <p style="color:white">    도전 목표 : ${ String.format("%,d", challenge.targetAmount) }원 <br>
-						                        	       이번 달 지출 : ${ String.format("%,d", challenge.nowBalanceByType) }원 <br>
-						                                                               도전 마감일 : ${ challenge.challengeEndDate }
+						                        <p style="color:white">    挑戦目標 : ${ String.format("%,d", challenge.targetAmount) }￥ <br>
+						                        	       今月の支出 : ${ String.format("%,d", challenge.nowBalanceByType) }￥ <br>
+						                                                               挑戦締切日 : ${ challenge.challengeEndDate }
 						                              <div class="progress">
 													    <div class="progress-bar bg-danger" style="color:red; width:${(challenge.nowBalanceByType/challenge.targetAmount)*100}%">${Math.round((challenge.nowBalanceByType/challenge.targetAmount)*100)}%</div>
 													  </div>
 													 
 							                    	   <span style="color:red; font-weight:bold">
-							                    	       실패한 도전입니다.<br> 다음 달에 다시 도전하세요!</span>
+							                    	       失敗した挑戦です。<br> 来月にまた挑戦してください！</span>
 							                    	
 						                         </p>
 						                        
 						                        </c:if>
 						                        
 						                        <c:if test="${ challenge.challengeFail == false }">
-						                        <p style="color:white">    도전 목표 : ${ String.format("%,d", challenge.targetAmount) }원 <br>
-						                        	       이번 달 지출 : ${ String.format("%,d", challenge.nowBalanceByType) }원 <br>
-						                                                               도전 마감일 : ${ challenge.challengeEndDate }
+						                        <p style="color:white">   挑戦目標 : ${ String.format("%,d", challenge.targetAmount) }￥ <br>
+						                        	       今月の支出 : ${ String.format("%,d", challenge.nowBalanceByType) }￥ <br>
+						                                                               挑戦締切日 : ${ challenge.challengeEndDate }
 						                               
 						                                                               
 						                                                               
@@ -172,8 +172,8 @@
 													    <div class="progress-bar" style="width:${(challenge.nowBalanceByType/challenge.targetAmount)*100}%">${Math.round((challenge.nowBalanceByType/challenge.targetAmount)*100)}%</div>
 													  </div>
 							                    	   <span style="color:white; font-weight:bold">
-							                    	       하루 평균 ${ String.format("%,d", challenge.expectedAmount) }원 미만 사용한다면,<br>
-							                    	        도전에 성공하실 수 있습니다!</span>
+							                    	       一日平均 ${ String.format("%,d", challenge.expectedAmount) }￥ 未満使ったら、<br>
+							                    	        挑戦に成功することができます！</span>
 						                         </p>												
 						                         </c:if>
 						                    </div>

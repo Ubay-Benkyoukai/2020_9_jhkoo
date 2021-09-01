@@ -22,8 +22,8 @@
 <div class="container" align="center">
   
         <div class="section-title text-center">
-		    <h3>계좌
-		        <span>상세 정보</span>
+		    <h3>口座
+		        <span>詳細情報</span>
 		     </h3>
             <p style="color:red"></p>
         </div>
@@ -35,44 +35,44 @@
     <thead>
       
       <tr>
-        <th>통장 이름</th>
+        <th>通帳名</th>
         <th>${ depositAccount.getBankBookKey()}</th>
       </tr>
     </thead>
     <tbody>
     	<tr>
-    		<td>계좌 번호</td>
+    		<td>口座番号</td>
     		<td>${ depositAccount.getAccountNumber()}</td>
     	</tr>
     	<tr>
-    		<td>개설 일자</td>
+    		<td>開設日時</td>
     		<td>${ depositAccount.getRegDate()}</td>
     	</tr>
     	<tr>
-    		<td>보유 잔액</td>
-    		<td>${ String.format("%,d", depositAccount.getBalance()) }원</td>
+    		<td>保有残高</td>
+    		<td>${ String.format("%,d", depositAccount.getBalance()) }￥</td>
     	</tr>
     	<tr>
-    		<td>상태</td>
+    		<td>状態</td>
     		
     		<c:if test="${ depositAccount.getMainAccount() == 'Y'}">
 	    		<td>
-	       			<span style="color:blue;">현재 메인 계좌입니다.</span>
-	    			<input type="radio" name="mainAccount" value="Y" checked="checked" /> 메인 계좌
-					<input type="radio" name="mainAccount" value="N" /> 서브계좌
+	       			<span style="color:blue;">現在メイン口座です。</span>
+	    			<input type="radio" name="mainAccount" value="Y" checked="checked" /> メイン口座
+					<input type="radio" name="mainAccount" value="N" /> サブ口座
 	       		</td>
        		</c:if>
        		<c:if test="${ depositAccount.getMainAccount() == 'N'}">
 	       		<td>
-	       			<span style="color:green;">현재 서브 계좌입니다.</span>
-	    			<input type="radio" name="mainAccount" value="Y" /> 메인 계좌
-					<input type="radio" name="mainAccount" value="N" checked="checked" /> 서브계좌
+	       			<span style="color:green;">現在サブ口座です。</span>
+	    			<input type="radio" name="mainAccount" value="Y" /> メイン口座
+					<input type="radio" name="mainAccount" value="N" checked="checked" /> サブ口座
 	       		</td>
        		</c:if>
        		
     	</tr>
     	<tr>
-    		<td>별칭</td>
+    		<td>別称</td>
     		<td>
     			<input name="nickName" placeholder="${ depositAccount.getNickName()}">
     		</td>
@@ -80,9 +80,9 @@
     </tbody>
   </table>
   
-  <button type="submit" class="btn-style-one">수정</button>
+  <button type="submit" class="btn-style-one">修整</button>
   
-  <input type="button" value="탈퇴" class="btn-style-one" data-toggle="modal" data-target="#deleteModal">
+  <input type="button" value="脱退" class="btn-style-one" data-toggle="modal" data-target="#deleteModal">
 </form>         
 </div>
 </section>
@@ -97,18 +97,18 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">${ depositAccount.getBankBookKey() } 을 그만 사용하시겠습니까?</h4>
+          <h4 class="modal-title">${ depositAccount.getBankBookKey() }を使うのをやめますか?</h4>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-         	 보유 잔액은 메인 계좌로 자동 이체 됩니다.
+         	 保有残高はメイン口座に自動振替されます。
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">취소</button>
-          <button type="button" class="btn-style-one" onclick="doDelete()">확인</button>
+          <button type="button" class="btn-style-one" data-dismiss="modal">キャンセル</button>
+          <button type="button" class="btn-style-one" onclick="doDelete()">確認</button>
         </div>
         
       </div>

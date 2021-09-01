@@ -22,8 +22,8 @@
 				<div class="image-content">
 					<div class="section-title text-center">
 						<h3>
-							정기 적금 상품 
-							<span>가입이 완료되었습니다</span>
+							定期積金商品 
+							<span>加入が完了しました。</span>
 						</h3>
 						<p></p>
 						
@@ -32,7 +32,7 @@
 						
 				<div class="col-md-12 col-sm-12 col-xs-12">         
 				    <div class="form-group text-center">
-				        <button onclick="goAccount()" class="btn-style-one">계좌 관리 페이지 가기</button>
+				        <button onclick="goAccount()" class="btn-style-one">口座管理ページへ</button>
 				    </div>
 				</div>		
 						

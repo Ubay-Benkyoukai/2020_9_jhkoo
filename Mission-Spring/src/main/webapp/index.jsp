@@ -48,8 +48,8 @@ function go(){
                 <div class="col-12">
                     <!-- Slide Content Start -->
                     <div class="content style text-center">
-                        <h2 class="text-white text-bold mb-2">하나은행 계좌관리 서비스</h2>
-                        <p class="tag-text mb-5">친구 같은 '금융비서'와 함께 현명한 계좌관리 하세요!</p>
+                        <h2 class="text-white text-bold mb-2">ハナ銀行口座管理サービス</h2>
+                        <p class="tag-text mb-5">友人のような財務秘書とスマートな口座管理! </p>
                         
                     </div>
                     <!-- Slide Content End -->
@@ -64,8 +64,8 @@ function go(){
                 <div class="col-12">
                     <!-- Slide Content Start-->
                     <div class="content style text-right">
-                        <h2 class="text-white">하나은행 계좌관리 서비스</h2>
-                        <p class="tag-text">친구 같은 '금융비서'와 함께 현명한 계좌관리 하세요! </p>
+                        <h2 class="text-white">ハナ銀行口座管理サービス</h2>
+                        <p class="tag-text">友人のような財務秘書とスマートな口座管理! </p>
                         
                     </div>
                     <!-- Slide Content End-->
@@ -80,8 +80,8 @@ function go(){
                 <div class="col-12">
                     <!-- Slide Content Start -->
                     <div class="content text-center style">
-                        <h2 class="text-white text-bold mb-2">하나은행 계좌관리 서비스</h2>
-                        <p class="tag-text mb-5">친구 같은 '금융비서'와 함께 현명한 계좌관리 하세요!</p>
+                        <h2 class="text-white text-bold mb-2">ハナ銀行口座管理サービス</h2>
+                        <p class="tag-text mb-5">友人のような財務秘書とスマートな口座管理! </p>
                         
                     </div>
                     <!-- Slide Content End -->
@@ -100,27 +100,27 @@ function go(){
                 <div class="cta-block">
                     <div class="emmergency item">
                         <i class="fa fa-phone"></i>
-                        <h2>연결</h2>
+                        <h2>連結</h2>
                       
-                        <p>대표전화: 02-2151-6400<br>
-							팩스: 02-2151-6410</p>
+                        <p>代表電話: 02-2151-6400<br>
+							Fax: 02-2151-6410</p>
                     </div>
                     <div class="top-doctor item">
                         <i class="fa fa-stethoscope"></i>
-                        <h2>찾아오시는 길</h2>
-                        <p>주소: (22742) 인천 서구 에코로 181 하나금융그룹 통합데이터센터 비전센터 5층</p>
+                        <h2>位置</h2>
+                        <p>住所: (22742)仁川 西区 エコ181 ハナ金融グループ統合データセンタービジョンセンター5階</p>
                         
                         <button type="button" class="btn btn-primary btn btn-main" data-toggle="modal" data-target="#myModal">
-    						지도보기
+    						地図
   						</button>
                     </div>
                     <div class="working-time item">
                         <i class="fa fa-hourglass-o"></i>
-                        <h2>상세 연결</h2>
+                        <h2>詳細接続</h2>
                         <ul class="w-hours">
-                            <li>전자금융상담 전용<span>1588-3555</span></li>
-                            <li>은행업무<span>1588-1111 </span></li>
-                            <li>해외 <span>+82-42-520-2500</span></li>
+                            <li>電子金融相談専用<span>1588-3555</span></li>
+                            <li>銀行業務<span>1588-1111 </span></li>
+                            <li>海外 <span>+82-42-520-2500</span></li>
                         </ul>
                     </div>
                 </div>

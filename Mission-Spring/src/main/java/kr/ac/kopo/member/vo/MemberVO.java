@@ -15,7 +15,7 @@ public class MemberVO {
 	private String id;
 	
 	
-	@Pattern(regexp = "^[가-힣]*$", message = "한글 입력")
+	@Pattern(regexp = "^[A-Za-z0-9]*$", message = "특수기호는 사용할 수 없습니다.")
 	private String name;
 	
 	@Length(min = 4, max= 20, message = "4글자 이상, 20자 이하")

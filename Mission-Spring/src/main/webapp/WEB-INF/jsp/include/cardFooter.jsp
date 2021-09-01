@@ -21,13 +21,13 @@
       </div>
       <ul class="footer-bottom-link">
         <li>
-          <a href="index.html">Home</a>
+          <a href="index.html">ホーム</a>
         </li>
         <li>
-          <a href="about.html">About</a>
+          <a href="about.html">対して</a>
         </li>
         <li>
-          <a href="contact.html">Contact</a>
+          <a href="contact.html">連絡、接触</a>
         </li>
       </ul>
     </div>
