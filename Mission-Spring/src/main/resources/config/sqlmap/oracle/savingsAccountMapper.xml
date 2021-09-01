@@ -40,8 +40,8 @@
   	</select>
   	
   	<!-- 적금 계좌 총 잔액 -->
-  	<select id="totalBalanceById" resultType="int" parameterType="String">
-  		SELECT sum(balance) 
+  	<select id="totalBalanceById" resultType="Integer" parameterType="String">
+  		SELECT SUM(balance) 
 		 FROM savings_account
 		 WHERE id = #{id}
   	</select>

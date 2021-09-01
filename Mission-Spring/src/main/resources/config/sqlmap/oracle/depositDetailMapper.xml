@@ -150,13 +150,13 @@
   	<![CDATA[
   	SELECT amount, to_name as toName, account_number as accountNumber,
   		   date_format(log_date,'%Y년 %m월 %d일(%H시 %i분)') as logDate
-	FROM( SELECT log_date, amount, to_name, account_number
-		      FROM dw_card_log
-		      WHERE account_number = #{accountNumber} AND
-		            EXTRACT(MONTH FROM log_date) = EXTRACT(MONTH FROM CURDATE()) AND
-                  	EXTRACT(YEAR FROM log_date) = EXTRACT(YEAR FROM CURDATE()) AND
-		            log_type_key != '2' AND log_type_key !='1'         
-		      ORDER BY amount DESC)
+	FROM( SELECT d.log_date, d.amount, d.to_name, d.account_number
+		      FROM dw_card_log d
+		      WHERE d.account_number = #{accountNumber} AND
+		            EXTRACT(MONTH FROM d.log_date) = EXTRACT(MONTH FROM CURDATE()) AND
+                  	EXTRACT(YEAR FROM d.log_date) = EXTRACT(YEAR FROM CURDATE()) AND
+		            d.log_type_key != '2' AND d.log_type_key !='1'         
+		      ORDER BY d.amount DESC) m
 	LIMIT 3;
   	]]>
   	</select>

@@ -99,10 +99,10 @@ public class AccountController {
 		String ageGroupDepositAccountBankBook = challengeService.ageGroupDepositAccount(myAgeGroup);
 		mav.addObject("ageGroupDepositAccountBankBook", ageGroupDepositAccountBankBook);
 		
-		//내 직업과 같은 사람들이 가장 많이든 적금 계좌
-		String myJob = loginVO.getJobKey();
-		String jobSavingsAccountBankBook = challengeService.jobSavingsAccount(myJob);
-		mav.addObject("jobSavingsAccountBankBook", jobSavingsAccountBankBook);
+//		//내 직업과 같은 사람들이 가장 많이든 적금 계좌
+//		String myJob = loginVO.getJobKey();
+//		String jobSavingsAccountBankBook = challengeService.jobSavingsAccount(myJob);
+//		mav.addObject("jobSavingsAccountBankBook", jobSavingsAccountBankBook);
 		
 		
 		// 이번달 잦은 지출 

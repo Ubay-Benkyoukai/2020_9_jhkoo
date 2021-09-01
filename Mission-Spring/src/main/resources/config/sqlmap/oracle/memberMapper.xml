@@ -48,7 +48,7 @@
   	
   	
   	<!-- 이번달 입출금 계좌 '입금' 총액 -->
-  	<select id="depositBalanceThisMonth" resultType="int" parameterType="String">
+  	<select id="depositBalanceThisMonth" resultType="Integer" parameterType="String">
 	  	SELECT SUM(IFNULL(l.amount,0)) 
 		 FROM dw_card_log l, member m, dw_account d
 		 WHERE m.id = d.id 
@@ -59,7 +59,7 @@
   	</select>
   	
   	<!-- 이번달 입출금 계좌 '출금' 총액 -->
-  	<select id="withdralBalanceThisMonth" resultType="int" parameterType="String">
+  	<select id="withdralBalanceThisMonth" resultType="Integer" parameterType="String">
 	  	SELECT SUM(IFNULL(l.amount,0)) 
 		 FROM dw_card_log l, member m, dw_account d
 		 WHERE m.id = d.id 
@@ -70,7 +70,7 @@
   	</select>
   	
   	<!-- 이번달 적금 계좌 총액 -->
-  	<select id="savingsBalanceThisMonth" resultType="int" parameterType="String">
+  	<select id="savingsBalanceThisMonth" resultType="Integer" parameterType="String">
 		SELECT SUM(IFNULL(l.amount,0))
 		 FROM savings_account_log l, member m, savings_account s
 		 WHERE m.id = s.id
