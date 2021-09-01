@@ -275,9 +275,14 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center">
+                    <!-- //내 직업과 같은 사람들이 가장 많이든 적금 계좌 -->
                         <h6>'${ loginVO.jobKey }' Pick <br>
                         	  定期積金賞品は<br>
-                        	  <c:if test="${ jobSavingsAccountBankBook.equals(\"1\") }">'ハナワンキュウ積金'です。</c:if>
+                        	<c:if test="${ jobSavingsAccountBankBook.equals(\"0\") }">
+                        	まだありません。<br>
+                        	全体賞品を見に行きましょう。
+                        	</c:if>
+                        	<c:if test="${ jobSavingsAccountBankBook.equals(\"1\") }">'ハナワンキュウ積金'です。</c:if>
                             <c:if test="${ jobSavingsAccountBankBook.equals(\"2\") }">'マイホームを購入する積金'です。</c:if>
                             <c:if test="${ jobSavingsAccountBankBook.equals(\"3\") }">'夢ハナ積金'です。</c:if>
                          </h6>

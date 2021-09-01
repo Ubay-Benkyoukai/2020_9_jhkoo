@@ -257,3 +257,14 @@ REFERENCES `dw_account` (
 	`account_number`
 );
 
+
+
+INSERT INTO `job`(`key`, `value`)
+VALUES
+('1', 'IT職'),
+('2', '主婦'),
+('3', '自営業'),
+('4', '金融職'),
+('5', '販売職');
+
+

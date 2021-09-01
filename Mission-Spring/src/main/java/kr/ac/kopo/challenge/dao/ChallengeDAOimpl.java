@@ -47,11 +47,17 @@ public class ChallengeDAOimpl implements ChallengeDAO {
 	public String jobSavingsAccount(String myJob) {
 		
 		List<RecommendVO> jobSavingsAccountList = sqlSession.selectList("recommend.dao.recommendDAO.jobSavingsAccount", myJob);
+		String bestBankBook;
 		
-		// 가장 많이 가입한 순으로 정렬되어 있으므로 첫번째 가져옴
-		RecommendVO jobSavingsAccount = jobSavingsAccountList.get(0);
-		String bestBankBook = jobSavingsAccount.getBankBookKey();
 		
+		try {
+			// 가장 많이 가입한 순으로 정렬되어 있으므로 첫번째 가져옴
+			RecommendVO jobSavingsAccount = jobSavingsAccountList.get(0);
+			bestBankBook = jobSavingsAccount.getBankBookKey();
+		}catch (Exception e) {
+			//if List null
+			bestBankBook = "0";
+		}
 		return bestBankBook;
 	}
 	
