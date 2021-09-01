@@ -37,13 +37,13 @@ CREATE TABLE `favorite` (
 );
 
 CREATE TABLE `user_challenge` (
-	`challege_pk`	int	NOT NULL AUTO_INCREMENT,
+	`challenge_pk`	int	NOT NULL AUTO_INCREMENT,
 	`id`	varchar(45)	NOT NULL,
 	`challenge_name`	varchar(45)	NOT NULL,
 	`challenge_end_date`	varchar(45)	NULL,
 	`challenge_type`	varchar(45)	NOT NULL,
 	`target_amount`	int	NOT NULL,
-	PRIMARY KEY (`challege_pk`,`id`)
+	PRIMARY KEY (`challenge_pk`,`id`)
 );
 
 CREATE TABLE `friend` (

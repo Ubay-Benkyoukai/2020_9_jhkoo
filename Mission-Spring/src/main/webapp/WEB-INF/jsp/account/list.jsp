@@ -36,11 +36,19 @@
 	
 	/* 추천 推薦 */
 	function goDepositRecommend(){
-		location.href = "${ pageContext.request.contextPath }/product/depositFreeExplain" + ${ageGroupDepositAccountBankBook};
+		if( ${ageGroupDepositAccountBankBook} == "0" ){
+			location.href = "${ pageContext.request.contextPath }/product/depositFreeChoose";
+		}else{
+			location.href = "${ pageContext.request.contextPath }/product/depositFreeExplain" + ${ageGroupDepositAccountBankBook};	
+		}
 	}
 	
 	function goSavingsRecommend(){
-		location.href = "${ pageContext.request.contextPath }/product/savingsExplain${jobSavingsAccountBankBook} ";
+		if( ${ jobSavingsAccountBankBook } == "0" ){
+			location.href = "${ pageContext.request.contextPath }/product/savingsChoose";
+		}else{
+			location.href = "${ pageContext.request.contextPath }/product/savingsExplain" + ${jobSavingsAccountBankBook};	
+		}
 	}
 	
 	function goChallenge(){
@@ -261,6 +269,10 @@
                     <div class="image-content text-center">
                         <h6>'${ loginVO.ageGroup }' Pick <br>
                                                          入出金自由預金商品は<br>
+                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"0\") }">
+                        	まだありません。<br>
+                        	全体賞品を見に行きましょう。
+                        	</c:if>
                             <c:if test="${ ageGroupDepositAccountBankBook.equals(\"1\") }">'ハナプラス通帳'です。</c:if>
                             <c:if test="${ ageGroupDepositAccountBankBook.equals(\"2\") }">'ヤングハナプラス通帳'です。</c:if>
                             <c:if test="${ ageGroupDepositAccountBankBook.equals(\"3\") }">'主力ハナ通帳'です。</c:if>

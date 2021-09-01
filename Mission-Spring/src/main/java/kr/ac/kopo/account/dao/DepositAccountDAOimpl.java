@@ -25,7 +25,12 @@ public class DepositAccountDAOimpl implements DepositAccountDAO {
 	@Override
 	public int totalBalanceById(String id) {
 		
-		int depositTotalBalanceById = sqlSession.selectOne("account.dao.DepositAccountDAO.totalBalanceById",id);
+		int depositTotalBalanceById;
+		try {
+			depositTotalBalanceById = sqlSession.selectOne("account.dao.DepositAccountDAO.totalBalanceById",id);
+		}catch (NullPointerException e) {
+			depositTotalBalanceById = 0;
+		}
 		return depositTotalBalanceById;
 	}
 

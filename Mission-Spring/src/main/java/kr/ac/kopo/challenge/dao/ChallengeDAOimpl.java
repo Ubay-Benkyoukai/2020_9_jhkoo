@@ -35,11 +35,16 @@ public class ChallengeDAOimpl implements ChallengeDAO {
 	@Override		
 	public String ageGroupDepositAccount(String myAgeGroup) {
 		List<RecommendVO> ageGroupDepositAccountList = sqlSession.selectList("recommend.dao.recommendDAO.ageGroupDepositAccount", myAgeGroup);
+		String bestBankBook;
 		
-		// 많이 가입한 순으로 정렬되어있기 때문에 첫번째 가져옴
-		RecommendVO ageGroupDepositAccount = ageGroupDepositAccountList.get(0);	
-		String bestBankBook = ageGroupDepositAccount.getBankBookKey();
-		
+		try {
+			// 많이 가입한 순으로 정렬되어있기 때문에 첫번째 가져옴
+			RecommendVO ageGroupDepositAccount = ageGroupDepositAccountList.get(0);
+			bestBankBook = ageGroupDepositAccount.getBankBookKey();
+		}catch (Exception e) {
+			//if List null
+			bestBankBook = "0";
+		}
 		return bestBankBook;
 	}
 

@@ -247,7 +247,7 @@
   	<select id="selectBoard" resultType="depositDetailVO">
         SELECT 
         	   rn, account_number as accountNumber, log_date as logDate, amount, log_type_key as logTypeKey, to_account_number as logAccountNumber, to_name as toName
-  		 FROM( SET @ROWNUM:=0
+  		 FROM(
   		 	SELECT (@ROWNUM:=@ROWNUM+1) as rn, A.*
   		 	FROM(		
 	  		  SELECT 
@@ -263,7 +263,8 @@
 			  		EXTRACT(MONTH FROM log_date) = EXTRACT(MONTH FROM CURDATE()) AND
 	                EXTRACT(YEAR FROM log_date) = EXTRACT(YEAR FROM CURDATE())
 			  ORDER BY log_date DESC) A 
-  		 )
+			 WHERE (@ROWNUM:=0)=0
+  		 ) B
   		 LIMIT #{start} , #{end} 
   	</select>
   	
@@ -271,7 +272,7 @@
    	<select id="selectBoardMonthChange" resultType="depositDetailVO">
         SELECT 
         	   rn, account_number as accountNumber, log_date as logDate, amount, log_type_key as logTypeKey, to_account_number as logAccountNumber, to_name as toName
-  		 FROM( SET @ROWNUM:=0
+  		 FROM(
   		 SELECT (@ROWNUM:=@ROWNUM+1) as rn, A.*
   		 	FROM(		
   		 	  	  SELECT 
@@ -287,7 +288,8 @@
 				  		EXTRACT(MONTH FROM log_date) = #{logDate} - 1 AND
 		                EXTRACT(YEAR FROM log_date) = EXTRACT(YEAR FROM CURDATE())
 				  ORDER BY log_date DESC) A 
-  		    )
+				 WHERE (@ROWNUM:=0)=0
+  		    ) B
   		 LIMIT #{start} , #{end} 
   	</select>
   	
