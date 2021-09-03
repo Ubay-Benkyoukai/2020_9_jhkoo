@@ -150,13 +150,13 @@
   	<![CDATA[
   	SELECT amount, to_name as toName, account_number as accountNumber,
   		   date_format(log_date,'%Y년 %m월 %d일(%H시 %i분)') as logDate
-	FROM( SELECT log_date, amount, to_name, account_number
-		      FROM dw_card_log
-		      WHERE account_number = #{accountNumber} AND
-		            EXTRACT(MONTH FROM log_date) = EXTRACT(MONTH FROM CURDATE()) AND
-                  	EXTRACT(YEAR FROM log_date) = EXTRACT(YEAR FROM CURDATE()) AND
-		            log_type_key != '2' AND log_type_key !='1'         
-		      ORDER BY amount DESC)
+	FROM( SELECT d.log_date, d.amount, d.to_name, d.account_number
+		      FROM dw_card_log d
+		      WHERE d.account_number = #{accountNumber} AND
+		            EXTRACT(MONTH FROM d.log_date) = EXTRACT(MONTH FROM CURDATE()) AND
+                  	EXTRACT(YEAR FROM d.log_date) = EXTRACT(YEAR FROM CURDATE()) AND
+		            d.log_type_key != '2' AND d.log_type_key !='1'         
+		      ORDER BY d.amount DESC) m
 	LIMIT 3;
   	]]>
   	</select>
@@ -247,7 +247,7 @@
   	<select id="selectBoard" resultType="depositDetailVO">
         SELECT 
         	   rn, account_number as accountNumber, log_date as logDate, amount, log_type_key as logTypeKey, to_account_number as logAccountNumber, to_name as toName
-  		 FROM( SET @ROWNUM:=0
+  		 FROM(
   		 	SELECT (@ROWNUM:=@ROWNUM+1) as rn, A.*
   		 	FROM(		
 	  		  SELECT 
@@ -263,7 +263,8 @@
 			  		EXTRACT(MONTH FROM log_date) = EXTRACT(MONTH FROM CURDATE()) AND
 	                EXTRACT(YEAR FROM log_date) = EXTRACT(YEAR FROM CURDATE())
 			  ORDER BY log_date DESC) A 
-  		 )
+			 WHERE (@ROWNUM:=0)=0
+  		 ) B
   		 LIMIT #{start} , #{end} 
   	</select>
   	
@@ -271,7 +272,7 @@
    	<select id="selectBoardMonthChange" resultType="depositDetailVO">
         SELECT 
         	   rn, account_number as accountNumber, log_date as logDate, amount, log_type_key as logTypeKey, to_account_number as logAccountNumber, to_name as toName
-  		 FROM( SET @ROWNUM:=0
+  		 FROM(
   		 SELECT (@ROWNUM:=@ROWNUM+1) as rn, A.*
   		 	FROM(		
   		 	  	  SELECT 
@@ -287,7 +288,8 @@
 				  		EXTRACT(MONTH FROM log_date) = #{logDate} - 1 AND
 		                EXTRACT(YEAR FROM log_date) = EXTRACT(YEAR FROM CURDATE())
 				  ORDER BY log_date DESC) A 
-  		    )
+				 WHERE (@ROWNUM:=0)=0
+  		    ) B
   		 LIMIT #{start} , #{end} 
   	</select>
   	

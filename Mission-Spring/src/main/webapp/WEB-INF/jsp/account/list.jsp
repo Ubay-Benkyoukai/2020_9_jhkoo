@@ -36,11 +36,19 @@
 	
 	/* 추천 推薦 */
 	function goDepositRecommend(){
-		location.href = "${ pageContext.request.contextPath }/product/depositFreeExplain" + ${ageGroupDepositAccountBankBook};
+		if( ${ageGroupDepositAccountBankBook} == "0" ){
+			location.href = "${ pageContext.request.contextPath }/product/depositFreeChoose";
+		}else{
+			location.href = "${ pageContext.request.contextPath }/product/depositFreeExplain" + ${ageGroupDepositAccountBankBook};	
+		}
 	}
 	
 	function goSavingsRecommend(){
-		location.href = "${ pageContext.request.contextPath }/product/savingsExplain${jobSavingsAccountBankBook} ";
+		if( ${ jobSavingsAccountBankBook } == "0" ){
+			location.href = "${ pageContext.request.contextPath }/product/savingsChoose";
+		}else{
+			location.href = "${ pageContext.request.contextPath }/product/savingsExplain" + ${jobSavingsAccountBankBook};	
+		}
 	}
 	
 	function goChallenge(){
@@ -249,7 +257,7 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center">
-                        <h6>お客様が<br>行中の挑戦を管理してください！ </h6><br>
+                        <h6>お客様が<br>進行中の挑戦を管理してください！ </h6><br>
                         <input type="button" value="見に行く" class="btn-style-one" onclick="goChallenge()">
                     </div>
                 </div>
@@ -261,6 +269,10 @@
                     <div class="image-content text-center">
                         <h6>'${ loginVO.ageGroup }' Pick <br>
                                                          入出金自由預金商品は<br>
+                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"0\") }">
+                        	まだありません。<br>
+                        	全体賞品を見に行きましょう。
+                        	</c:if>
                             <c:if test="${ ageGroupDepositAccountBankBook.equals(\"1\") }">'ハナプラス通帳'です。</c:if>
                             <c:if test="${ ageGroupDepositAccountBankBook.equals(\"2\") }">'ヤングハナプラス通帳'です。</c:if>
                             <c:if test="${ ageGroupDepositAccountBankBook.equals(\"3\") }">'主力ハナ通帳'です。</c:if>
@@ -275,9 +287,14 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center">
+                    <!-- //내 직업과 같은 사람들이 가장 많이든 적금 계좌 -->
                         <h6>'${ loginVO.jobKey }' Pick <br>
                         	  定期積金賞品は<br>
-                        	  <c:if test="${ jobSavingsAccountBankBook.equals(\"1\") }">'ハナワンキュウ積金'です。</c:if>
+                        	<c:if test="${ jobSavingsAccountBankBook.equals(\"0\") }">
+                        	まだありません。<br>
+                        	全体賞品を見に行きましょう。
+                        	</c:if>
+                        	<c:if test="${ jobSavingsAccountBankBook.equals(\"1\") }">'ハナワンキュウ積金'です。</c:if>
                             <c:if test="${ jobSavingsAccountBankBook.equals(\"2\") }">'マイホームを購入する積金'です。</c:if>
                             <c:if test="${ jobSavingsAccountBankBook.equals(\"3\") }">'夢ハナ積金'です。</c:if>
                          </h6>

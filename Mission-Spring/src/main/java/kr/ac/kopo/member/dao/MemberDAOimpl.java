@@ -1,7 +1,5 @@
 package kr.ac.kopo.member.dao;
 
-import javax.servlet.jsp.tagext.TryCatchFinally;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,19 +37,34 @@ public class MemberDAOimpl implements MemberDAO{
 
 	@Override
 	public int depositBalanceThisMonth(String id) {
-		int depositBalanceThisMonth = sqlSession.selectOne("member.dao.MemberDAO.depositBalanceThisMonth", id);
+		int depositBalanceThisMonth;
+		try {
+			depositBalanceThisMonth = sqlSession.selectOne("member.dao.MemberDAO.depositBalanceThisMonth", id);
+		}catch (NullPointerException e) {
+			depositBalanceThisMonth = 0;
+		}
 		return depositBalanceThisMonth;
 	}
 
 	@Override
 	public int savingsBalanceThisMonth(String id) {
-		int savingsBalanceThisMonth = sqlSession.selectOne("member.dao.MemberDAO.savingsBalanceThisMonth", id);
+		int savingsBalanceThisMonth;
+		try {
+			savingsBalanceThisMonth = sqlSession.selectOne("member.dao.MemberDAO.savingsBalanceThisMonth", id);
+		}catch (NullPointerException e) {
+			savingsBalanceThisMonth = 0;
+		}
 		return savingsBalanceThisMonth;
 	}
 
 	@Override
 	public int withdralBalanceThisMonth(String id) {
-		int withdralBalanceThisMonth = sqlSession.selectOne("member.dao.MemberDAO.withdralBalanceThisMonth", id);
+		int withdralBalanceThisMonth;
+		try {
+			withdralBalanceThisMonth = sqlSession.selectOne("member.dao.MemberDAO.withdralBalanceThisMonth", id);
+		}catch (NullPointerException e) {
+			withdralBalanceThisMonth = 0;
+		}
 		return withdralBalanceThisMonth;
 	}
 
