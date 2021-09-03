@@ -257,7 +257,7 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center">
-                        <h6>お客様が<br>行中の挑戦を管理してください！ </h6><br>
+                        <h6>お客様が<br>進行中の挑戦を管理してください！ </h6><br>
                         <input type="button" value="見に行く" class="btn-style-one" onclick="goChallenge()">
                     </div>
                 </div>
