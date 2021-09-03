@@ -83,7 +83,7 @@ function doJoin(){
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <form:input type="text" path="id" placeholder="名前" />
+                    <form:input type="text" path="id" placeholder="ID" />
                     <form:errors path="id" class="error" />
                     
                 </div>                         
@@ -128,7 +128,7 @@ function doJoin(){
                	<div class="form-group">
                     <form:select path="ageGroup">
                     	<option value="">年代</option>
-                    	<option value="十代">十代</option>
+                    	<option value="10代">10代</option>
                     	<option value="20代">20代</option>
                     	<option value="30代">30代</option>
                     	<option value="40代">40代</option>

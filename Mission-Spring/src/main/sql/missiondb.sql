@@ -267,4 +267,59 @@ VALUES
 ('4', '金融職'),
 ('5', '販売職');
 
+-- 口座商品テーブル : bank_book
+INSERT INTO `bank_book`(`key`, `value`)
+VALUES
+('1','ハナプラス通帳'),
+('2','ヤングハナプラス通帳'),
+('3','主力ハナ通帳');
 
+INSERT INTO `saving_bank_book`(`key`, `value`, `rate`)
+VALUES
+('1','ハナワンキュウ積金','2.5'),
+('2','マイホームを購入する積金','2.3'),
+('3','夢ハナ積金','1.5');
+
+
+INSERT INTO `log_type`(`key`, `value`)
+VALUES
+('1','入金'),
+('2','出金');
+
+
+
+-- Test用 Account user1~4
+
+INSERT INTO member(`id`, `name`, `password` , `phone`, `email`, `address`,
+		`age_group`, `gender`, `reg_date`, `property_status`, `job_key`, `cash`)
+VALUES
+	  ('user1', 'user1_Name', '1234' , '010-1234-9876', 'user1@gmail.com', 'Japan', 
+	   '30代', 'F', '2021-09-02 10:15:30', '五千万円未満', '1', '1000000'),
+	  ('user2', 'user2_Name', '1234' , '010-1234-1357', 'user2@gmail.com', 'Japan', 
+	   '30代', 'M', '2021-08-30 16:15:20', '一億円以上', '3', '10000000'),
+	  ('user3', 'user3_Name', '1234' , '010-1234-2468', 'user3@gmail.com', 'Japan', 
+	   '20代', 'M', '2021-08-31 16:15:20', '五百万円未満', '3', '1000000'),
+	  ('user4', 'user4_Name', '1234' , '010-1234-5678', 'user4@gmail.com', 'Japan', 
+	   '20代', 'M', '2021-09-01 09:15:00', '千万円未満', '1', '1000000');
+
+INSERT INTO cash_manage(`id`, `cash`, `log_date`, `content`)
+VALUES
+	  ('user1', '1000000', '2021-09-02 10:18:30', 'user1 default cash'),
+	  ('user2', '10000000', '2021-08-30 16:18:20', 'user2 default cash'),
+	  ('user3', '1000000', '2021-08-31 16:18:20', 'user3 default cash'),
+	  ('user4', '1000000', '2021-09-01 09:18:00', 'user4 default cash');
+	  
+INSERT INTO dw_account(`account_number`, `id`, `account_password`, `balance`, `bank_book_key`, `nick_name`, `reg_date`, `main_account`)
+VALUES
+	  ((SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+		'user1', '1234', 110000000, '1', 'user1_ハナプラス', '2021-09-02 10:30:00', 'N'),
+	  ((SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+		'user1', '1234', 120000000, '2', 'user1_ヤングハナプラス', '2021-09-03 09:27:00', 'N'),
+	  ((SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+		'user1', '1234', 130000000, '3', 'user1_主力ハナ', '2021-09-02 13:48:00', 'N'),
+	  ((SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+		'user2', '1234', 110000000, '1', 'user2_ハナプラス', '2021-08-30 16:20:23', 'Y'),
+	  ((SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+		'user2', '1234', 120000000, '2', 'user2_ヤングハナプラス', '2021-09-01 11:15:20', 'N'),
+	  ((SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+		'user3', '1234', 110000000, '1', 'user3_ハナプラス', '2021-08-31 16:16:22', 'Y');
