@@ -32,7 +32,7 @@ CREATE TABLE `favorite` (
 	`id`	varchar(45)	NOT NULL,
 	`to_account_number`	varchar(45)	NOT NULL,
 	`to_name`	varchar(45)	NOT NULL,
-	`favorite_flag`	varchar(45)	NOT NULL,
+	`favorite_flag`	varchar(45)	NOT NULL DEFAULT "1",
 	PRIMARY KEY (`no`,`id`)
 );
 
