@@ -20,8 +20,13 @@ function doIdCheck(){
 
 			let idCheckBool = JSON.parse(data); 
 			let str = '';
+			var pattern = /^[a-z0-9]{4,20}$/;
 			if(idCheckBool == true){
-				str = "使用可能です。"
+				if(!pattern.test(id)){
+					str = "4字以上、20字以下の『小文字』の英語と数字で入力してください。"
+				} else {
+					str = "使用可能です。"	
+				}
 			} else {
 				str = "重複です。" //중복
 			}
@@ -81,24 +86,24 @@ function doJoin(){
     <form:form commandName="memberVO" class="default-form contact-form"  method="post" name="lform">
         
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
+			<div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <form:input type="text" path="id" placeholder="ID" />
-                    <form:errors path="id" class="error" />
                     
-                </div>                         
-               
+                </div>    
+                                     
                	<div class="form-group">
                     <form:input type="password" name="password" path="password" placeholder="パスワード" />
                     <form:errors path="password"  class="error" />
                 </div>
             </div>
             
+            
+           
             <div class="col-md-6 col-sm-12 col-xs-12">
                	<div class="form-group text-center">
-                    <button type="submit" class="btn-style-one" onclick="doIdCheck()">重複確認</button> <!-- 중복확인 -->
-                 	 <span id="idCheck" style="color:red"></span>
-                    
+                    <button type="button" class="btn-style-one" onclick="doIdCheck()">重複確認</button> <!-- 중복확인 -->
+					<span id="idCheck" style="color:red"></span>
                 </div>
                	<div class="form-group">
                     <form:input type="text" path="name" placeholder="名前" />

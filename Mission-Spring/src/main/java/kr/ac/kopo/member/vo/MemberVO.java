@@ -8,10 +8,8 @@ import org.hibernate.validator.constraints.Length;
 
 public class MemberVO {
 
-	//Spring form 태그를 이용하여, 백앤드에서 validation체크. 
-	
-	@Length(min = 4, max= 20, message = "4글자 이상, 20자 이하")
-	@Pattern(regexp = "^[a-z0-9]*$", message = "영어 소문자, 숫자로 구성")
+	//Spring form 태그를 이용하여, 백앤드에서 validation체크. (Except id)
+
 	private String id;
 	
 	
