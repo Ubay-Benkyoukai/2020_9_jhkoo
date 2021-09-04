@@ -9,7 +9,7 @@
 <script>
 
 	function checkForm(){
-		let f = document.lform
+		let f = document.contact_form
 
 
 		if (f.id.value == '') {
