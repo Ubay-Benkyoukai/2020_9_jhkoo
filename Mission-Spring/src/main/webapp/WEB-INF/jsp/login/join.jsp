@@ -39,8 +39,8 @@ function doIdCheck(){
 function doJoin(){
 	let idCheck = document.getElementById("idCheck");
 
-	if(idCheck.innerHTML == "It's duplicate."){
-		alert("IDが重複しているため、会員登録はできません。")	//아이디가 중복되어 회원가입이 불가능합니다
+	if(idCheck.innerHTML == "重複です。"){
+		alert("IDが重複しているので、会員登録はできません。")	//아이디가 중복되어 회원가입이 불가능합니다
 		return false;
 	}
 	return true;
@@ -83,9 +83,12 @@ function doJoin(){
 	<!-- 회원가입 form -->    <!-- join form -->
 	<!-- Spring form태그 이용. -->
 	<!-- 보안적인 측면에서 유효성 검사란 올바르지 않은 데이터가 서버로 전송되거나, DB에 저장되지 않도록 하는 것 -->
-    <form:form commandName="memberVO" class="default-form contact-form"  method="post" name="lform">
+    <form:form commandName="memberVO" class="default-form contact-form"  method="post" name="lform" onsubmit="return doJoin(this)">
         
         <div class="row">
+        
+        	<div>&emsp;<span id="idCheck" style="color:red"></span></div>
+        
 			<div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <form:input type="text" path="id" placeholder="ID" />
@@ -103,10 +106,11 @@ function doJoin(){
             <div class="col-md-6 col-sm-12 col-xs-12">
                	<div class="form-group text-center">
                     <button type="button" class="btn-style-one" onclick="doIdCheck()">重複確認</button> <!-- 중복확인 -->
-					<span id="idCheck" style="color:red"></span>
+					
                 </div>
                	<div class="form-group">
                     <form:input type="text" path="name" placeholder="名前" />
+                    <form:errors path="name"  class="error" />
                 </div>
             </div>
             
