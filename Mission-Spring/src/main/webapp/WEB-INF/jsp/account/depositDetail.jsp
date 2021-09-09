@@ -119,7 +119,7 @@
     <tbody id="myTable">
     
   
-     <c:forEach items="${ viewAll }" var="depositDetail" varStatus="loop">
+     <c:forEach items="${ depositDetailList }" var="depositDetail" varStatus="loop">
       <tr >
        <td >
        	${ depositDetail.getLogDate() } 

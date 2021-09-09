@@ -58,11 +58,11 @@ public class SavingsAccountController {
 	
 	
 	@PostMapping("/product/savingsJoin/{num}")
-	public String savingsJoin(@Valid SavingsAccountVO savingsAccountVO, BindingResult result, HttpSession session) {
-		
+	public String savingsJoin(@PathVariable String num, @Valid SavingsAccountVO savingsAccountVO, BindingResult result, HttpSession session) {
+
 		if(result.hasErrors()) {
 			System.out.println("적금 가입 오류 발생...");
-			return "accountProduct/savingsJoin";
+			return "redirect:/product/savingsJoin/" + num;
 		}
 		
 		System.out.println("1==================");
@@ -75,9 +75,8 @@ public class SavingsAccountController {
 		// 적금 계좌 등록하기
 		savingsAccountService.insertSavingsAccount(savingsAccountVO);
 		
-		// 적금 정보 가져오기 - 문제
+		// 적금 정보 가져오기 - 기본가입금액 이체를 위한 accountNumber가져오기
 		SavingsAccountVO savingsAccount = savingsAccountService.getSavingsAccountInfoForTrans(savingsAccountVO.getAccountNumber());
-		System.out.println("문제? : " + savingsAccount);
 		
 		 // 기본가입금액 자동이체하기. 입출금 -> 적금 TransferVO transferVO = new TransferVO();
 		 TransferVO transferVO = new TransferVO();

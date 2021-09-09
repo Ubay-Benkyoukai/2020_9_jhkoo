@@ -154,7 +154,7 @@ $(document).ready(function(){
                 
                 <div class="form-group">
                 	<label>新規加入金額 &nbsp;</label> <form:errors path="balance" class="error" />
-                	<form:input path="balance" class="form-control" />
+                	<form:input path="balance" class="form-control"/>
                 	
                 </div>
                 
@@ -171,9 +171,9 @@ $(document).ready(function(){
                 <div class="form-group">
                 	<label>納付日</label> 
                 	<form:select path="savingDay" class="form-control">
-                      	<form:option value="1">毎月1日</form:option>
-                      	<form:option value="15">毎月15日</form:option>
-                      	<form:option value="25">毎月28日</form:option>
+                      	<form:option value="1" type="number">毎月1日</form:option>
+                      	<form:option value="15" type="number">毎月15日</form:option>
+                      	<form:option value="25" type="number">毎月25日</form:option>
                     </form:select>
                 </div>
                 

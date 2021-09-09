@@ -8,48 +8,46 @@ import org.hibernate.validator.constraints.Length;
 
 public class MemberVO {
 
-	//Spring form 태그를 이용하여, 백앤드에서 validation체크. 
-	
-	@Length(min = 4, max= 20, message = "4글자 이상, 20자 이하")
-	@Pattern(regexp = "^[a-z0-9]*$", message = "영어 소문자, 숫자로 구성")
+	//Spring form 태그를 이용하여, 백앤드에서 validation체크. (Except id)
+
 	private String id;
 	
 	
-	@Pattern(regexp = "^[A-Za-z0-9]*$", message = "특수기호는 사용할 수 없습니다.")
-	private String name;
-	
-	@Length(min = 4, max= 20, message = "4글자 이상, 20자 이하")
-	private String password;
-	
-	private String type;
+	@Pattern(regexp = "^[A-Za-z0-9]*$", message = "特殊文字は使用できません。")
+    private String name;
 
-	@Pattern(regexp = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4}[.-](\\d{4}))$", message = "01x-xxxx-xxxx에 맞게 입력하세요.")
-	private String phone;
-	
-	@Email(message="이메일 포맷에 맞게 입력하세요.")
-	private String email;
-	
-	@NotEmpty(message = "연령대 선택")
-	private String ageGroup;
-	
-	@NotEmpty(message = "성별 선택")
-	private String gender;
-	
-	@NotEmpty(message = "자산 현황 선택")
-	private String propertyStatus;
-	
-	@NotEmpty(message = "직업 분류 선택")
-	private String jobKey;
+    @Length(min = 4, max= 20, message = "4字以上、20字以下")
+    private String password;
 
-	private String regDate;
-	private String lastVisitDate;
-	
-	private String address;
-	
-	private String kakaoId;
-	private String emailKey;
-	
-	private int cash;
+    private String type;
+
+    @Pattern(regexp = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4}[.-](\\d{4}))$", message = "01x-xxx-xxxxxに合わせて入力してください。")
+    private String phone;
+
+    @Email(message="メールのフォーマットに合わせて入力してください。")
+    private String email;
+
+    @NotEmpty(message = "年代選択")
+    private String ageGroup;
+
+    @NotEmpty(message = "性別選択")
+    private String gender;
+
+    @NotEmpty(message = "財産状況選択")
+    private String propertyStatus;
+
+    @NotEmpty(message = "職業選択")
+    private String jobKey;
+
+    private String regDate;
+    private String lastVisitDate;
+
+    private String address;
+
+    private String kakaoId;
+    private String emailKey;
+
+    private int cash;
 	
 	/////////////////////////////////////////////////////////////
 	private int totalBalance;
