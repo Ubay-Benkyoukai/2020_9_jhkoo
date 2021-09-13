@@ -19,5 +19,6 @@
 	    <typeAlias type="kr.ac.kopo.friend.vo.FriendVO" alias="friendVO"/>
 	    <typeAlias type="kr.ac.kopo.eda.vo.EdaVO" alias="EdaVO"/>
 	    <typeAlias type="kr.ac.kopo.eda.vo.EmailVO" alias="EmailVO"/>
+	    <typeAlias type="kr.ac.kopo.mydeposit.vo.MyDepositVO" alias="myDepositVO"/>
 	</typeAliases>
 </configuration>

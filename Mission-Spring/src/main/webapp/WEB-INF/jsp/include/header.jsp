@@ -61,6 +61,9 @@
                         <li>
                         	  <a href = "${pageContext.request.contextPath }/eda">分析</a> <!-- 분석 -->
                         </li>
+                         <li>
+                        	  <a href = "${pageContext.request.contextPath }/myDepositChoose">入金</a> <!-- 입금 -->
+                        </li>
                    
 						<%-- 
 						<li class="dropdown" >
