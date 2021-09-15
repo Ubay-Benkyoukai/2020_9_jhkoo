@@ -9,18 +9,21 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script>
-	
+
+
+/* 20row : Number() string을 int로 해주는 jquery 함수 */
+/*
 	$(document).ready(function(){
 		
 		$('.addbalanceBtn').click(function(){
 			let btn = this;
-			let addbalance = Number( $(this).attr('id') ) ;	/* Number() string을 int로 해주는 jquery 함수 */
+			let addbalance = Number( $(this).attr('id') ) ;
 			let originBalance = Number( $('#depositMoney').val() );
 			
 			$('#depositMoney').val(addbalance + originBalance);
 		})
 	})
-	
+*/
 	
 	
 </script>
@@ -57,28 +60,23 @@
 	            
 	            <div class="col-md-12 col-sm-12 col-xs-12">
 	            	<!-- 계좌번호와, 타입(이체)는 입력받지 않으므로 hidden으로 넘김 -->
-	            	<form:hidden path="accountNumber" value="${ depositAccount.getAccountNumber() }"/>	
+	            	<form:input path="accountNumber" value="${ depositAccount.getAccountNumber() }"/>	
 
-	                   
-	
 	                <div class="form-group">
-	                	<label>口座パスワード &nbsp;</label> 
-	                	<c:if test="${ depositAccount.getAccountPassword() != '1234' }">
-	                		<form:errors path="accountPassword" class="error" /> 
-	                	</c:if>
-	                    <form:password path="accountPassword" class="form-control" placeholder="口座の暗証番号4 桁を入力してください。"/> 
-	                </div>
-	                              
-             
-	                <div class="form-group">
-	                	<label>入金金額 &nbsp;</label> <form:errors path="depositMoney" class="error" />
-	                	<form:input id = "depositMoney" path="depositMoney" class="form-control"  placeholder="0円 "/>
+	                	<label>balance &nbsp;</label>
+	                	<form:input path="balance" class="form-control" value="${ depositAccount.getBalance() }"/>
 	                </div>  
 	                
 	                    
 					<div class="form-group">
-						<label> &nbsp;</label> 
+						<label>content &nbsp;</label> 
+						<form:input path="content" class="form-control"  placeholder="... "/>
 					</div>
+					
+					<div class="form-group">
+	                	<label>入金金額 &nbsp;</label> <form:errors path="depositMoney" class="error" />
+	                	<form:input path="depositMoney" class="form-control"  placeholder="0円 "/>
+	                </div>  
 	                
 	                <div class="form-group text-center">
 	                    <button type="submit" class="btn-style-one" >入金</button>

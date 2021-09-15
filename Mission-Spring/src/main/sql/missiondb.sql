@@ -169,18 +169,12 @@ CREATE TABLE `a_board` (
 ----------------------JSY3---------
 
 CREATE TABLE `mydeposit_manage` (
-	`log_pk`	TIMESTAMP	NULL	DEFAULT CURRENT_TIMESTAMP,
+	`log_pk`	TIMESTAMP NOT NULL	DEFAULT CURRENT_TIMESTAMP,
 	`account_number`	varchar(45)	NOT NULL,
 	`balance`	int	NOT NULL,
 	`content`	varchar(45)	NULL,
 	`deposit_money`	int	NOT NULL,
-	`account_password`	varchar(45)	NOT NULL
-);
-
-
-ALTER TABLE `mydeposit_manage` ADD CONSTRAINT `PK_MYDEPOSIT_MANAGE` PRIMARY KEY (
-	`log_pk`,
-	`account_number`
+	PRIMARY KEY (`log_pk`, `account_number`)
 );
 
 
@@ -188,7 +182,7 @@ ALTER TABLE `mydeposit_manage` ADD CONSTRAINT `FK_dw_account_TO_mydeposit_manage
 	`account_number`
 )
 REFERENCES `dw_account` (
-	`id`
+	`account_number`
 );
 ----------------------JSY3//-------
 

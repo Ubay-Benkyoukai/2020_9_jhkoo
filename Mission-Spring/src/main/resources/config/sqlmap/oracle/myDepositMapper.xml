@@ -5,17 +5,16 @@
 <mapper namespace="mydeposit.dao.MyDepositDAO">
 
 	<resultMap type="myDepositVO" id="myDepositMap">
-		<result column="log_pk" property="logPk" />
 		<result column="account_number" property="accountNumber" />
   		<result column="deposit_money" property="depositMoney" />
-  		<result column="account_password" property="accountPassword" />
   	</resultMap>
 
 	<!-- 내 계좌에 입금 내역 남기기 -->
 	<insert id="addMyDepositLog" parameterType="myDepositVO">
 		INSERT INTO mydeposit_manage
-		(account_number, content, deposit_money)
+		(account_number, balance, content, deposit_money)
 		VALUES( #{accountNumber},
+				#{balance},
 				#{content},
 				#{depositMoney}
 		)

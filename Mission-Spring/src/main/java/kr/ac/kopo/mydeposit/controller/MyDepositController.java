@@ -88,17 +88,28 @@ public class MyDepositController {
 		// 입금하기
 
 		@PostMapping("/myDeposit/{accountNumber}")	
-		public String updateBalance(MyDepositVO myDepositVO, BindingResult result, HttpSession session) {
+		public String updateBalance(@Valid MyDepositVO myDepositVO, BindingResult result, HttpSession session) {
 			
 			if(result.hasErrors()) {
 				System.out.println("入金ERROR発生...");
 				return "myDeposit/myDepositFail";
 			}
-	
+			
+			String accountNumber = myDepositVO.getAccountNumber();
+			int balance = myDepositVO.getBalance();
+			String content = myDepositVO.getContent();
+			int depositMoney = myDepositVO.getDepositMoney();
+				
 			// 입금, depositMoney 넣어서 vo 보냄
-			MyDepositVO depositVO = (MyDepositVO)session.getAttribute("depositVO");
-			int depositMoney = depositVO.getDepositMoney();
-			myDepositVO.setDepositMoney(depositMoney);
+			MyDepositVO depositVO = new MyDepositVO();
+			
+			depositVO.setAccountNumber(accountNumber);
+			depositVO.setBalance(balance);
+			depositVO.setContent(content);
+			depositVO.setDepositMoney(depositMoney);
+			
+//			int depositMoney = depositVO.getDepositMoney();
+//			myDepositVO.setDepositMoney(depositMoney);
 			myDepositService.myDeposit(myDepositVO);
 //			myDepositService.updateBalance(myDepositVO);
 		
