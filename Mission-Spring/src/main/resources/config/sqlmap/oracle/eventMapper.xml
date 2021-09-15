@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="event.dao.EventDAO">
+
+	<resultMap type="eventVO" id="eventMap">
+			<result column="event_no" property="eventNo" />
+			<result column="event_title" property="eventTitle" />
+	  		<result column="reg_date" property="regDate" />
+	  		<result column="end_date" property="endDate" />
+	</resultMap>
+
+	<select id="pastEventList" resultMap="eventMap" parameterType="eventVO">
+		SELECT event_no, event_title, 
+			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
+			date_format(end_date, '%Y년 %m월 %d일') as end_date
+		FROM event
+		WHERE status = "2"
+	</select>
+	
+	<select id="currentEventList" resultMap="eventMap" parameterType="eventVO">
+		SELECT event_no, event_title, 
+			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
+			date_format(end_date, '%Y년 %m월 %d일') as end_date
+		FROM event
+		WHERE status = "1"
+	</select>
+	
+	<insert id="insertNewEvent" parameterType="eventVO">
+		INSERT INTO event(event_title, reg_date, end_date)
+		VALUES(#{eventTitle}, #{regDate}, #{endDate})
+	</insert>
+	
+	<update id="endEvent">
+		UPDATE event
+		SET status = "2"
+		WHERE event_no = #{eventNo}
+	</update>
+	
+	<update id="updateEvent">
+		UPDATE event
+		SET event_title = #{eventTitle},
+			end_date = #{endDate},
+			status = #{status}
+		WHERE event_no = #{eventNo}
+	</update>
+	
+</mapper>

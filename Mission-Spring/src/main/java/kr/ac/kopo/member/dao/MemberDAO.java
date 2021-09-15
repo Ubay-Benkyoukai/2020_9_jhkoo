@@ -21,4 +21,6 @@ public interface MemberDAO {
 	
 	//이번달 입출금 계좌 '출금' 총액
 	int withdralBalanceThisMonth(String id);
+
+	void luckyUserUpdate(MemberVO member);
 }

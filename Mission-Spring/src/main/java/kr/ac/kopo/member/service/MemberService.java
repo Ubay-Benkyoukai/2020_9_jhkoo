@@ -11,4 +11,7 @@ public interface MemberService {
 	String idCheck(String id);
 
 	int totalBalanceChange(String id);
+
+	void luckyUserUpdate(MemberVO member);
+	
 }

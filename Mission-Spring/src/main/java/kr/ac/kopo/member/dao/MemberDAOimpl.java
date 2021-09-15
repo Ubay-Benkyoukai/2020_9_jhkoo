@@ -68,7 +68,10 @@ public class MemberDAOimpl implements MemberDAO{
 		return withdralBalanceThisMonth;
 	}
 
-	
+	@Override
+	public void luckyUserUpdate(MemberVO member) {
+		sqlSession.update("member.dao.MemberDAO.luckyUserUpdate", member);
+	}
 
 	
 }

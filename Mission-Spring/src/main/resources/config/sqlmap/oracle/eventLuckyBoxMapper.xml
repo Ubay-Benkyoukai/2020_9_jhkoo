@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="event.dao.LuckyBoxDAO">
+
+	<resultMap type="luckyBoxVO" id="luckyBoxMap">
+			<result column="event_no" property="eventNo" />
+	</resultMap>
+
+	<insert id="insertLuckyBox">
+		INSERT INTO lucky_box(key, event_no, value, amount)
+		VALUES(#{key}, #{eventNo}, #{value}, #{amount})
+	</insert>
+
+</mapper>

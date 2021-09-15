@@ -79,5 +79,16 @@
 		  AND m.id= #{id}
   	</select>
   	
+  	<update id="luckyUserUpdate" parameterType="MemberVO">
+  		UPDATE member
+  		SET
+  			name = #{name},
+  			phone = #{phone},
+  			email = #{email},
+  			address = #{address}
+  		WHERE
+  			id = #{id}
+  	</update>
+  	
 </mapper>
 

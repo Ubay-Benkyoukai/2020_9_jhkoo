@@ -287,6 +287,59 @@ VALUES
 ('2','出金');
 
 
+-- Event DB
+CREATE TABLE `event` (
+	`event_no`	int	NOT NULL AUTO_INCREMENT,
+	`event_title`	varchar(100)	NOT NULL,
+	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`end_date`	TIMESTAMP	NOT NULL,
+	`status`	varchar(45)	NOT NULL	DEFAULT "1",
+    PRIMARY KEY (`event_no`)
+);
+
+CREATE TABLE `lucky_box` (
+	`key`	VARCHAR(25)	NOT NULL,
+	`event_no`	int	NOT NULL,
+	`value`	VARCHAR(50)	NULL,
+	`amount`	int	NULL,
+    PRIMARY KEY (`key`, `event_no`)
+);
+
+CREATE TABLE `lucky_user` (
+	`no`	int	NOT NULL AUTO_INCREMENT,
+	`event_no`	int	NOT NULL,
+	`id`	varchar(45)	NOT NULL,
+	`lucky_box_key`	varchar(25)	NOT NULL,
+	`receive_status`	varchar(45)	NOT NULL	DEFAULT "1",
+	`receive_date`	TIMESTAMP	NULL,
+    PRIMARY KEY (`no`, `event_no`, `id`)
+);
+
+ALTER TABLE `lucky_box` ADD CONSTRAINT `FK_event_TO_lucky_box_1` FOREIGN KEY (
+	`event_no`
+)
+REFERENCES `event` (
+	`event_no`
+);
+
+ALTER TABLE `lucky_user` ADD CONSTRAINT `FK_event_TO_lucky_user_1` FOREIGN KEY (
+	`event_no`
+)
+REFERENCES `event` (
+	`event_no`
+);
+
+ALTER TABLE `lucky_user` ADD CONSTRAINT `FK_member_TO_lucky_user_1` FOREIGN KEY (
+	`id`
+)
+REFERENCES `member` (
+	`id`
+);
+
+
+
+
+
 
 -- Test用 Account user1~4
 

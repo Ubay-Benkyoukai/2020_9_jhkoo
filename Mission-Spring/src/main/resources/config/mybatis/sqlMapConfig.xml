@@ -19,5 +19,8 @@
 	    <typeAlias type="kr.ac.kopo.friend.vo.FriendVO" alias="friendVO"/>
 	    <typeAlias type="kr.ac.kopo.eda.vo.EdaVO" alias="EdaVO"/>
 	    <typeAlias type="kr.ac.kopo.eda.vo.EmailVO" alias="EmailVO"/>
+	    <typeAlias type="kr.ac.kopo.event.vo.EventVO" alias="EventVO"/>
+	    <typeAlias type="kr.ac.kopo.event.vo.EventUserVO" alias="EventUserVO"/>
+	    <typeAlias type="kr.ac.kopo.event.vo.LuckyBoxVO" alias="LuckyBoxVO"/>
 	</typeAliases>
 </configuration>
