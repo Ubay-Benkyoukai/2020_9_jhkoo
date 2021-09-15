@@ -22,7 +22,7 @@
 
 	<!--  내 계좌 잔액 업데이트. 입금 -->
   	<update id="updateBalance" parameterType="myDepositVO">
-  		UPDATE mydeposit_manage
+  		UPDATE dw_account
   		 SET
   		  balance = balance + #{depositMoney}
   		 WHERE account_number = #{accountNumber}

@@ -53,7 +53,7 @@
 	            <div class="section-title">
 	   				 <h3>${ depositAccount.getBankBookKey() }</h3>
 	   				 <p>&nbsp;&nbsp;&nbsp;ハナ銀行口座 ${ depositAccount.getAccountNumber() }  
-	   				 &nbsp;&nbsp;&nbsp;残額 :  ${ String.format("%,d", depositAccount.getBalance()) }￥</p>
+	   				 &nbsp;&nbsp;&nbsp; 残額 :  ${ String.format("%,d", depositAccount.getBalance()) }￥</p>
 					 
 				</div>
 	            
@@ -62,12 +62,6 @@
 	            	<!-- 계좌번호와, 타입(이체)는 입력받지 않으므로 hidden으로 넘김 -->
 	            	<form:input path="accountNumber" value="${ depositAccount.getAccountNumber() }"/>	
 
-	                <div class="form-group">
-	                	<label>balance &nbsp;</label>
-	                	<form:input path="balance" class="form-control" value="${ depositAccount.getBalance() }"/>
-	                </div>  
-	                
-	                    
 					<div class="form-group">
 						<label>content &nbsp;</label> 
 						<form:input path="content" class="form-control"  placeholder="... "/>

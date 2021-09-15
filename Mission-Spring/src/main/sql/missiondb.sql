@@ -167,6 +167,8 @@ CREATE TABLE `a_board` (
 );
 
 ----------------------JSY3---------
+DROP TABLE `mydeposit_manage`;
+SELECT * FROM `mydeposit_manage`;
 
 CREATE TABLE `mydeposit_manage` (
 	`log_pk`	TIMESTAMP NOT NULL	DEFAULT CURRENT_TIMESTAMP,

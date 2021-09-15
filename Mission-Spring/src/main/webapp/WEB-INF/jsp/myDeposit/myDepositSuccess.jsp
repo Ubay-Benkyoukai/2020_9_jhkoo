@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function goMyAccount(){
-		location.href = "${pageContext.request.contextPath }/myChoose";
+	function goAccount(){
+		location.href = "${pageContext.request.contextPath }/account";
 	}
 </script>
 </head>
@@ -22,7 +22,7 @@
 				<div class="image-content">
 					<div class="section-title text-center">
 						<h3>入金
-							<span>失敗しました。</span>
+							<span>成功しました。</span>
 						</h3>
 						<p></p>
 						
@@ -31,7 +31,7 @@
 						
 				<div class="col-md-12 col-sm-12 col-xs-12">         
 				    <div class="form-group text-center">
-				        <button onclick="goMyAccount()" class="btn-style-one">入金口座選択ページへ移動</button>
+				        <button onclick="goAccount()" class="btn-style-one">入金口座選択ページへ移動</button>
 				    </div>
 				</div>		
 						

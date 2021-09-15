@@ -38,7 +38,7 @@ public class MyDepositServiceimpl implements MyDepositService {
 		myDepositDAO.addMyDepositLog(myDepositVO);
 		
 		// 2. 내 계좌 잔액 조정
-//		myDepositDAO.updateBalance(myDepositVO);
+		myDepositDAO.updateBalance(myDepositVO);
 		
 	}
 

@@ -106,11 +106,11 @@ public class MyDepositController {
 			depositVO.setAccountNumber(accountNumber);
 			depositVO.setBalance(balance);
 			depositVO.setContent(content);
-			depositVO.setDepositMoney(depositMoney);
+			depositVO.setDepositMoney(depositMoney);		// 자바상의 VO바꾸려고
 			
 //			int depositMoney = depositVO.getDepositMoney();
 //			myDepositVO.setDepositMoney(depositMoney);
-			myDepositService.myDeposit(myDepositVO);
+			myDepositService.myDeposit(myDepositVO);		// DB만 바꾸는애
 //			myDepositService.updateBalance(myDepositVO);
 		
 			return "myDeposit/myDepositSuccess";
