@@ -11,15 +11,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/table.css"> 
 <script>
 
-	function insertBox(){
-		let f = document.lucky
-		
-		f.action="#";
-		f.submit();
-		
-		
-	}
-
 </script>
 </head>
 <body>
@@ -73,45 +64,8 @@
 </div>
 </form:form>
 
-
-
-<!-- 이벤트 상품 생성 -->
-
-
-
 <br>
 <br>
-<form:form commandName="luckyBoxVO" method="post" name="lucky" action="insertBox()">
-<div class="section-title text-center">
-<button type="button" class="btn-style-one" onclick="rowAdd()">경품추가</button>
-<br><br>
-</div>
-
-<table id="goods" border="1">
-<thead>
-<tr>
-	<th>景品番号</th>
-	<th>イベント番号</th>
-	<th>景品名（goods）</th>
-	<th>数</th>
-</tr>
-</thead>
-<tbody id="tbShow">
-
-<tr>
-	<td><form:input type='text' path='key' class='form-control'/></td>
-	<td><form:input type='text' path='eventNo' class='form-control'/></td>
-	<td><form:input type='text' path='value' class='form-control'/></td>
-	<td><form:input type='text' path='amount' class='form-control'/></td>
-</tr>
-
-</tbody>
-
-</table>
-
-</form:form>
-
-
 
 </div>
 <jsp:include page="/WEB-INF/jsp/include/footer.jsp" />

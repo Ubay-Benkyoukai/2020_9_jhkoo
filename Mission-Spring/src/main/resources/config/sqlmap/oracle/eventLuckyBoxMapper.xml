@@ -5,12 +5,13 @@
 <mapper namespace="event.dao.LuckyBoxDAO">
 
 	<resultMap type="luckyBoxVO" id="luckyBoxMap">
-			<result column="event_no" property="eventNo" />
+		<result column="goods_key" property="goodsKey" />
+		<result column="event_no" property="eventNo" />
 	</resultMap>
 
 	<insert id="insertLuckyBox">
-		INSERT INTO lucky_box(key, event_no, value, amount)
-		VALUES(#{key}, #{eventNo}, #{value}, #{amount})
+		INSERT INTO lucky_box(goods_key, event_no, goods, amount)
+		VALUES(#{goodsKey}, #{eventNo}, #{goods}, #{amount})
 	</insert>
 
 </mapper>

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.event.service.EventService;
@@ -52,9 +54,7 @@ public class EventController {
 		
 		EventVO eventVO = new EventVO();
 		mav.addObject("eventVO", eventVO);
-		
-		LuckyBoxVO luckyBoxVO = new LuckyBoxVO();
-		mav.addObject("luckyBoxVO", luckyBoxVO);
+
 		return mav;
 	}
 	
@@ -69,5 +69,34 @@ public class EventController {
 
 		return "redirect:/eventMap";
 	}
+
+	@GetMapping("/createGoods")
+	public ModelAndView goInsertGoods(HttpSession session) {
+		ModelAndView mav = new ModelAndView("event/createGoods");
+		
+		LuckyBoxVO luckyBoxVO = new LuckyBoxVO();
+
+		mav.addObject("luckyBoxVO", luckyBoxVO);
+
+		return mav;
+	}
+	
+	@ResponseBody
+	@PostMapping("/createGoods")
+	public String insertGoods(LuckyBoxVO luckyBoxVO, BindingResult result, HttpSession session) {
+		if(result.hasErrors()) {
+			System.out.println("Event Create Error...");
+			return "redirect:/createEvent";
+		}
+		
+		//System.out.println(luckyBoxVO.getBoxList().get(0).toString());
+		System.out.println(luckyBoxVO.getBoxList());
+		luckyBoxService.insertLuckyBox(luckyBoxVO);
+
+		return "Success";
+	}
+	
+	
+	
 	
 }

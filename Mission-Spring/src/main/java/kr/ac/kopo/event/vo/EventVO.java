@@ -7,8 +7,6 @@ public class EventVO {
 	private String eventTitle;
 	private String regDate;
 	private String endDate;
-	private String status;
-	
 	
 	public int getEventNo() {
 		return eventNo;
@@ -34,18 +32,11 @@ public class EventVO {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
 	
 	@Override
 	public String toString() {
-		return "EventVO [eventNo=" + eventNo + ", eventTitle=" + eventTitle + ", regDate=" + regDate + ", endDate=" + endDate
-				+ ", status=" + status + "]";
+		return "EventVO [eventNo=" + eventNo + ", eventTitle=" + eventTitle + ", regDate=" + regDate
+				+ ", endDate=" + endDate + "]";
 	}
 
 

@@ -288,21 +288,21 @@ VALUES
 
 
 -- Event DB
+
 CREATE TABLE `event` (
 	`event_no`	int	NOT NULL AUTO_INCREMENT,
 	`event_title`	varchar(100)	NOT NULL,
 	`reg_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
 	`end_date`	TIMESTAMP	NOT NULL,
-	`status`	varchar(45)	NOT NULL	DEFAULT "1",
     PRIMARY KEY (`event_no`)
 );
 
 CREATE TABLE `lucky_box` (
-	`key`	VARCHAR(25)	NOT NULL,
+	`goods_key`	VARCHAR(25)	NOT NULL,
 	`event_no`	int	NOT NULL,
-	`value`	VARCHAR(50)	NULL,
+	`goods`	VARCHAR(50)	NULL,
 	`amount`	int	NULL,
-    PRIMARY KEY (`key`, `event_no`)
+    PRIMARY KEY (`goods_key`, `event_no`)
 );
 
 CREATE TABLE `lucky_user` (

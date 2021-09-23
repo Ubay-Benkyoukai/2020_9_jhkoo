@@ -12,19 +12,23 @@
 	</resultMap>
 
 	<select id="pastEventList" resultMap="eventMap" parameterType="eventVO">
+		<![CDATA[
 		SELECT event_no, event_title, 
 			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
 			date_format(end_date, '%Y년 %m월 %d일') as end_date
 		FROM event
-		WHERE status = "2"
+		WHERE end_date < CURDATE()
+		]]>
 	</select>
 	
 	<select id="currentEventList" resultMap="eventMap" parameterType="eventVO">
+		<![CDATA[
 		SELECT event_no, event_title, 
 			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
 			date_format(end_date, '%Y년 %m월 %d일') as end_date
 		FROM event
-		WHERE status = "1"
+		WHERE end_date >= CURDATE()
+		]]>
 	</select>
 	
 	<insert id="insertNewEvent" parameterType="eventVO">
@@ -32,17 +36,10 @@
 		VALUES(#{eventTitle}, #{regDate}, #{endDate})
 	</insert>
 	
-	<update id="endEvent">
-		UPDATE event
-		SET status = "2"
-		WHERE event_no = #{eventNo}
-	</update>
-	
 	<update id="updateEvent">
 		UPDATE event
 		SET event_title = #{eventTitle},
-			end_date = #{endDate},
-			status = #{status}
+			end_date = #{endDate}
 		WHERE event_no = #{eventNo}
 	</update>
 	

@@ -32,12 +32,7 @@ public class EventDAOimpl implements EventDAO {
 		System.out.println(event);
 		sqlSession.insert("event.dao.EventDAO.insertNewEvent", event);
 	}
-	
-	@Override
-	public void endEvent(int eventNo) {
-		sqlSession.update("event.dao.EventDAO.endEvent", eventNo);
-	}
-	
+
 	@Override
 	public void updateEvent(EventVO event) {
 		sqlSession.update("event.dao.EventDAO.updateEvent", event);

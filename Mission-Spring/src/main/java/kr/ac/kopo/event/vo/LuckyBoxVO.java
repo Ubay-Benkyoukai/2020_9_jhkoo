@@ -1,18 +1,29 @@
 package kr.ac.kopo.event.vo;
 
+import java.util.List;
+
 public class LuckyBoxVO {
 
-	private String key;
+	private String goodsKey;
 	private int eventNo;
-	private String value;
+	private String goods;
 	private int amount;
 	
+	private List<LuckyBoxVO> boxList;
 	
-	public String getKey() {
-		return key;
+	public List<LuckyBoxVO> getBoxList() {
+		return boxList;
 	}
-	public void setKey(String key) {
-		this.key = key;
+	public void setBoxList(List<LuckyBoxVO> boxList) {
+		this.boxList = boxList;
+	}
+	///////////////////////////////////////////////////////
+	
+	public String getGoodsKey() {
+		return goodsKey;
+	}
+	public void setGoodsKey(String goodsKey) {
+		this.goodsKey = goodsKey;
 	}
 	public int getEventNo() {
 		return eventNo;
@@ -20,11 +31,11 @@ public class LuckyBoxVO {
 	public void setEventNo(int eventNo) {
 		this.eventNo = eventNo;
 	}
-	public String getValue() {
-		return value;
+	public String getGoods() {
+		return goods;
 	}
-	public void setValue(String value) {
-		this.value = value;
+	public void setGoods(String goods) {
+		this.goods = goods;
 	}
 	public int getAmount() {
 		return amount;
@@ -32,10 +43,11 @@ public class LuckyBoxVO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	
 	@Override
 	public String toString() {
-		return "LuckyBoxVO [key=" + key + ", eventNo=" + eventNo + ", value=" + value + ", amount=" + amount + "]";
+		return "LuckyBoxVO [goodsKey=" + goodsKey + ", eventNo=" + eventNo + ", goods=" + goods + ", amount=" + amount
+				+ "]";
 	}
-	
 	
 }

@@ -13,6 +13,10 @@
 	function goInsertEvent(){
 		location.href = "${ pageContext.request.contextPath }/createEvent";
 	}
+	
+	function goInsertGoods(param){
+		location.href = "${ pageContext.request.contextPath }/createGoods/" + param;
+	}
 
 </script>
 </head>
@@ -50,7 +54,11 @@
 			<c:forEach items="${ currentEventList }" var="current">
 			<tr>
 				<td>${ current.getEventNo() }</td>
-				<td>${ current.getEventTitle() }</td>
+				<td>
+				 <a href="javascript:goInsertGoods('${ current.getEventNo() }')">
+				 ${ current.getEventTitle() }
+				 </a>
+				</td>
 				<td>${ current.getRegDate() }</td>
 				<td>${ current.getEndDate() }</td>
 			</tr>

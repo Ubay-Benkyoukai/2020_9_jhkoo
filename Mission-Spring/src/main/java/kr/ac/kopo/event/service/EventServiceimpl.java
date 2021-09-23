@@ -29,12 +29,7 @@ public class EventServiceimpl implements EventService {
 	public void insertNewEvent(EventVO event) {
 		eventDAO.insertNewEvent(event);
 	}
-	
-	@Override
-	public void endEvent(int eventNo) {
-		eventDAO.endEvent(eventNo);
-	}
-	
+
 	@Override
 	public void updateEvent(EventVO event) {
 		eventDAO.updateEvent(event);
