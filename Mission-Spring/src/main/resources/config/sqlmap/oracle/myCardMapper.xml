@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="card.dao.CardDAO">
+
+	<insert id="insert" parameterType="cardVO">
+		INSERT INTO card(card_number, account_number, balance,
+						 card_password, card_log, point, bank_card_key)
+		VALUES((SELECT CONCAT('8201-', LPAD (IFNULL(MAX(SUBSTR( card_number, 12 ) ), 0 ) + 1, 4, 0 ) ) from card c),
+  				#{cardNumber}, #{accountNumber}, #{balance}, #{cardPassword}, #{cardLog}, #{bankCardKey}, 'N')
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM card
+		WHERE card_number = #{cardNumber} 
+	</delete>
+	
+
+
+</mapper>

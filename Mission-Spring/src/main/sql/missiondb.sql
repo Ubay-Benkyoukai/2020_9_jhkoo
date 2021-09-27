@@ -188,6 +188,40 @@ REFERENCES `dw_account` (
 );
 ----------------------JSY3//-------
 
+----------------------JSY5---------
+CREATE TABLE `card` (
+	`card_number`	varchar(45)	NOT NULL,
+	`account_number`	varchar(45)	NOT NULL,
+	`balance`	int	NOT NULL,
+	`card_password`	varchar(45)	NULL,
+	`card_log`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`point`	int	NULL,
+	`bank_card_key`	varchar(45)	NULL
+);
+
+CREATE TABLE `bank_card` (
+	`key`	VARCHAR(255)	NOT NULL,
+	`value`	VARCHAR(255)	NULL
+);
+
+ALTER TABLE `card` ADD CONSTRAINT `PK_CARD` PRIMARY KEY (
+	`card_number`,
+	`account_number`
+);
+
+ALTER TABLE `bank_card` ADD CONSTRAINT `PK_BANK_CARD` PRIMARY KEY (
+	`key`
+);
+
+ALTER TABLE `card` ADD CONSTRAINT `FK_dw_account_TO_card_1` FOREIGN KEY (
+	`account_number`
+)
+REFERENCES `dw_account` (
+	`account_number`
+);
+
+----------------------JSY5//-------
+
 ALTER TABLE `job` ADD CONSTRAINT `PK_JOB` PRIMARY KEY (
 	`key`
 );

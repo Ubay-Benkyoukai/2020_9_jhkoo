@@ -58,7 +58,7 @@ public class AccountController {
 		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
 		String id = loginVO.getId();
 		
-		// 입출금지유 계좌 테이블		
+		// 입출금자유 계좌 테이블		
 		List<DepositAccountVO> depositAccountList = depositAccountService.selectDepositAccountById(id);
 		// 보유 입출금 계좌 총 잔액
 		int depositTotalBalance = depositAccountService.depositTotalBalanceById(id);
