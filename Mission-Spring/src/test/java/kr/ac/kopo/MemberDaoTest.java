@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-//import kr.ac.kopo.member.dao.MemberDAO;
-//import kr.ac.kopo.member.dao.MemberDAOimpl;
+import kr.ac.kopo.member.dao.MemberDAO;
+import kr.ac.kopo.member.dao.MemberDAOimpl;
 import kr.ac.kopo.member.vo.MemberVO;
 
 import kr.ac.kopo.member.service.MemberServiceimpl;
@@ -22,11 +22,10 @@ import kr.ac.kopo.member.service.MemberService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring/*.xml"})
-public class MemberTest {
+public class MemberDaoTest {
 
 	@Autowired
-	private MemberService memberservice;
-	//private MemberDAO memberDAO;
+	private MemberDAO memberDAO;
 	
 
 	@Test
@@ -35,9 +34,9 @@ public class MemberTest {
 		member.setId("user1");
 		member.setPassword("1234");
 		
-		//MemberDAO memberDAO = new MemberDAOimpl();
+		MemberDAO memberDAO = new MemberDAOimpl();
 		
-		MemberVO loginVO = memberservice.login(member); 
+		MemberVO loginVO = memberDAO.login(member); 
 		System.out.println(loginVO);
 		assertNotNull(loginVO);
 	}

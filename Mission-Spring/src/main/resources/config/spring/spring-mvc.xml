@@ -113,8 +113,10 @@
 	
 	<mvc:view-controller path="/friend" view-name="friend/friend"/>
 	
-	
-	
+	<!--家計簿ホームへのパス追加-->
+	<mvc:view-controller path="/expenses" view-name="expenses/expenses"/>
+	<mvc:view-controller path="/expenses/inputExpenses" view-name="expenses/inputExpenses"/>
+	<mvc:view-controller path="/expenses/searchExpenses" view-name="expenses/searchExpenses"/>
 	
    <!-- 인터셉터와 빈으로 등록 -->
    <bean class="kr.ac.kopo.interceptor.LoginInterceptor" id="loginInterceptor"/>

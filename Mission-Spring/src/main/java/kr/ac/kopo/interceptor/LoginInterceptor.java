@@ -21,9 +21,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	      }
 		
 		//이런 것들로 로그파일 만들 수 있음. 몇시 몇분에 접근 했음.. 
-	//	HandlerMethod method = (HandlerMethod)handler;	
-	//	System.out.println("메소드 :" + method);
-	//	System.out.println("controller :" + method.getBean());//이 메소드가 어느것을 호출하느냐 알려줌
+		//HandlerMethod method = (HandlerMethod)handler;	
+		//System.out.println("메소드 :" + method);
+		//System.out.println("controller :" + method.getBean());//이 메소드가 어느것을 호출하느냐 알려줌
 		
 		
 		// board controller 가기 전에 실행됨. post는 controller에 있는 list메서드 return되면 실행됨. after는 응답이 완료된 후 호출되는 녀석!

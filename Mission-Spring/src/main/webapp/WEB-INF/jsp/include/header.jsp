@@ -61,6 +61,9 @@
                         <li>
                         	  <a href = "${pageContext.request.contextPath }/eda">分析</a> <!-- 분석 -->
                         </li>
+                        <li>
+                              <a href = "${pageContext.request.contextPath }/expenses">家計簿</a>
+                        </li>
                    
 						<%-- 
 						<li class="dropdown" >

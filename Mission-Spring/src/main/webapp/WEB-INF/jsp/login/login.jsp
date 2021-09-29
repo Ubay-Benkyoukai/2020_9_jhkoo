@@ -70,9 +70,15 @@
                 <div class="form-group text-center">
                     <button type="submit" class="btn-style-one">ログイン</button>
                 </div>
+                                                            
             </div>
         </div>
     </form>
+               <!--  
+                <form method="POST" action="${ pageContext.request.contextPath }/join" name="login.jsp">
+                <input type="submit" value="アカウントをお持ちでない方"/>
+                </form>
+                -->
 </div>                        
             </div>
         </div>                    
