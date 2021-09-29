@@ -61,6 +61,10 @@
                         <li>
                         	  <a href = "${pageContext.request.contextPath }/eda">分析</a> <!-- 분석 -->
                         </li>
+                        
+                        <li>
+                              <a href="${pageContext.request.contextPath }/forExchange">外貨預金</a>                        	
+                        </li>
                    
 						<%-- 
 						<li class="dropdown" >
@@ -101,10 +105,7 @@
                         	</c:if>
                         </li>
                         
-                          
-                        
-                         
-                        
+
                   </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -67,7 +67,6 @@
   
 <div class="container">
   <h3>${ month }月の内訳を照会中です</h3>
-  
   <div class="btn-group" style="float:left;">
     <button type="button" class="btn btn-style-one" onclick="goMonthAgo()">${month- 1}月の内訳を見る</button>
 <!--  <button type="button" class="btn btn-style-one" onclick="goMonthAhead()">${ month + 1 }월 내역 보기</button> --> 	

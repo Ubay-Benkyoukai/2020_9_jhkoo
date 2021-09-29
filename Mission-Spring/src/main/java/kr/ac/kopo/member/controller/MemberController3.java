@@ -17,7 +17,7 @@ import kr.ac.kopo.member.vo.MemberVO;
 //@SessionAttributes("loginVO")	//로그인할때 세션에 올릴 수 있는 어노테이션. 배열로 여러개 들어올 수 있음 ({"loginVO"})
 //@Controller
 public class MemberController3 {
-
+/*
 	@Autowired
 	private MemberService memberService;
 	
@@ -62,5 +62,5 @@ public class MemberController3 {
 		
 		return "redirect:/";
 	}
-	
+	*/
 }

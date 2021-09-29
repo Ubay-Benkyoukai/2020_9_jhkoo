@@ -11,4 +11,8 @@ public interface MemberService {
 	String idCheck(String id);
 
 	int totalBalanceChange(String id);
+
+	MemberVO join(Class<Void> class1);
+
+	MemberVO join();
 }

@@ -41,7 +41,6 @@ public class MemberController {
       return "/login/login";
    }
    
-
    @PostMapping("/login")
    public ModelAndView login(MemberVO member, HttpSession session) {
       

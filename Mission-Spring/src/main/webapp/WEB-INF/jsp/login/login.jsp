@@ -70,7 +70,6 @@
                 <div class="form-group text-center">
                     <button type="submit" class="btn-style-one">ログイン</button>
                 </div>
-            </div>
         </div>
     </form>
 </div>                        

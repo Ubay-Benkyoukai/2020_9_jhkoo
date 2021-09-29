@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forex.dao.ForexDAO">
+	<resultMap type="ForexVO" id="depositAccountMap">
+  		<result column="account_number" property="accountNumber" />
+  		<result column="account_password" property="accountPassword" />
+  		<!-- no column="balance" -->
+  		<result column="bank_book_key" property="bankBookKey" />
+  		<result column="nick_name" property="nickName" />
+  		<result column="reg_date" property="regDate" />
+  		<result column="main_account" property="mainAccount" />
+  	</resultMap>
+  	
+
+  	<!-- 外貨レート検索 -->
+  	<select id="ExchangeRate" resultType="double" parameterType="String">
+  	
+  		SELECT ExchangeRate
+		 FROM forexTable
+		 WHERE Country = #{Country}
+
+  	</select>
+  	
+  	<!-- 外貨レート更新 -->
+  	<update id="UpdateExchangeRate" parameterType="ForexVO">
+  	
+  		UPDATE forexTable
+		 SET ExchangeRate = #{ExchangeRate}
+		 WHERE Country = #{CountryName};
+
+  	</update>
+  	
+ 	<!-- 外貨預金口座作成 -->
+	<insert id="CreateForeignCurrencySavingsAccount" parameterType="ForexVO">
+	
+  		INSERT INTO dw_account(account_number, id, account_password, balance, bank_book_key, nick_name, main_account)
+  		VALUES(
+  			   (SELECT CONCAT('0005-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) from dw_account b),
+  		       #{id}, #{accountPassword}, #{balance}, #{bankBookKey}, #{nickName}, 'N')
+  	</insert>
+  	
+  	<!-- 口座情報取得 -->
+  	<select id="getJapanAccountInfo" resultType="ForexVO" parameterType="String">
+  	
+  		SELECT d.account_number, d.id, d.account_password, d.balance, b.value as bank_book_key, 
+  			   d.nick_name, date_format(d.reg_date, '%Y %m %d') as reg_date, d.main_account
+  		 FROM dw_account d LEFT JOIN bank_book b
+  		 	  ON d.bank_book_key = b.key
+  		 WHERE account_number = #{accountNumber} 
+  		 
+  	</select>
+  	
+	<!-- ユーザー口座リスト取得 -->
+  	<select id="selectById" resultMap="depositAccountMap" parameterType="String">
+  		SELECT d.account_number, d.id, d.account_password, d.balance, b.value as bank_book_key, 
+  			   d.nick_name, date_format(d.reg_date, '%Y %m %d') as reg_date, d.main_account
+  		 FROM dw_account d LEFT JOIN bank_book b
+  		 		ON d.bank_book_key = b.key
+  		 WHERE id = #{id} 
+  		 ORDER BY main_account DESC
+  	</select>
+</mapper>
+

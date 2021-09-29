@@ -14,7 +14,7 @@ import kr.ac.kopo.member.vo.MemberVO;
 
 //@Controller
 public class MemberController2 {
-
+/*
 	@Autowired
 	private MemberService memberService;
 	
@@ -60,5 +60,5 @@ public class MemberController2 {
 	}
 	
 	
-	
+	*/
 }
