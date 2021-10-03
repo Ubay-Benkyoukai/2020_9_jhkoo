@@ -298,7 +298,7 @@ CREATE TABLE `event` (
 );
 
 CREATE TABLE `lucky_box` (
-	`goods_key`	VARCHAR(25)	NOT NULL,
+	`goods_key`	int	NOT NULL,
 	`event_no`	int	NOT NULL,
 	`goods`	VARCHAR(50)	NULL,
 	`amount`	int	NULL,

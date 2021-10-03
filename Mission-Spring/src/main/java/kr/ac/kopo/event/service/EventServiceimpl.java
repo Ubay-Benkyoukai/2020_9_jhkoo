@@ -34,5 +34,10 @@ public class EventServiceimpl implements EventService {
 	public void updateEvent(EventVO event) {
 		eventDAO.updateEvent(event);
 	}
+	
+	@Override
+	public EventVO getEvent(int eventNo){
+		return eventDAO.getEvent(eventNo);
+	}
 
 }

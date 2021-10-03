@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.event.vo.EventUserVO;
 import kr.ac.kopo.event.vo.EventVO;
+import kr.ac.kopo.event.vo.LuckyBoxVO;
 
 @Repository
 public class EventDAOimpl implements EventDAO {
@@ -36,6 +37,12 @@ public class EventDAOimpl implements EventDAO {
 	@Override
 	public void updateEvent(EventVO event) {
 		sqlSession.update("event.dao.EventDAO.updateEvent", event);
+	}
+	
+	@Override
+	public EventVO getEvent(int eventNo) {
+		EventVO getEvent = sqlSession.selectOne("event.dao.EventDAO.getEvent", eventNo);
+		return getEvent;
 	}
 	
 }

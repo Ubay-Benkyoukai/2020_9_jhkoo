@@ -17,6 +17,7 @@ public interface EventService {
 	public void insertNewEvent(EventVO event);
 	// 이벤트 내용 수정
 	public void updateEvent(EventVO event);
-	
+	// 해당 이벤트 내용 불러오기
+	public EventVO getEvent(int eventNo);
 
 }

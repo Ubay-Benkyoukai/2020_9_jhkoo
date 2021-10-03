@@ -61,6 +61,9 @@
                         <li>
                         	  <a href = "${pageContext.request.contextPath }/eda">分析</a> <!-- 분석 -->
                         </li>
+                        <li>
+                        	  <a href = "${pageContext.request.contextPath }/event">イベント</a> <!-- 분석 -->
+                        </li>
                    
 						<%-- 
 						<li class="dropdown" >

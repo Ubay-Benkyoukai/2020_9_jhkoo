@@ -14,4 +14,21 @@
 		VALUES(#{goodsKey}, #{eventNo}, #{goods}, #{amount})
 	</insert>
 
+	<select id="getLuckyBox" resultMap="luckyBoxMap" parameterType="luckyBoxVO">
+		SELECT goods_key, event_no, goods, amount
+		FROM lucky_box
+		WHERE event_no = #{eventNo}
+	</select>
+
+	<select id="getMaxGoodsKey" resultType="int" parameterType="int">
+		SELECT MAX(goods_key)
+		FROM lucky_box
+		WHERE event_no = #{eventNo} AND amount > 0
+	</select>
+	
+	<update id="updateluckyBox" parameterType="luckyBoxVO">
+		UPDATE lucky_box
+		SET amount = amount - 1
+		WHERE event_no = #{eventNo} AND goods_key = #{goodsKey}
+	</update>
 </mapper>

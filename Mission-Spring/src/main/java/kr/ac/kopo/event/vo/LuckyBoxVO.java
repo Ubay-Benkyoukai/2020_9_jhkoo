@@ -4,7 +4,7 @@ import java.util.List;
 
 public class LuckyBoxVO {
 
-	private String goodsKey;
+	private int goodsKey;
 	private int eventNo;
 	private String goods;
 	private int amount;
@@ -19,10 +19,10 @@ public class LuckyBoxVO {
 	}
 	///////////////////////////////////////////////////////
 	
-	public String getGoodsKey() {
+	public int getGoodsKey() {
 		return goodsKey;
 	}
-	public void setGoodsKey(String goodsKey) {
+	public void setGoodsKey(int goodsKey) {
 		this.goodsKey = goodsKey;
 	}
 	public int getEventNo() {

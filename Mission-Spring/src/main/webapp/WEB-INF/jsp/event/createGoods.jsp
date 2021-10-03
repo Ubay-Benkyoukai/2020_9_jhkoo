@@ -11,14 +11,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/table.css"> 
 <script>
 
-	function tmpTest(){
-
-		var tmp = document.getElementById("tmpShow").value;
-		tmp++;
-		document.getElementById("tmpShow").value = tmp;
-		
-	}
-	
 	function addRow(){
 		
 		var num = document.getElementById("numbering").value;
@@ -29,19 +21,25 @@
 			var dot = parseInt(num);
 		}
 
+		if( document.getElementById("goods") == null ){
+			var good = dot + 1;
+		}else{
+			var good = parseInt(document.getElementById("goods").value) + 1;
+		}
+
 		var row;
 		row = document.all["tbShow"].insertRow();
+		
+		// イベント番号
+		var cell_EventNo = row.insertCell();
+		cell_EventNo.innerHTML = 
+			"<input type='hidden' name='boxList["+dot+"].eventNo' value='" + ${ luckyBoxVO.eventNo } + "' class='form-control'/>";
 		
 		// 景品番号
 		var cell_GoodsKey = row.insertCell();
 		cell_GoodsKey.innerHTML = 
-			"<input type='text' name='boxList["+dot+"].goodsKey' value='" + (dot + 1) + "' class='form-control' readonly='readonly'/>";
+			"<input type='text' name='boxList["+dot+"].goodsKey' value='" + good + "' class='form-control' readonly='readonly'/>";
 
-		// イベント番号
-		var cell_EventNo = row.insertCell();
-		cell_EventNo.innerHTML = 
-			"<input type='text' name='boxList["+dot+"].eventNo' class='form-control'/>";
-		
 		// 景品名（goods）
 		var cell_Goods = row.insertCell();
 		cell_Goods.innerHTML = 
@@ -55,9 +53,8 @@
 
 		num++;
 		document.getElementById("numbering").value = num;
+		document.getElementById("goods").value = good;
 	}
-	
-	
 	
 
 </script>
@@ -68,25 +65,39 @@
 <br>
 <br>
 
-<button type="button" class="btn-style-one" onclick="tmpTest()">tmpTest</button>
-<input type="text" id="tmpShow" >
+<div class="section-title text-center">
+<h3>景品登録</h3>
+<br>
+<br>
+</div>
 
 <div class="container table-wrapper">
-<form:form commandName="luckyBoxVO" method="post">
+<form:form commandName="luckyBoxVO" method="post"
+			action="${ pageContext.request.contextPath }/createGoods">
 <!-- 창 크기 줄일때 자동 flex 안되는 문제 해결할 수 있으면 하기! -->
 <div class="col-md-6 col-sm-12 col-xs-12" style="margin-left:250px;">
 <button type="button" class="btn-style-one" onclick="addRow()">addrow</button>
+<br>
 <input type="hidden" id="numbering" >
-<table>
+<table class="table table-hover fl-table">
 <thead>
 <tr>
+	<th></th>
 	<th>景品番号</th>
-	<th>イベント番号</th>
 	<th>景品名（goods）</th>
 	<th>数</th>
 </tr>
 </thead>
 <tbody id="tbShow">
+<c:forEach items="${ getLuckyBox }" var="box" varStatus="status">
+<tr>
+	<td></td>
+	<td>${ box.getGoodsKey() }</td>
+	<td>${ box.getGoods() }</td>
+	<td>${ box.getAmount() }</td>
+</tr>
+<input type="hidden" value="${status.count + 1}" id="goods" />
+</c:forEach>
 </tbody>
 </table>
 <button type="submit" class="btn-style-one">저장</button>

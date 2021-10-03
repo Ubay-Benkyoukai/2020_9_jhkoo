@@ -43,4 +43,12 @@
 		WHERE event_no = #{eventNo}
 	</update>
 	
+	<select id="getEvent" resultMap="eventMap" parameterType="eventVO">
+		SELECT event_no, event_title, 
+			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
+			date_format(end_date, '%Y년 %m월 %d일') as end_date
+		FROM event
+		WHERE event_no = #{eventNo}
+	</select>
+	
 </mapper>
