@@ -302,6 +302,7 @@ CREATE TABLE `lucky_box` (
 	`event_no`	int	NOT NULL,
 	`goods`	VARCHAR(50)	NULL,
 	`amount`	int	NULL,
+	`amount_remainder`	int	NULL,
     PRIMARY KEY (`goods_key`, `event_no`)
 );
 
@@ -309,7 +310,7 @@ CREATE TABLE `lucky_user` (
 	`no`	int	NOT NULL AUTO_INCREMENT,
 	`event_no`	int	NOT NULL,
 	`id`	varchar(45)	NOT NULL,
-	`lucky_box_key`	varchar(25)	NOT NULL,
+	`lucky_box_key`	int	NOT NULL,
 	`receive_status`	varchar(45)	NOT NULL	DEFAULT "1",
 	`receive_date`	TIMESTAMP	NULL,
     PRIMARY KEY (`no`, `event_no`, `id`)
@@ -335,8 +336,6 @@ ALTER TABLE `lucky_user` ADD CONSTRAINT `FK_member_TO_lucky_user_1` FOREIGN KEY 
 REFERENCES `member` (
 	`id`
 );
-
-
 
 
 

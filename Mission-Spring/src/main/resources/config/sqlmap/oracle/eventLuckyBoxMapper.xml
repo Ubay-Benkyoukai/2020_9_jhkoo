@@ -7,28 +7,35 @@
 	<resultMap type="luckyBoxVO" id="luckyBoxMap">
 		<result column="goods_key" property="goodsKey" />
 		<result column="event_no" property="eventNo" />
+		<result column="amount_remainder" property="amountRemainder" />
 	</resultMap>
 
 	<insert id="insertLuckyBox">
-		INSERT INTO lucky_box(goods_key, event_no, goods, amount)
-		VALUES(#{goodsKey}, #{eventNo}, #{goods}, #{amount})
+		INSERT INTO lucky_box(goods_key, event_no, goods, amount, amount_remainder)
+		VALUES(#{goodsKey}, #{eventNo}, #{goods}, #{amount}, #{amount})
 	</insert>
 
 	<select id="getLuckyBox" resultMap="luckyBoxMap" parameterType="luckyBoxVO">
-		SELECT goods_key, event_no, goods, amount
+		SELECT goods_key, event_no, goods, amount, amount_remainder
 		FROM lucky_box
 		WHERE event_no = #{eventNo}
 	</select>
 
-	<select id="getMaxGoodsKey" resultType="int" parameterType="int">
-		SELECT MAX(goods_key)
+	<select id="getGoodsKey" resultType="Integer" parameterType="int">
+		SELECT goods_key
 		FROM lucky_box
-		WHERE event_no = #{eventNo} AND amount > 0
+		WHERE event_no = #{eventNo} AND amount_remainder > 0
 	</select>
 	
-	<update id="updateluckyBox" parameterType="luckyBoxVO">
+	<update id="updateLuckyBox" parameterType="luckyBoxVO">
 		UPDATE lucky_box
-		SET amount = amount - 1
+		SET amount_remainder = amount_remainder - 1
 		WHERE event_no = #{eventNo} AND goods_key = #{goodsKey}
 	</update>
+	
+	<select id="getGoods" resultType="String" parameterType="luckyBoxVO">
+		SELECT goods
+		FROM lucky_box
+		WHERE event_no = #{eventNo} AND goods_key = #{goodsKey}
+	</select>
 </mapper>

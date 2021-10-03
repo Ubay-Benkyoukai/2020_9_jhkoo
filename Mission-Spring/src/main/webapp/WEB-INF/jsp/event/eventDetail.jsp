@@ -22,22 +22,21 @@
 		
 		// lucky_box 갯수amount 하나 감소
 		// lucky_user db에 추첨 히스토리 저장
+
 	}
-	
-	
 
 
 </script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/include/header.jsp" />
-<input type="hidden" value=${raffle } id="raffleNum">
 <br>
 <br>
 
 <div class="section-title text-center">
 <h3></h3>
 <h4>${getEvent.getRegDate() } ~ ${getEvent.getEndDate() }</h4>
+<h5>&nbsp;</h5>
 <h3>${getEvent.getEventTitle() }</h3>
 <br>
 

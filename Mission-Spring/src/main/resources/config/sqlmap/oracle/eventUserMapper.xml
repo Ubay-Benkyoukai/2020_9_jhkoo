@@ -12,11 +12,18 @@
 	</resultMap>
 	
 	<select id="eventUserList" resultMap="eventUserMap" parameterType="eventUserVO">
-		SELECT no, event_no, id, lucky_box_key, receive_status,
-			date_format(receive_date, '%Y년 %m월 %d일') as receive_date
+		SELECT no, event_no, id, lucky_box_key, receive_status, receive_date
 		FROM lucky_user
 	</select>
 	
-	
+	<insert id="insertLuckyUser" parameterType="eventUserVO">
+		INSERT INTO lucky_user(event_no, id, lucky_box_key, receive_date)
+		VALUES(#{eventNo}, #{id}, #{luckyBoxKey}, NOW())
+	</insert>
 
+	<select id="checkUserDid" resultType="int" parameterType="eventUserVO">
+		SELECT 1
+		FROM lucky_user
+		WHERE event_no = #{eventNo} AND id = #{id}
+	</select>
 </mapper>

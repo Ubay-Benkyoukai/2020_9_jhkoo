@@ -5,7 +5,7 @@ public class EventUserVO {
 	private int no;
 	private int eventNo;
 	private String id;
-	private String luckyBoxKey;
+	private int luckyBoxKey;
 	private String receiveStatus;
 	private String receiveDate;
 	
@@ -28,10 +28,10 @@ public class EventUserVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getLuckyBoxKey() {
+	public int getLuckyBoxKey() {
 		return luckyBoxKey;
 	}
-	public void setLuckyBoxKey(String luckyBoxKey) {
+	public void setLuckyBoxKey(int luckyBoxKey) {
 		this.luckyBoxKey = luckyBoxKey;
 	}
 	public String getReceiptStatus() {

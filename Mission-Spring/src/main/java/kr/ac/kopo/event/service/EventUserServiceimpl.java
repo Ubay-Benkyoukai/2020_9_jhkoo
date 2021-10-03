@@ -19,4 +19,13 @@ public class EventUserServiceimpl implements EventUserService {
 		return eventUserDAO.eventUserList();
 	}
 	
+	@Override
+	public void insertLuckyUser(EventUserVO eventUser) {
+		eventUserDAO.insertLuckyUser(eventUser);
+	}
+	
+	@Override
+	public int checkUserDid(EventUserVO eventUser) {
+		return eventUserDAO.checkUserDid(eventUser);
+	}
 }

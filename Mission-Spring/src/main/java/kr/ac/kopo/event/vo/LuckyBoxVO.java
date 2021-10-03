@@ -8,6 +8,7 @@ public class LuckyBoxVO {
 	private int eventNo;
 	private String goods;
 	private int amount;
+	private int amountRemainder;
 	
 	private List<LuckyBoxVO> boxList;
 	
@@ -18,7 +19,6 @@ public class LuckyBoxVO {
 		this.boxList = boxList;
 	}
 	///////////////////////////////////////////////////////
-	
 	public int getGoodsKey() {
 		return goodsKey;
 	}
@@ -43,11 +43,18 @@ public class LuckyBoxVO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
+	public int getAmountRemainder() {
+		return amountRemainder;
+	}
+	public void setAmountRemainder(int amountRemainder) {
+		this.amountRemainder = amountRemainder;
+	}
 	@Override
 	public String toString() {
 		return "LuckyBoxVO [goodsKey=" + goodsKey + ", eventNo=" + eventNo + ", goods=" + goods + ", amount=" + amount
-				+ "]";
+				+ ", amountRemainder=" + amountRemainder + "]";
 	}
+	
+	
 	
 }

@@ -86,6 +86,7 @@
 	<th>景品番号</th>
 	<th>景品名（goods）</th>
 	<th>数</th>
+	<th>残り</th>
 </tr>
 </thead>
 <tbody id="tbShow">
@@ -95,6 +96,7 @@
 	<td>${ box.getGoodsKey() }</td>
 	<td>${ box.getGoods() }</td>
 	<td>${ box.getAmount() }</td>
+	<td>${ box.getAmountRemainder() }</td>
 </tr>
 <input type="hidden" value="${status.count + 1}" id="goods" />
 </c:forEach>

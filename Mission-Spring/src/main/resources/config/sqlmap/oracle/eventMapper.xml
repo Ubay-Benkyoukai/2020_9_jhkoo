@@ -13,9 +13,7 @@
 
 	<select id="pastEventList" resultMap="eventMap" parameterType="eventVO">
 		<![CDATA[
-		SELECT event_no, event_title, 
-			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
-			date_format(end_date, '%Y년 %m월 %d일') as end_date
+		SELECT event_no, event_title, reg_date, end_date
 		FROM event
 		WHERE end_date < CURDATE()
 		]]>
@@ -23,9 +21,7 @@
 	
 	<select id="currentEventList" resultMap="eventMap" parameterType="eventVO">
 		<![CDATA[
-		SELECT event_no, event_title, 
-			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
-			date_format(end_date, '%Y년 %m월 %d일') as end_date
+		SELECT event_no, event_title, reg_date, end_date
 		FROM event
 		WHERE end_date >= CURDATE()
 		]]>
@@ -44,9 +40,7 @@
 	</update>
 	
 	<select id="getEvent" resultMap="eventMap" parameterType="eventVO">
-		SELECT event_no, event_title, 
-			date_format(reg_date, '%Y년 %m월 %d일') as reg_date,
-			date_format(end_date, '%Y년 %m월 %d일') as end_date
+		SELECT event_no, event_title, reg_date, end_date
 		FROM event
 		WHERE event_no = #{eventNo}
 	</select>

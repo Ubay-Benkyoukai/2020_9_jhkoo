@@ -26,19 +26,25 @@ public class LuckyBoxDAOimpl implements LuckyBoxDAO {
 	}
 	
 	@Override
-	public int getMaxGoodsKey(int eventNo) {
-		int goodsKey;
+	public List<Integer> getGoodsKey(int eventNo) {
+		List<Integer> goodsKey;
 		try {
-			goodsKey = sqlSession.selectOne("event.dao.LuckyBoxDAO.getMaxGoodsKey", eventNo);
+			goodsKey = sqlSession.selectList("event.dao.LuckyBoxDAO.getGoodsKey", eventNo);
 		}catch (NullPointerException e) {
-			goodsKey = 0;
+			goodsKey = null;
+			System.out.println("NullPointerEx");
 		}
 		return goodsKey;
 	}
 	
 	@Override
-	public void updateluckyBox(LuckyBoxVO luckyBoxVO) {
-		sqlSession.update("event.dao.LuckyBoxDAO.updateluckyBox", luckyBoxVO);
+	public void updateLuckyBox(LuckyBoxVO luckyBoxVO) {
+		sqlSession.update("event.dao.LuckyBoxDAO.updateLuckyBox", luckyBoxVO);
 	}
 	
+	@Override
+	public String getGoods(LuckyBoxVO luckyBoxVO) {
+		String getGoods = sqlSession.selectOne("event.dao.LuckyBoxDAO.getGoods", luckyBoxVO);
+		return getGoods;
+	}
 }
