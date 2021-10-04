@@ -55,6 +55,12 @@
 		location.href = "${ pageContext.request.contextPath }/challengeChoose";
 	}
 	
+	/* Card */
+	function goCardList(){
+		location.href = "${ pageContext.request.contextPath }/cardList";
+	}
+	
+	
 	
 	/* 잦은 지출 상세 내역 頻繁な支出詳細の内訳 */
 	$(document).ready(function(){
@@ -303,6 +309,46 @@
                 </div>
             </div>
 
+           
+        </div>
+    </div>
+</section>
+<!---------------------------카드 등록 Card-------------------------------------------------------------------------------------->
+<section class="service-section bg-gray section" style="height:550px">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3> Card
+            </h3>
+        </div>
+  
+        
+        <div class="row items-container clearfix">
+        
+        	<div class="item">
+                <div class="inner-box">
+                    <div class="image-content text-center">
+                     	<img src="${pageContext.request.contextPath }/resources/assets/images/card0.png" class="card-img-top" alt="..." width="275" height="160">
+  
+                    	<h6>毎日Cashback! <br>「HANA-zero」カード <br><br></h6>
+                        <input type="button" value="見に行く" class="btn-style-one" onclick="goCardList()">
+                    
+                    </div>
+                </div>
+            </div>
+            
+            
+        	<div class="item">
+                <div class="inner-box">
+                	<div class="image-content text-center">
+                    	<img src="${pageContext.request.contextPath }/resources/assets/images/card1.png" class="card-img-top" alt="..." width="275" height="160">
+                    
+                        <h6>決済毎に2%積立! <br>「HANA-one」カード <br><br></h6>
+                        <input type="button" value="見に行く" class="btn-style-one" onclick="goCardList()">
+                    
+                    </div>
+                </div>
+            </div>
+			
            
         </div>
     </div>
