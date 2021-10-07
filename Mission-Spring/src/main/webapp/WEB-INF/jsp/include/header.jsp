@@ -62,7 +62,9 @@
                         	  <a href = "${pageContext.request.contextPath }/eda">分析</a> <!-- 분석 -->
                         </li>
                         <li>
-                        	  <a href = "${pageContext.request.contextPath }/event">イベント</a> <!-- 분석 -->
+                        	  <!-- <a href = "${pageContext.request.contextPath }/event">イベント</a> link for user header-->
+                        	  <!-- bottom link : admin + user 機能全体 -->
+                        	  <a href = "${pageContext.request.contextPath }/eventTemp">イベント</a> <!-- event -->
                         </li>
                    
 						<%-- 

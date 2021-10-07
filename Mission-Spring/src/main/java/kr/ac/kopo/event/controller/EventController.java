@@ -2,7 +2,6 @@ package kr.ac.kopo.event.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.ac.kopo.account.service.DepositAccountService;
+import kr.ac.kopo.account.vo.DepositAccountVO;
 import kr.ac.kopo.event.service.EventService;
 import kr.ac.kopo.event.service.EventUserService;
 import kr.ac.kopo.event.service.LuckyBoxService;
@@ -23,6 +24,8 @@ import kr.ac.kopo.event.vo.EventUserVO;
 import kr.ac.kopo.event.vo.EventVO;
 import kr.ac.kopo.event.vo.LuckyBoxVO;
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.transfer.service.TransferService;
+import kr.ac.kopo.transfer.vo.TransferVO;
 
 @Controller
 public class EventController {
@@ -33,6 +36,10 @@ public class EventController {
 	private EventUserService eventUserService;
 	@Autowired
 	private LuckyBoxService luckyBoxService;
+	@Autowired
+	private TransferService transferService;
+	@Autowired
+	private DepositAccountService depositAccountService;
 	
 	@RequestMapping("/eventMap")
 	public ModelAndView eventMap(HttpSession session) throws Exception {
@@ -71,45 +78,151 @@ public class EventController {
 
 		return "redirect:/eventMap";
 	}
+	
+	@PostMapping("/modifyEvent")
+	public ModelAndView modifyEvent(@Valid EventVO eventVO, BindingResult result, HttpSession session) {
+		
+		int eventNo = eventVO.getEventNo();
+		ModelAndView mav = new ModelAndView("redirect:event/contents/" + eventNo);
+		if(result.hasErrors()) {
+			System.out.println("Event Modify Error...");
+			return mav;
+		}
+		
+		eventService.updateEvent(eventVO);
+		return mav;
+	}
 
-	@GetMapping("/createGoods/{eventNo}")
-	public ModelAndView goInsertGoods(@PathVariable("eventNo") int eventNo, HttpSession session) {
-		ModelAndView mav = new ModelAndView("event/createGoods");
+	// 기존
+	@PostMapping("/insertGoods")
+	public ModelAndView insertGoods(LuckyBoxVO luckyBoxVO, BindingResult result, HttpSession session) {
+		int eventNo = luckyBoxVO.getBoxList().get(0).getEventNo();
+		//System.out.println(eventNo);
 		
-		LuckyBoxVO luckyBoxVO = new LuckyBoxVO();
-		luckyBoxVO.setEventNo(eventNo);
+		if(result.hasErrors()) {
+			System.out.println("Goods Create Error...");
+			ModelAndView mav = new ModelAndView("redirect:/createEvent");
+			return mav;
+		}
+		ModelAndView mav = new ModelAndView("redirect:/event/contents/" + eventNo);
+		//System.out.println(luckyBoxVO.getBoxList().get(0).toString());
+		//System.out.println(luckyBoxVO.getBoxList());
+		luckyBoxService.insertLuckyBox(luckyBoxVO);
 		
-		// eventNo에 맞는 luckyBox가 있는지 확인 후 반환해서 table로 보여주도록 한다.
-		List<LuckyBoxVO> getLuckyBox = luckyBoxService.getLuckyBox(eventNo);
-		mav.addObject("getLuckyBox", getLuckyBox);
-		mav.addObject("luckyBoxVO", luckyBoxVO);
+		return mav;
+	}
+
+
+	
+//	@PostMapping("/updateGoods")
+//	public ModelAndView modifyGoods(LuckyBoxVO luckyBoxVO, BindingResult result, HttpSession session) {
+//		int eventNo = luckyBoxVO.getEventNo();
+//		
+//		if(result.hasErrors()) {
+//			System.out.println("Goods Modify Error...");
+//			ModelAndView mav = new ModelAndView("redirect:/createEvent");
+//			return mav;
+//		}
+//		ModelAndView mav = new ModelAndView("redirect:event/contents/" + eventNo);
+//		//System.out.println(luckyBoxVO.getBoxList().get(0).toString());
+//		System.out.println(luckyBoxVO.getBoxList());
+//		luckyBoxService.insertLuckyBox(luckyBoxVO);
+//		
+//		return mav;
+//	}
+	
+	@PostMapping("/updateGoods")
+	public ModelAndView modifyGoods(LuckyBoxVO luckyBoxVO, BindingResult result, HttpSession session) {
+		int eventNo = luckyBoxVO.getBoxList().get(0).getEventNo();
+		
+		if(result.hasErrors()) {
+			System.out.println("Goods Modify Error...");
+			ModelAndView mav = new ModelAndView("redirect:/createEvent");
+			return mav;
+		}
+		ModelAndView mav = new ModelAndView("redirect:/event/contents/" + eventNo);
+		luckyBoxService.updateGoods(luckyBoxVO);
+		
+		return mav;
+	}
+	
+	@PostMapping("/deleteGoods/{num}")
+	public ModelAndView deleteGoods(@PathVariable("num") int num, LuckyBoxVO luckyBoxVO, BindingResult result, HttpSession session) {
+		if(result.hasErrors()) {
+			System.out.println("Goods Delete Error...");
+			ModelAndView mav = new ModelAndView("redirect:/createEvent");
+			return mav;
+		}
+		
+		int eventNo = luckyBoxVO.getBoxList().get(num).getEventNo();
+		int goodsKey = luckyBoxVO.getBoxList().get(num).getGoodsKey();
+		
+		LuckyBoxVO delGoods = new LuckyBoxVO();
+		delGoods.setEventNo(eventNo);
+		delGoods.setGoodsKey(goodsKey);
+		
+		ModelAndView mav = new ModelAndView("redirect:/event/contents/" + eventNo);
+		
+		luckyBoxService.deleteLuckyBox(delGoods);
 
 		return mav;
 	}
 	
+	
 	@ResponseBody
-	@PostMapping("/createGoods")
-	public String insertGoods(LuckyBoxVO luckyBoxVO, BindingResult result, HttpSession session) {
-		if(result.hasErrors()) {
-			System.out.println("Event Create Error...");
-			return "redirect:/createEvent";
-		}
+	@RequestMapping("/event/contents/{eventNo}")
+	public ModelAndView eventContents(@PathVariable("eventNo") int eventNo, HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView("event/modifyEventNGoods");
 		
-		//System.out.println(luckyBoxVO.getBoxList().get(0).toString());
-		System.out.println(luckyBoxVO.getBoxList());
-		luckyBoxService.insertLuckyBox(luckyBoxVO);
-
-		return "Success";
+		EventVO getEvent = eventService.getEvent(eventNo);
+		if(getEvent == null) {
+			System.out.println("Event is null");
+			String msg = "newEvent";
+			mav.addObject("msg", msg);
+		}
+		String reg = getEvent.getRegDate().substring(0, 16);
+		getEvent.setRegDate(reg.replace(" ", "T"));
+		String end = getEvent.getEndDate().substring(0, 16);
+		getEvent.setEndDate(end.replace(" ", "T"));
+		List<LuckyBoxVO> getLuckyBox = luckyBoxService.getLuckyBox(eventNo);
+//		update를 동시에 하려고 했으나 변경함. 따라서 주석으로 남김.
+//		if( getLuckyBox.isEmpty() ) {
+//			System.out.println("LuckyBox is null");
+//			String msg2 = "newLuckyBox";
+//			mav.addObject("msg2", msg2);
+//		}
+		mav.addObject("getEvent", getEvent);
+		mav.addObject("getLuckyBox", getLuckyBox);
+		
+		LuckyBoxVO luckyBoxVO = new LuckyBoxVO();
+		luckyBoxVO.setEventNo(eventNo);
+		mav.addObject("luckyBoxVO", luckyBoxVO);
+		
+		EventVO eventVO = new EventVO();
+		mav.addObject("eventVO", eventVO);
+		
+		return mav;
 	}
 	
+	// User Page
+	@RequestMapping("/eventTemp")
+	public ModelAndView eventTemporary(HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("event/temporaryEventMain");
+		
+		return mav;
+	}
+	
+	
+	// User Page
 	@RequestMapping("/event")
 	public ModelAndView event(HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView("event/eventListUser");
 		
-		List<EventVO> currentEventList = eventService.currentEventList();
+		List<EventVO> userEventList = eventService.userEventList();
 		
-		mav.addObject("currentEventList", currentEventList);
+		mav.addObject("userEventList", userEventList);
 		
 		return mav;
 	}
@@ -120,6 +233,10 @@ public class EventController {
 
 		EventVO getEvent = eventService.getEvent(eventNo);
 		List<LuckyBoxVO> getLuckyBox = luckyBoxService.getLuckyBox(eventNo);
+		if( getLuckyBox.isEmpty() ) {
+			String msg = "すみません。このイベントはまだ準備中です。";
+			mav.addObject("msg", msg);
+		}
 		mav.addObject("getEvent", getEvent);
 		mav.addObject("getLuckyBox", getLuckyBox);
 
@@ -132,6 +249,22 @@ public class EventController {
 
 		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
 		String id = loginVO.getId();
+		// 주 거래계좌 (메인계좌) 선택하는 기능이 없으므로 제일 처음에 만든 계좌를 선택한다.
+		List<DepositAccountVO> now = depositAccountService.selectDepositAccountById(id);
+		String toAccountNum;
+		if( now.isEmpty() ) {
+			toAccountNum = null;
+		}else {
+			toAccountNum = now.get(0).getAccountNumber();
+		}
+		System.out.println("AccountNumber is : " + toAccountNum);
+		if( toAccountNum == null ) {
+			// 계좌생성부터 해주세요!
+			String msg = "<script>alert('本銀行の口座を生成してから使用可能な機能です。\n口座生成ページに移ります。');" +
+					 "location.href='/spring-mvc/product'"+ "</script>";
+			return msg;
+		}
+		String eventTitle = eventService.getEvent(eventNo).getEventTitle();
 		
 		// 이미 이벤트에 참가했는지 여부를 판단한다.
 		EventUserVO checking = new EventUserVO();
@@ -184,9 +317,26 @@ public class EventController {
 		lucky.setEventNo(eventNo);
 		lucky.setGoodsKey(theKey);
 		String name = luckyBoxService.getGoods(lucky);
-		System.out.println("Goods name is : " + name);
-		String msg = "<script>alert('" + name + "を引きました。おめでとうございます！');" +
-				 "location.href='/spring-mvc/event/" + eventNo + "'" + "</script>";
+		String msg;
+		if(name.contains("￥")) {
+			msg = "<script>alert('" + name + "を引きました。おめでとうございます！');" +
+					 "location.href='/spring-mvc/event/" + eventNo + "'" + "</script>";
+			// 실제 user 계좌에 admin 계좌로부터 출금
+			// admin, user 계좌의 내역에 남기기
+			
+			TransferVO transferVO = new TransferVO();
+			transferVO.setAccountNumber("0005-031-00011"); // admin accountNumber : must be change (local admin)
+			transferVO.setToAmount(Integer.parseInt(name.replace("￥", "")));
+			transferVO.setToType("2");
+			transferVO.setToAccountNumber(toAccountNum); // login accountNumber
+			transferVO.setMyName(eventTitle + "景品");
+			transferVO.setToName(id);
+			System.out.println(transferVO.toString());
+			transferService.transfer(transferVO);
+		}else {
+			msg = "<script>alert('" + name + "を引きました。おめでとうございます！\n個人情報確認ページに移ります。');" +
+					 "location.href='/spring-mvc/event/user'" + "</script>";
+		}
 		return msg;
 	}
 	

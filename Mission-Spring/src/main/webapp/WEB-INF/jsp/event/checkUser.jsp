@@ -32,9 +32,7 @@
 
 <section class="appoinment-section section">
     <div class="container">
-        <div class="row">
             
-
 	    <div class="col-md-12 col-sm-12 col-xs-12">
         	<div class="contact-area">
 		    <div class="section-title">
@@ -42,28 +40,32 @@
 				<h3>顧客様の会員情報を確認してください。</h3>
 		    </div>
 			</div>
-                
-                
-        <form:form commandName="memberVO" class="default-form contact-form" method="post" onsubmit="return checkForm()">
+		</div>
+
+           
+<div class="section-title text-center">  
+	<form:form commandName="memberVO" class="default-form contact-form" method="post" onsubmit="return checkForm()">
         
-        <div class="row">
-                
-			<div class="col-md-12 col-sm-12 col-xs-12">
+        
+        	<div class="col-md-12 col-sm-12 col-xs-12"> 
+               
                 <div>
                     <form:input type="hidden" path="id" value="${ loginVO.getId() }" />
+                    <form:input type="hidden" path="name" value="${ loginVO.getName() }" />
                     <form:input type="hidden" name="password" path="password" value="${ loginVO.getPassword() }" />
                     <form:input type="hidden" path="ageGroup" value="${ loginVO.getAgeGroup() }" />
                     <form:input type="hidden" path="gender" value="${ loginVO.getGender() }" />
                     <form:input type="hidden" path="propertyStatus" value="${ loginVO.getPropertyStatus() }" />
                     <form:input type="hidden" path="jobKey" value="${ loginVO.getJobKey() }" />
                 </div>
+            
                 
                 <!-- 情報チェック START -->   
 				<div class="container table-wrapper">
 				<h1>&nbsp;</h1>
 				<p>景品の配達のために正確な情報を書いてください。</p> 
 				<hr>           
-					<table class="table table-hover fl-table" style="width:500px">
+					<table class="table table-hover fl-table" style="width:800px; margin: auto;">
 					    <thead>
 					      <tr>
 					        <th width="100">　</th>
@@ -81,18 +83,13 @@
 					    <!-- 2. 名前 -->
 					    <tr>
 					     <td>名前</td>
-					     <td>
-					     <form:input type="text" path="name" placeholder="名前" value="${ loginVO.getName() }" />
-	                     <form:errors path="name"  class="error" />
-					     </td>
+					     <td>${ loginVO.getName() }</td>
 						</tr>
-
-					    
 					    <!-- 3. 電話番号 -->
 					    <tr>
 					     <td>電話番号</td>
 					     <td>
-					     <form:input type="text" path="phone" placeholder="電話番号   ex)010-0000-0000" value="${ loginVO.getPhone() }" />
+					     <form:input type="text" path="phone" placeholder="電話番号   ex)010-0000-0000" value="${ loginVO.getPhone() }" size="40"/>
 	                     <form:errors path="phone"  class="error" />
 	                     </td>
 						</tr>
@@ -100,14 +97,14 @@
 					    <tr>
 					     <td>メール</td>
 					     <td>
-						 <form:input type="email" path="email" placeholder="メール   ex)xxx@domain.com" value="${ loginVO.getEmail() }"/>
+						 <form:input type="email" path="email" placeholder="メール   ex)xxx@domain.com" value="${ loginVO.getEmail() }" size="40"/>
                     	 <form:errors path="email"  class="error" />
 						 </td>
 						</tr>
 					    <!-- 5. 住所 -->
 					    <tr>
 					     <td>住所</td>
-					     <td><form:input type="text" path="address" placeholder="住所   ex)東京都中央区日本橋 " value="${ loginVO.getAddress() }"/></td>
+					     <td><form:input type="text" path="address" placeholder="住所   ex)東京都中央区日本橋 " value="${ loginVO.getAddress() }" size="40"/></td>
 						</tr>
 					
 					    </tbody>
@@ -116,38 +113,19 @@
 				</div>  
 				<!-- 情報チェック END -->
 
-            </div>
+			</div>
             
             <div class="col-md-12 col-sm-12 col-xs-12">         
                 <div class="form-group text-center">
                     <button type="submit" class="btn-style-one">保存する</button>
                 </div>
             </div>
-        </div>
+        
     </form:form>
+</div>
 
-   </div>                        
-  </div>
-
-
-
-            
-        </div>                    
-    </div>
+	</div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <jsp:include page="/WEB-INF/jsp/include/footer.jsp" />
 <jsp:include page="/WEB-INF/jsp/include/scroll.jsp" />

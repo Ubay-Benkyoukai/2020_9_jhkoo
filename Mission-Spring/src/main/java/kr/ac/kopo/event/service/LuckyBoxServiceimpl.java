@@ -46,4 +46,20 @@ public class LuckyBoxServiceimpl implements LuckyBoxService {
 	public String getGoods(LuckyBoxVO luckyBoxVO) {
 		return luckyBoxDAO.getGoods(luckyBoxVO);
 	}
+	
+	@Override
+	public void deleteLuckyBox(LuckyBoxVO luckyBoxVO) {
+		luckyBoxDAO.deleteLuckyBox(luckyBoxVO);
+
+	}
+	
+	@Override
+	public void updateGoods(LuckyBoxVO luckyBoxVO) {
+		List<LuckyBoxVO> boxList = luckyBoxVO.getBoxList();
+		
+		for(int i=0; i < boxList.size(); i++) {
+			luckyBoxDAO.updateGoods(boxList.get(i));
+		}
+	}
+	
 }

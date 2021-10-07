@@ -47,4 +47,15 @@ public class LuckyBoxDAOimpl implements LuckyBoxDAO {
 		String getGoods = sqlSession.selectOne("event.dao.LuckyBoxDAO.getGoods", luckyBoxVO);
 		return getGoods;
 	}
+	
+	@Override
+	public void deleteLuckyBox(LuckyBoxVO luckyBoxVO) {
+		sqlSession.update("event.dao.LuckyBoxDAO.deleteLuckyBox", luckyBoxVO);
+	}
+	@Override
+	public void updateGoods(LuckyBoxVO luckyBoxVO) {
+		sqlSession.update("event.dao.LuckyBoxDAO.updateGoods", luckyBoxVO);
+	}
+	
+	
 }

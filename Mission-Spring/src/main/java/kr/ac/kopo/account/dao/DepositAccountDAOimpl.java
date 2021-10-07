@@ -16,9 +16,13 @@ public class DepositAccountDAOimpl implements DepositAccountDAO {
 	
 	@Override
 	public List<DepositAccountVO> selectById(String id) {
-		
-		List<DepositAccountVO> depositAccountList = sqlSession.selectList("account.dao.DepositAccountDAO.selectById", id);
-		
+		List<DepositAccountVO> depositAccountList;
+		try {
+			depositAccountList = sqlSession.selectList("account.dao.DepositAccountDAO.selectById", id);
+		}catch (NullPointerException e) {
+			depositAccountList = null;
+			System.out.println("NullPointerEx");
+		}
 		return depositAccountList;
 	}
 

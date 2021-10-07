@@ -16,5 +16,9 @@ public interface LuckyBoxDAO {
 	public void updateLuckyBox(LuckyBoxVO luckyBoxVO);
 	// 당첨된 경품명 가져오기
 	public String getGoods(LuckyBoxVO luckyBoxVO);
+	// 경품 삭제
+	public void deleteLuckyBox(LuckyBoxVO luckyBoxVO);
+	// 경품 수정
+	public void updateGoods(LuckyBoxVO luckyBoxVO);
 
 }

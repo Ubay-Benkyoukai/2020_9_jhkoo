@@ -42,6 +42,7 @@
 
 <div class="container table-wrapper">
 	<br>
+	<h4>${ msg }</h4>
 	<table class="table fl-table">
 		<thead>
 			<tr>
@@ -63,8 +64,10 @@
 
 <div class="section-title text-center">
 <input type="button" value="イベントリストに戻る" class="btn-style-one" onclick="goEventList()" style="width: 200px;"/>
-<input type="button" value="くじ引き" class="btn-style-one" onclick="goRandom(${getEvent.getEventNo() })" style="width: 200px;"/>
-<p>くじ引きは一人一回のみ参加できます。</p>
+<c:if test="${ msg ne 'すみません。このイベントはまだ準備中です。' }">
+	<input type="button" value="くじ引き" class="btn-style-one" onclick="goRandom(${getEvent.getEventNo() })" style="width: 200px;"/>
+	<p>くじ引きは一人一回のみ参加できます。</p>
+</c:if>
 </div>
 
 

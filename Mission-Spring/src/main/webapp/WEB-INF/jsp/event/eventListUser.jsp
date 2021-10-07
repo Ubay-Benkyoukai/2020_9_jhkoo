@@ -53,7 +53,7 @@
 <br>
 
 <div class="section-title text-center">
-<h3>進行中イベント</h3>
+<h3>イベントリスト</h3>
 <br>
 <br>
 </div>
@@ -61,7 +61,7 @@
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<c:forEach items="${ currentEventList }" var="current">
+<c:forEach items="${ userEventList }" var="current">
 <c:set var="i" value="${i+1 }"/>
 <input type="hidden" id="numbering">
 	<div class="col-md-6 col-sm-6" style="position: relative;"
@@ -89,49 +89,10 @@
 
 
 <!-- image source -->
-<div>
- <a href="https://kor.pngtree.com/free-backgrounds">무료 배경 사진 Pngtree.com</a>
+<div class="section-title text-center">
+ <p><a href="https://kor.pngtree.com/free-backgrounds">Images from : 무료 배경 사진 Pngtree.com</a></p>
 </div>
 
-
-<!-- currentEventList : 現在のイベントリスト -->
-<!-- 
-<div class="container table-wrapper">
-	<h2>&nbsp;</h2>
-	<p>
-	現在のイベントリスト
-	<input type="button" value="新登録" class="btn-style-one" onclick="goInsertEvent()" style="float: right;">
-	</p>
-	<hr>
-	
-	<table class="table table-hover fl-table">
-		<thead>
-			<tr>
-				<th>EventNo.</th>
-				<th>タイトル</th>
-				<th>登録日</th>
-				<th>締日</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${ currentEventList }" var="current">
-			<tr>
-				<td>${ current.getEventNo() }</td>
-				<td>
-				 <a href="javascript:goInsertGoods('${ current.getEventNo() }')">
-				 ${ current.getEventTitle() }
-				 </a>
-				</td>
-				<td>${ current.getRegDate() }</td>
-				<td>${ current.getEndDate() }</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
-</div>
- -->
- 
  
 <br>
 <br>

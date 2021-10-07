@@ -14,8 +14,8 @@
 		location.href = "${ pageContext.request.contextPath }/createEvent";
 	}
 	
-	function goInsertGoods(param){
-		location.href = "${ pageContext.request.contextPath }/createGoods/" + param;
+	function goModifyEvent(param){
+		location.href = "${ pageContext.request.contextPath }/event/contents/" + param;
 	}
 
 </script>
@@ -55,10 +55,9 @@
 			<tr>
 				<td>${ current.getEventNo() }</td>
 				<td>
-				 <a href="javascript:goInsertGoods('${ current.getEventNo() }')">
+				 <a href="javascript:goModifyEvent('${ current.getEventNo() }')">
 				 ${ current.getEventTitle() }
-				 </a>
-				</td>
+				 </a></td>
 				<td>${ current.getRegDate() }</td>
 				<td>${ current.getEndDate() }</td>
 			</tr>
@@ -87,7 +86,10 @@
 			<c:forEach items="${ pastEventList }" var="past">
 			<tr>
 				<td>${ past.getEventNo() }</td>
-				<td>${ past.getEventTitle() }</td>
+				<td>
+				<a href="javascript:goModifyEvent('${ past.getEventNo() }')">
+				${ past.getEventTitle() }
+				</a></td>
 				<td>${ past.getRegDate() }</td>
 				<td>${ past.getEndDate() }</td>
 			</tr>

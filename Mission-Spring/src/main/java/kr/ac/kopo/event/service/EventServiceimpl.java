@@ -24,6 +24,11 @@ public class EventServiceimpl implements EventService {
 	public List<EventVO> currentEventList(){
 		return eventDAO.currentEventList();
 	}
+	
+	@Override
+	public List<EventVO> userEventList(){
+		return eventDAO.userEventList();
+	}
 
 	@Override
 	public void insertNewEvent(EventVO event) {

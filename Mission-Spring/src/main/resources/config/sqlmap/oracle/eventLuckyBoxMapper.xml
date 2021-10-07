@@ -38,4 +38,21 @@
 		FROM lucky_box
 		WHERE event_no = #{eventNo} AND goods_key = #{goodsKey}
 	</select>
+
+	<delete id="deleteLuckyBox" parameterType="luckyBoxVO">
+		DELETE FROM lucky_box
+		WHERE event_no = #{eventNo} AND goods_key = #{goodsKey}
+	</delete>
+	
+	<update id="updateGoods" parameterType="luckyBoxVO">
+		UPDATE lucky_box a,
+			   (SELECT amount, amount_remainder
+			    FROM lucky_box
+			    WHERE event_no = #{eventNo} AND goods_key = #{goodsKey}) b 
+		SET a.goods = #{goods},
+			a.amount = #{amount},
+			a.amount_remainder = #{amount} - b.amount + b.amount_remainder
+		WHERE a.event_no = #{eventNo} AND a.goods_key = #{goodsKey}
+	</update>
+	
 </mapper>

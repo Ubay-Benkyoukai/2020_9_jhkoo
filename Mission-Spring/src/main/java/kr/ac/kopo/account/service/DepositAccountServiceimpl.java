@@ -25,7 +25,7 @@ public class DepositAccountServiceimpl implements DepositAccountService {
 	public List<DepositAccountVO> selectDepositAccountById(String id) {
 		
 		List<DepositAccountVO> depositAccountList = depositAccountDAO.selectById(id);
-		
+
 		return depositAccountList;
 	}
 

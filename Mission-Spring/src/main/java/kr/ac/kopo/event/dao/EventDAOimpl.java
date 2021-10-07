@@ -29,6 +29,12 @@ public class EventDAOimpl implements EventDAO {
 	}
 	
 	@Override
+	public List<EventVO> userEventList(){
+		List<EventVO> userEventList = sqlSession.selectList("event.dao.EventDAO.userEventList");
+		return userEventList;
+	}
+	
+	@Override
 	public void insertNewEvent(EventVO event) {
 		System.out.println(event);
 		sqlSession.insert("event.dao.EventDAO.insertNewEvent", event);
