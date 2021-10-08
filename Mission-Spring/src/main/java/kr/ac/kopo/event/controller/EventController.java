@@ -304,19 +304,24 @@ public class EventController {
 			}
 		}
 		
+		// 당첨된 경품명 불러오기
+		LuckyBoxVO lucky = new LuckyBoxVO();
+		lucky.setEventNo(eventNo);
+		lucky.setGoodsKey(theKey);
+		String name = luckyBoxService.getGoods(lucky);
+		
 		// 경품 추첨 내역 DB에 insert 하기
 		EventUserVO receipt = new EventUserVO();
 		receipt.setEventNo(eventNo);
 		receipt.setId(id);
 		receipt.setLuckyBoxKey(theKey);
+		if(!name.contains("￥")) {
+			receipt.setReceiptStatus("2");
+		}
 		eventUserService.insertLuckyUser(receipt);
 		
 		
-		// 당첨된 경품명 불러와서 alert하기
-		LuckyBoxVO lucky = new LuckyBoxVO();
-		lucky.setEventNo(eventNo);
-		lucky.setGoodsKey(theKey);
-		String name = luckyBoxService.getGoods(lucky);
+		// 당첨된 경품명 불러와서(위에서) alert하기
 		String msg;
 		if(name.contains("￥")) {
 			msg = "<script>alert('" + name + "を引きました。おめでとうございます！');" +

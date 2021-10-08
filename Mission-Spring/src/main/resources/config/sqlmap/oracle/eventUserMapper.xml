@@ -17,8 +17,8 @@
 	</select>
 	
 	<insert id="insertLuckyUser" parameterType="eventUserVO">
-		INSERT INTO lucky_user(event_no, id, lucky_box_key, receive_date)
-		VALUES(#{eventNo}, #{id}, #{luckyBoxKey}, NOW())
+		INSERT INTO lucky_user(event_no, id, lucky_box_key, receive_status, receive_date)
+		VALUES(#{eventNo}, #{id}, #{luckyBoxKey}, #{receiveStatus}, NOW())
 	</insert>
 
 	<select id="checkUserDid" resultType="int" parameterType="eventUserVO">

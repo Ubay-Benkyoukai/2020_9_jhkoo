@@ -128,7 +128,14 @@
 				아마 DB 통째로 바뀔 것 같음-->
 				${ list.getLuckyBoxKey() }
 				</td>
-				<td>${ list.getReceiptStatus() }</td>
+				<td>
+				<c:if test="${ list.getReceiptStatus() eq '1' }">
+				完了
+				</c:if>
+				<c:if test="${ list.getReceiptStatus() ne '1' }">
+				<b><span style="color:red">未完了</span></b>
+				</c:if>
+				</td>
 				<td>${ list.getReceiptDate() }</td>
 			</tr>
 			</c:forEach>
