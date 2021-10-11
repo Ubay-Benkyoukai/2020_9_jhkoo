@@ -4,12 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board.dao.BoardDAO">
 
-  	<select id="selectAll" resultType="boardVO">
-  		SELECT no, title, writer, date_format(reg_date, '%Y-%m-%d') as regDate
-  			FROM a_board
-  			ORDER BY no DESC
-  	</select>
-  	
+<select id="selectAll" resultType="boardVO">
+          SELECT  (@ROWNUM:=@ROWNUM+1) AS rno, no, title, writer, date_format(reg_date, '%Y-%m-%d') as regDate
+              FROM(SELECT @ROWNUM:=0) AS rno, a_board
+              WHERE (@ROWNUM:=0)=0
+              ORDER BY rno DESC
+      </select>
+
+	<!-- 게시물 목록 페이징 (추가코드)-->
+	<select id="count" resultType="int">
+	 SELECT COUNT(no) 
+	 FROM a_board
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 kuzuro
+	<select id="listPage" resultType="boardVO">
+ 	SELECT
+  	no, title, writer, date_format(reg_date, '%Y-%m-%d') as regDate
+ 	FROM a_board
+ 	ORDER BY no DESC
+  	LIMIT #{displayPost}, #{postNum}
+	</select>-->
+	
   	<!-- '_'는 자동으로 객체 반환해주지 못함. 그래서 이 작업 필요. -->
   	<resultMap type="boardVO" id="boardMap">
   		<result column="view_cnt" property="viewCnt" />
@@ -23,6 +39,8 @@
   		WHERE no = #{no}
   	</select>
   	
+
+  	<!-- 게시글 추가 -->
   	<insert id="insert" parameterType="boardVO">
   		INSERT INTO a_board(title, writer, content)
   		VALUES(#{title}, #{writer}, #{content})
@@ -42,6 +60,19 @@
   		 WHERE no = #{no}
   	</update>
   	
+  	<!-- 게시글 수정 -->
+  	<update id = "update" parameterType="boardVO"> 
+  		UPDATE a_board SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE no = #{no}
+  	</update>
+  	
+  	<!-- 게시글 삭제 -->
+  	<delete id = "delete">
+  		DELETE FROM a_board 
+  		WHERE no = #{no}
+  	</delete>
 </mapper>
 
 

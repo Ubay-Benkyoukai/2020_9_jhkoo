@@ -22,26 +22,26 @@
 <body>
 
 <jsp:include page="/WEB-INF/jsp/include/header.jsp" /> 
+<c:set var="num" value="${boardVO.totalCount - ((boardVO.curPage-1) * 10) }"/>
 
 
 	<section>
 		<div align = "center">
 		<hr width="80%">
-		<h2>掲示板リスト</h2>
+		<h2>商品相談/質問掲示板</h2>
 		<hr width="80%">		
 		<table border="1" style="width: 80%">
 			<tr>
 				<th width="7%">番号</th>
-				<th>제목</th>
-				<th width="16%">書き手</th>
+				<th>題目</th>
+				<th width="16%">名前</th>
 				<th width="20%">登録日</th>
 			</tr>
 			
 			<c:forEach items="${ boardList }" var="board" varStatus="loop">
 				<tr <c:if test="${ loop.count mod 2 eq 0 }">class="even"</c:if>>
-					<td>${ board.no }</td>
+					<td>${ board.rno }</td>
 					<td>
-
 						<a href="javascript:doAction(${ board.no })">
 							<c:out value= "${ board.title }" />
 						</a>
@@ -51,6 +51,7 @@
 					<td>${ board.writer }</td>
 					<td>${ board.regDate }</td>
 				</tr>
+				<c:set var="num" value="${num-1 }"></c:set>
 			</c:forEach>
 			
 

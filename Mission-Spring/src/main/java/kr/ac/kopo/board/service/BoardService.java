@@ -3,6 +3,7 @@ package kr.ac.kopo.board.service;
 import java.util.List;
 
 import kr.ac.kopo.board.vo.BoardVO;
+import kr.ac.kopo.util.PagingVO;
 
 public interface BoardService {
 
@@ -16,9 +17,18 @@ public interface BoardService {
 	 */
 	BoardVO selectBoardByNo(int no);
 	
-	
 	/*
 	 *  게시글 입력
 	 */
 	void insertBoard(BoardVO board);
+	/*
+	 *  게시글 수정
+	 */
+	void updateBoard(BoardVO board);
+	
+	/*
+	 *  게시글 삭제
+	 */
+	void deleteBoard(int no);
+
 }

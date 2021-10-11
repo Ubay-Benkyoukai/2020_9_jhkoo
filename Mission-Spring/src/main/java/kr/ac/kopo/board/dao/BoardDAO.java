@@ -12,6 +12,7 @@ public interface BoardDAO {
 	public List<BoardVO> selectAll();	//throws Exception 예외처리 잡아주는게 정석적인 방법
 	
 	
+	
 	/**
 	 *  새 글 등록 서비스
 	 */
@@ -32,5 +33,15 @@ public interface BoardDAO {
 	public void increamentReplyCnt(int no);
 	
 	public void reduceReplyCnt(int no);
+	
+	/**
+	 * 해당 게시물 수정
+	 */
+	public void update(BoardVO board);
+	
+	/**
+	 * 해당 게시물 삭제
+	 */
+	public void delete(int no);
 	
 }

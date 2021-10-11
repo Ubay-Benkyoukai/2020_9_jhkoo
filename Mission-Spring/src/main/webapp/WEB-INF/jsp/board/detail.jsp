@@ -28,7 +28,7 @@
 					str += '<strong>' + this.content + '</strong>';
 					str += '(' + this.writer + ')'
 					str += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + this.regDate + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-					str += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + '<button class="delBtn" id='+ this.no +'> 삭제 </button>'	/* 버튼이 여러개니 class로 해줌. */
+					str += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + '<button class="delBtn" id='+ this.no +'> 削除 </button>'	/* 버튼이 여러개니 class로 해줌. */
 					str += '</div>'
 					
 					$('#replyList').append(str);
@@ -128,6 +128,36 @@
 			
 		})
 	})
+	
+//글 수정
+	function updateContent(){
+		location.href = "${ pageContext.request.contextPath }/board/updateform/${no};"
+	}
+	
+	
+	
+
+
+    /** 게시판 - 삭제  3 */ //값을 넘기는 코드 작성 필요.
+    function deleteContent(){
+ 		
+		if(confirm("削除しますか?") == true){
+			location.href = "${ pageContext.request.contextPath }/board/delete/${no}"
+			console.log('success');
+		}else{
+			console.log('fail');  //여기서 데이터를 받는? 코드가 컨트롤러로 안이어지는..? 그래서 ajax이거 말고 그냥 컨트롤러에서 바로 작동하게 끔 만든게 빨간버튼이였어요
+			return false;
+        }        
+    }
+    
+    //리스트 호출
+ 	function boardlist(){
+    	location.href = "${ pageContext.request.contextPath }/board;"
+   
+    }
+	
+	
+
 </script>
 </head>
 <body>
@@ -143,7 +173,7 @@
 			<table border="1">
 				<tr>
 					<th width="25%">番号</th>
-					<td>${ board.no }</td>
+					<td>${ board.rno }</td>
 				</tr>
 				<tr>
 					<th width="25%">タイトル</th>
@@ -157,33 +187,28 @@
 					<th width="25%">内容</th>
 					<td>${ board.content }</td>
 				</tr>
+				<!-- 조회수
 				<tr>
-					<th width="25%">内容</th>
+					<th width="25%">照会数</th>
 					<td>${ board.viewCnt }</td>
-				</tr>
+				</tr> 
 				<tr>
 					<th width="25%">登録日</th>
 					<td>${ board.regDate }</td>
-				</tr>
-				<tr>
-					<th>添付ファイル</th>
-					<td>
-						<c:forEach items="${ fileList }" var="file">
-							<a href="/Mission-WEB/upload/${ file.fileSaveName }">
-								${ file.fileOriName }
-							</a>
-							(${ file.fileSize } bytes)<br>
-						</c:forEach>
-					</td>
-				</tr>
+				</tr>-->
+			
+				
+				<!--<a href = "${ pageContext.request.contextPath }/board/${board.no}/update" role="button" class="btn btn-outline-info">수정</a>  -->
+				
+
 			</table>
 			<br>
 			<c:if test="${ loginVO.id eq board.writer }">
-				<input type="button" value="修整" onclick="doAction('U')">&nbsp;&nbsp;
-				<input type="button" value="削除" onclick="doAction('D')">&nbsp;&nbsp;
+				
+				<input type="button" value="修整" onclick="updateContent()">&nbsp;&nbsp; <!-- 수정 -->
+				<input type="button" value="削除" onclick="deleteContent();">&nbsp;&nbsp; <!-- 삭제 -->
 			</c:if>
-			<input type="button" value="目録" onclick="doAction('L')">&nbsp;&nbsp;
-			
+			<input type="button" value="目録" onclick="boardlist()">&nbsp;&nbsp;  <!-- 목록 -->
 			<br>
 			<hr>
 			<!-- 댓글 -->

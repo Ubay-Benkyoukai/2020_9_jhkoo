@@ -34,10 +34,11 @@
                 </tr>
                 <tr>
                    <th>書き手 </th>
-                   <td>
-                      <form:input path="writer"/><form:errors path="writer" class="error" />
-                   </td>
+                  <td> 
+                  <form:input path="writer" readonly="true" value="${data.writer}"/><form:errors path="writer" class="error" />
+                  </td>
                 </tr>
+                
                 <tr>
                    <th>内容</th>
                    <td>

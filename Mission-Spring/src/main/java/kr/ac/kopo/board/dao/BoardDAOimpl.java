@@ -21,7 +21,8 @@ public class BoardDAOimpl implements BoardDAO{
 		
 		return boardList;
 	}
-
+	
+	
 	@Override
 	public void insert(BoardVO board) {
 		
@@ -42,9 +43,21 @@ public class BoardDAOimpl implements BoardDAO{
 		sqlSession.update("board.dao.BoardDAO.increamentReplyCnt", no);	
 	}
 
-	@Override
+	@Override 
 	public void reduceReplyCnt(int no) {
 		sqlSession.update("board.dao.BoardDAO.reduceReplyCnt", no);	
+	}
+
+	@Override
+	public void update(BoardVO board) {
+		sqlSession.update("board.dao.BoardDAO.update", board);
+		
+	}
+
+	@Override
+	public void delete(int no) {
+		sqlSession.delete("board.dao.BoardDAO.delete", no);
+		
 	}
 
 	

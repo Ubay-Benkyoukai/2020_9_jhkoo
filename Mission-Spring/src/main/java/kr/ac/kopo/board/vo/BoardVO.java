@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 public class BoardVO {
 
 	private int no;
-	
+	private int rno;
 	@Length(min = 2, max=100, message = "제목은 2글자 이상입력하여야합니다")	//NotEmpty 여기서 걸림 !
 //	@NotEmpty(message="필수항목입니다.")
 	private String title;
@@ -64,6 +64,12 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", viewCnt="
 				+ viewCnt + ", regDate=" + regDate + "]";
+	}
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
 	}
 	
 	

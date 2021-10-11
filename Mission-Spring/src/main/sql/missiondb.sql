@@ -157,6 +157,7 @@ CREATE TABLE `log_type` (
 
 CREATE TABLE `a_board` (
 	`no`	int	NOT NULL AUTO_INCREMENT,
+	`rno` int NOT NULL AUTO_INCREMENT,
 	`title`	varchar(45)	NOT NULL,
 	`writer`	varchar(45)	NOT NULL,
 	`content`	varchar(45)	NOT NULL,
@@ -166,7 +167,12 @@ CREATE TABLE `a_board` (
 	PRIMARY KEY (`no`)
 );
 
+DELETE FROM `a_board`;
 
+SELECT
+  @rownum:=@rownum+1 AS no
+FROM  `a_board`
+WHERE (@rownum:=0)=0;
 
 
 ALTER TABLE `job` ADD CONSTRAINT `PK_JOB` PRIMARY KEY (
