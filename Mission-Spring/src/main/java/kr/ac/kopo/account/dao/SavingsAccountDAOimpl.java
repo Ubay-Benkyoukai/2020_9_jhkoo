@@ -79,8 +79,8 @@ public class SavingsAccountDAOimpl implements SavingsAccountDAO {
 
 	@Override
 	public String getNewAccountNumber() {
-		String newAccountNumbser = sqlSession.selectOne("account.dao.SavingsAccountDAO.getNewAccountNumber");
-		return newAccountNumbser;
+		String newAccountNumber = sqlSession.selectOne("account.dao.SavingsAccountDAO.getNewAccountNumber");
+		return newAccountNumber;
 	}
 
 	@Override

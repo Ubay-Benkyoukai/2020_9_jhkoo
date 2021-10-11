@@ -51,4 +51,6 @@ public interface DepositAccountDAO {
 	 *  계좌 삭제하기
 	 */
 	public void deleteDepositAccount(String accountNumber);
+
+	
 }

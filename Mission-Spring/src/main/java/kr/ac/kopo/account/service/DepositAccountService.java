@@ -37,5 +37,8 @@ public interface DepositAccountService {
 	
 	// 지난 달 선택 카테고리의 총 지출액
 	int lastMonthSumByCategory(ChallengeVO challengeVO);
+
+	// 입출금계좌 정보 가져오기 - 카드결제를 위한 accountNumber가져오기
+	DepositAccountVO getCardInfoForPayment(String accountNumber);
 	
 }

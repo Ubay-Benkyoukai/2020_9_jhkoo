@@ -93,6 +93,12 @@ public class DepositAccountServiceimpl implements DepositAccountService {
 		
 		return lastMonthSumByCategory;
 	}
+
+	@Override
+	public DepositAccountVO getCardInfoForPayment(String accountNumber) {
+		DepositAccountVO cardInfoForPayment = depositAccountDAO.getInfo(accountNumber);
+		return cardInfoForPayment;
+	}
 	
 	
 	

@@ -188,6 +188,82 @@ REFERENCES `dw_account` (
 );
 ----------------------JSY3//-------
 
+----------------------JSY4.1---------
+CREATE TABLE `card` (
+	`card_number`	varchar(45)	NOT NULL,
+	`account_number`	varchar(45)	NOT NULL,
+	`id`	varchar(45)	NOT NULL,
+	`balance`	int	NOT NULL,
+	`card_password`	varchar(45)	NULL,
+	`point`	int	NULL,
+	`bank_card_key`	varchar(45)	NULL
+);
+
+CREATE TABLE `bank_card` (
+	`key`	VARCHAR(255)	NOT NULL,
+	`value`	VARCHAR(255)	NULL,
+	`rate`	VARCHAR(255)	NULL
+);
+
+CREATE TABLE `my_card_log` (
+	`log_pk`	int	NOT NULL,
+	`card_number`	varchar(45)	NOT NULL,
+	`account_number`	varchar(45)	NOT NULL,
+	`log_date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`log_type_key`	varchar(45)	NOT NULL,
+	`to_account_number`	varchar(45)	NOT NULL,
+	`to_name`	varchar(45)	NOT NULL,
+	`amount`	int	NOT NULL
+);
+
+ALTER TABLE `card` ADD CONSTRAINT `PK_CARD` PRIMARY KEY (
+	`card_number`,
+	`account_number`,
+	`id`
+);
+
+ALTER TABLE `bank_card` ADD CONSTRAINT `PK_BANK_CARD` PRIMARY KEY (
+	`key`
+);
+
+ALTER TABLE `my_card_log` ADD CONSTRAINT `PK_MY_CARD_LOG` PRIMARY KEY (
+	`log_pk`,
+	`card_number`,
+	`account_number`
+);
+
+ALTER TABLE `card` ADD CONSTRAINT `FK_dw_account_TO_card_1` FOREIGN KEY (
+	`account_number`
+)
+REFERENCES `dw_account` (
+	`account_number`
+);
+
+ALTER TABLE `my_card_log` ADD CONSTRAINT `FK_card_TO_my_card_log_1` FOREIGN KEY (
+	`card_number`
+)
+REFERENCES `card` (
+	`card_number`
+);
+
+ALTER TABLE `my_card_log` ADD CONSTRAINT `FK_card_TO_my_card_log_2` FOREIGN KEY (
+	`account_number`
+)
+REFERENCES `card` (
+	`account_number`
+);
+
+-- card商品table : bank_card
+INSERT INTO `bank_card`(`key`, `value`, `rate`)
+VALUES
+('1','card0','1.5'),
+('2','card1','2.0');
+
+DROP TABLE `card`;
+DROP TABLE `my_card_log`;
+DROP TABLE `bank_card`;
+----------------------JSY4.1//---------
+
 ALTER TABLE `job` ADD CONSTRAINT `PK_JOB` PRIMARY KEY (
 	`key`
 );

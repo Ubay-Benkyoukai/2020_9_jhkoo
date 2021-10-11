@@ -23,7 +23,7 @@
   <div class="card-body">
     <h4 class="card-title">Card1</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="${ pageContext.request.contextPath }/myCard/cardDetail0" class="btn btn-primary">GoRegister</a>
+    <a href="${ pageContext.request.contextPath }/card0Register" class="btn btn-primary">GoRegister</a>
   </div>
 </div>
 
@@ -34,7 +34,7 @@
   <div class="card-body">
     <h4 class="card-title">Card2</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="${ pageContext.request.contextPath }/myCard/cardDetail1" class="btn btn-primary">GoRegister</a>
+    <a href="${ pageContext.request.contextPath }/card1Register" class="btn btn-primary">GoRegister</a>
   </div>
 </div>
 
