@@ -50,6 +50,9 @@
                         <li>
                               <a href="${pageContext.request.contextPath }/product">商品加入</a>
                         </li>
+                        <li>
+                              <a href="${pageContext.request.contextPath }/cardList">card加入</a>
+                        </li>
                         
                         <li>
                         	  <a href = "${pageContext.request.contextPath }/challengeChoose">挑戦</a> <!-- 도전 -->

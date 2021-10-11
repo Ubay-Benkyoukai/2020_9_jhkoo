@@ -15,7 +15,7 @@
 <section class="team-section section">
     <div class="container">
         <div class="section-title text-center">
-            <h3>自由な入出金の預金商品を選択してください。</h3> <!-- 입출금이 자유로운 예금 상품을 선택해주세요 -->
+            <h3>開設する商品をお選んでください!</h3> <!-- 입출금이 자유로운 예금 상품을 선택해주세요 -->
             <p>自由な入出金の預金商品を選択してください。</p>
         </div>
         <div class="row">

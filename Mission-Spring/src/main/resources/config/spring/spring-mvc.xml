@@ -111,6 +111,13 @@
 	<mvc:view-controller path="/product/savingsExplain2" view-name="accountProduct/savingsExplain2"/>
 	<mvc:view-controller path="/product/savingsExplain3" view-name="accountProduct/savingsExplain3"/>
 	
+	<!-- card register page -->
+	<mvc:view-controller path="/card/cardList" view-name="card/cardList"/>
+	<mvc:view-controller path="/card/cardExplain0" view-name="/card/cardExplain0"/>
+	<mvc:view-controller path="/card/cardExplain1" view-name="/card/cardExplain1"/>
+	<mvc:view-controller path="/card/cardExplain2" view-name="/card/cardExplain2"/>
+
+	
 	<mvc:view-controller path="/friend" view-name="friend/friend"/>
 	
 	
@@ -130,6 +137,7 @@
          <mvc:exclude-mapping path="/board"/> <!-- 게시판 목록은 그냥 보여줄거야 -->
          <mvc:exclude-mapping path="/resources/**"/>  <!-- /resources아래에 있는 모든 폴더도 그냥 보여줄거야 -->
          <mvc:exclude-mapping path="/card"/>
+         <mvc:exclude-mapping path="/cardList"/> <!-- 변경가능성 있음 -->
         
        
          <ref bean="loginInterceptor" />

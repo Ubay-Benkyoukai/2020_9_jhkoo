@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="card.dao.CardDAO">
+
+	<resultMap type="cardDAO" id="cardMap">
+			<result column="card_number" property="cardNumber" />
+			<result column="account_number" property="accountNumber" />
+	  		<result column="card_password" property="cardPassword" />
+	  		<result column="bank_card_key" property="bankCardKey" />	
+	</resultMap>
+	
+	<!-- bring my card List  -->
+	<select id="selectById" resultMap="cardMap" parameterType="cardVO">
+	SELECT card_number, account_number, point
+	FROM card
+	WHERE account_number = #{accountNumber}
+		   
+	</select>
+	
+	<!-- insert new card -->
+	<insert id="insertNewCard" parameterType="cardVO">
+	INSERT INTO card(card_number, account_number, id, balance, card_password, bank_card_key)
+	VALUES((SELECT CONCAT('8201-', LPAD (IFNULL(MAX(SUBSTR( card_number, 12 ) ), 0 ) + 1, 4, 0 ) ) from card c),
+  				 #{accountNumber}, #{id}, #{balance}, #{cardPassword}, #{bankCardKey} )
+	</insert>
+	
+	<!-- delete card -->
+	<delete id="deleteCard" parameterType="String">
+	DELETE FROM card
+	WHERE card_number = #{cardNumber}
+	</delete>
+	
+	<!-- card info -->
+	<select id="getInfoByAccountNumber" resultMap="cardMap" parameterType="String">
+		SELECT c.card_number
+			   c.account_number
+			   c.id
+			   c.balance
+			   c.card_password
+			   c.point
+			   c.value as bank_card_key
+			   b.rate
+		FROM card c LEFT JOIN bank_card b
+				ON c.bank_card_key = b.key
+		
+		WHERE account_number = #{accountNumber}
+
+	</select>
+	
+	
+	
+	
+	
+	</mapper>
