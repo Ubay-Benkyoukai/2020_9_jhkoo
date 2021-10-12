@@ -17,7 +17,7 @@ public class CardDAOimpl implements CardDAO{
 
 	@Override
 	public List<CardVO> selectById(String id) {
-		sqlSession.selectList("card.dao.CardDAO.selectCard", id);
+		sqlSession.selectList("card.dao.CardDAO.selectById", id);
 		return selectById(id);
 	}
 
@@ -41,7 +41,7 @@ public class CardDAOimpl implements CardDAO{
 
 	@Override
 	public CardVO getCardInfoForPayment(String accountNumber) {
-		CardVO cardNewInfoForPayment = sqlSession.selectOne("card.dao.CardDAO.getInfo", accountNumber);
+		CardVO cardNewInfoForPayment = sqlSession.selectOne("card.dao.CardDAO.getInfoByAccountNumber", accountNumber);
 		return cardNewInfoForPayment;
 	}
 

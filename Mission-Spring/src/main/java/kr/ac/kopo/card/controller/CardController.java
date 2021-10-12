@@ -32,7 +32,7 @@ public class CardController {
 	@GetMapping("/card/joinCard/{num}")
 	public ModelAndView joinCardForm(@PathVariable String num, HttpSession session) {
 		
-		ModelAndView mav = new ModelAndView("card/joinCard" + num);
+		ModelAndView mav = new ModelAndView("card/joinCard/" + num);
 		
 		// 개설할 입출금 자유 계좌의 id를 사용자의 아이디로 설정
 		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
@@ -53,7 +53,7 @@ public class CardController {
 		
 		if(result.hasErrors()) {
 			System.out.println("join card error...");
-			return "card/joinCard";
+			return "cardList";
 		}
 		
 		// insert

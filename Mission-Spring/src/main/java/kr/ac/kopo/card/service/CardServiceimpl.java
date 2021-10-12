@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.card.dao.CardDAO;
 import kr.ac.kopo.card.vo.CardVO;
 
+@Service
 public class CardServiceimpl implements CardService {
 
 	@Autowired 
