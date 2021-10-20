@@ -5,7 +5,7 @@
 <mapper namespace="board.dao.BoardDAO">
 
 <select id="selectAll" resultType="boardVO">
-          SELECT  (@ROWNUM:=@ROWNUM+1) AS rno, no, title, writer, date_format(reg_date, '%Y-%m-%d') as regDate
+          SELECT (@ROWNUM:=@ROWNUM+1) AS rno, no, title, writer, date_format(reg_date, '%Y-%m-%d') as regDate
               FROM(SELECT @ROWNUM:=0) AS rno, a_board
               WHERE (@ROWNUM:=0)=0
               ORDER BY rno DESC
@@ -17,15 +17,6 @@
 	 FROM a_board
 	</select>
 	
-	<!-- 게시물 목록 + 페이징 kuzuro
-	<select id="listPage" resultType="boardVO">
- 	SELECT
-  	no, title, writer, date_format(reg_date, '%Y-%m-%d') as regDate
- 	FROM a_board
- 	ORDER BY no DESC
-  	LIMIT #{displayPost}, #{postNum}
-	</select>-->
-	
   	<!-- '_'는 자동으로 객체 반환해주지 못함. 그래서 이 작업 필요. -->
   	<resultMap type="boardVO" id="boardMap">
   		<result column="view_cnt" property="viewCnt" />
@@ -34,8 +25,8 @@
   	
   	<!-- 게시글 상세보기 -->
   	<select id="selectByNo" resultMap="boardMap" parameterType="int">
-  		SELECT no, title, writer, content, view_cnt, date_format(reg_date, '%Y-%m-%d') as regDate
-  		FROM a_board
+  		SELECT (@ROWNUM:=@ROWNUM+1) AS rno, no, title, writer, content, view_cnt, date_format(reg_date, '%Y-%m-%d') as regDate
+  		FROM(SELECT @ROWNUM:=0) AS rno, a_board
   		WHERE no = #{no}
   	</select>
   	

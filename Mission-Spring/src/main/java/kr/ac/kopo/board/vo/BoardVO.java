@@ -60,11 +60,7 @@ public class BoardVO {
 	public void setViewCnt(String viewCnt) {
 		this.viewCnt = viewCnt;
 	}
-	@Override
-	public String toString() {
-		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", viewCnt="
-				+ viewCnt + ", regDate=" + regDate + "]";
-	}
+	
 	public int getRno() {
 		return rno;
 	}
@@ -72,7 +68,11 @@ public class BoardVO {
 		this.rno = rno;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", viewCnt="
+				+ viewCnt + ", regDate=" + regDate + "]";
+	}
 	
 	
 	
