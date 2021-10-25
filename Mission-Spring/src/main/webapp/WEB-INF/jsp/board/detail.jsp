@@ -172,8 +172,8 @@
 			<br>
 			<table border="1">
 				<tr>
-					<th width="25%">番号</th>
-					<td>${ board.rno }</td>
+					<th width="25%">作成文固有番号</th>
+					<td>${ board.no }</td>
 				</tr>
 				<tr>
 					<th width="25%">タイトル</th>
