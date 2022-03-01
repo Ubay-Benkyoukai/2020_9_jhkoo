@@ -79,5 +79,13 @@
 		  AND m.id= #{id}
   	</select>
   	
+  	
+  	<!-- 아이디체크 -->
+  	<select id="getMemberFull" parameterType="String" resultType="MemberVO">
+  		SELECT *
+  		 FROM member
+  		 WHERE id = #{id}
+  	</select>
+  	
 </mapper>
 

@@ -68,7 +68,14 @@ public class MemberDAOimpl implements MemberDAO{
 		return withdralBalanceThisMonth;
 	}
 
-	
+	/*
+	 * Gets all details of member based on id
+	 */
+	@Override
+	public MemberVO selectMember(String id) {
+		MemberVO member = sqlSession.selectOne("member.dao.MemberDAO.selectMember", id);
+		return member;
+	}
 
 	
 }
