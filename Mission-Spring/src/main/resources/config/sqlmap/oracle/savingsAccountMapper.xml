@@ -19,31 +19,31 @@
 
 	<!-- 입출금 계좌 정보 -->
   	<select id="selectById" resultMap="savingsAccountMap" parameterType="String">
-  		select  s.account_number, 
+  		SELECT  s.account_number, 
   				s.id, 
   				s.account_password, 
   				s.balance, 
   				b.value as bank_book_key, 
   			    s.nick_name, 
-  			    to_char(s.reg_date, 'YYYY"년 "MM"월 "DD"일"') as reg_date, 
+  			    date_format(s.reg_date,'%Y년 %m월 %d일(%H시 %i분)') as reg_date,
   			    s.saving_day,
   			    s.saving_date,
                 s.auto_saving,
                 s.auto_saving_bool,
   			    b.rate
   		 
-  		 from savings_account s left join saving_bank_book b
-  		 		on s.bank_book_key = b.key
+  		 FROM savings_account s LEFT JOIN saving_bank_book b
+  		 		ON s.bank_book_key = b.key
   		 
-  		 where id = #{id}
-  		 order by reg_date
+  		 WHERE id = #{id}
+  		 ORDER BY reg_date
   	</select>
   	
   	<!-- 적금 계좌 총 잔액 -->
-  	<select id="totalBalanceById" resultType="int" parameterType="String">
-  		select sum(balance) 
-		 from savings_account
-		 where id = #{id}
+  	<select id="totalBalanceById" resultType="Integer" parameterType="String">
+  		SELECT SUM(balance) 
+		 FROM savings_account
+		 WHERE id = #{id}
   	</select>
   	<!-- 
   	적금 상품 가입
@@ -57,71 +57,72 @@
   	 -->
   	<!-- 적금 상품 가입 -->
   	<insert id="insert" parameterType="savingsAccountVO">
-  		insert into savings_account(account_number, id, account_password, balance, 
-  									bank_book_key, nick_name, saving_day, saving_Date, auto_saving)
-  		 					 values(#{accountNumber}, #{id}, #{accountPassword}, #{balance}, 
-  		 							#{bankBookKey}, #{nickName}, #{savingDay}, to_char(add_months(sysdate, #{savingMonth}), 'YYYY"년 "MM"월 "DD"일"'), #{autoSaving})
+  		INSERT INTO savings_account(account_number, id, account_password, balance, 
+  			bank_book_key, nick_name, saving_day, saving_Date, auto_saving)
+  		VALUES(#{accountNumber}, #{id}, #{accountPassword}, #{balance}, 
+  		 	#{bankBookKey}, #{nickName}, #{savingDay}, date_format(DATE_ADD(CURDATE(), INTERVAL #{savingMonth} MONTH), '%Y년 %m월 %d일'), #{autoSaving})
 
   	</insert>
   	
   	<!-- 해당 적금 계좌 정보 가져오기(상세내역 보기 위함) -->
   	<select id="getInfo" resultMap="savingsAccountMap" parameterType="String">
-  		select s.account_number, s.id, s.account_password, s.balance, 
+  		SELECT s.account_number, s.id, s.account_password, s.balance, 
   			   b.value as bank_book_key, b.rate, 
   			   s.nick_name, s.reg_date, s.saving_day, s.saving_date, 
   			   s.auto_saving, s.auto_saving_bool
-  		 from savings_account s left join saving_bank_book b
-  		 		on s.bank_book_key = b.key
-  		 where account_number = #{accountNumber}
+  		 FROM savings_account s LEFT JOIN saving_bank_book b
+  		 		ON s.bank_book_key = b.key
+  		 WHERE account_number = #{accountNumber}
   	</select>
   	
   	<!-- 최초 가입 자동이체를 위한 계좌 정보 가져오기 -->
   	<select id="getInfoForTrans" resultType="savingsAccountVO" parameterType="String">
-  		select account_number as accountNumber, balance, auto_saving as autoSaving
-  		 from savings_account
-  		 where account_number = #{accountNumber} 
+  		SELECT account_number as accountNumber, balance, auto_saving as autoSaving
+  		 FROM savings_account
+  		 WHERE account_number = #{accountNumber} 
   	</select>
   	
   	<!-- 해당 적금 정보 업데이트 -->
   	<update id="updateInfo" parameterType="savingsAccountVO">
-  		update savings_account
-  		 set nick_name = #{nickName},
+  		UPDATE savings_account
+  		 SET nick_name = #{nickName},
   		     saving_day = #{savingDay},
   		     auto_saving = #{autoSaving}
-  		 where account_number = #{accountNumber}     
+  		 WHERE account_number = #{accountNumber}     
   	</update>
   	
   	<!-- 남으 개월 수 -->
   	<select id="getSavingMonth" parameterType="String" resultType="int">
-  		select round(months_between(to_date(saving_date, 'YYYY"년 "MM"월 "DD"일"'), sysdate)) as savingMonth
- 		 from savings_account
- 		 where account_number = #{accountNumber}
+  		SELECT ROUND(TIMESTAMPDIFF(MONTH, str_to_date(saving_date, '%Y년 %m월 %d일'), CURDATE())) as savingMonth
+ 		 FROM savings_account
+ 		 WHERE account_number = #{accountNumber}
   	</select>
   	
   	<!-- 평균 입금액 -->
   	<select id="avgAmount" parameterType="String" resultType="int">
-  		select round(avg(nvl(amount, 0))) as avgAmount 
-  		 from SAVINGS_ACCOUNT_LOG
-  		 where account_number = #{accountNumber}
+  		SELECT ROUND(AVG(IFNULL(amount, 0))) as avgAmount 
+  		 FROM savings_account_log
+  		 WHERE account_number = #{accountNumber}
   	</select>
   	
   	<!-- 자동이체 상태 on -->
   	<update id="changeBool" parameterType="savingsAccountVO">
-  		update savings_account
-  		 set auto_saving_bool = #{autoSavingBool}
-  		 where account_number = #{accountNumber}
+  		UPDATE savings_account
+  		 SET auto_saving_bool = #{autoSavingBool}
+  		 WHERE account_number = #{accountNumber}
   	</update>
   	
   	<!-- 새로운 계좌 번호 가져오기 -->
   	<select id="getNewAccountNumber" resultType="String">
-  		select seq_savings_account_number.nextval from dual
+  		SELECT CONCAT('0015-031-', LPAD(IFNULL(MAX(SUBSTR(account_number, 10)), 0) + 1, 5, 0)) as accountNumber
+  		FROM savings_account;
   	</select>
   	
   	<!-- 예약이체 해지  -->
   	<update id="changeAutoTransferBool" parameterType="String">
-  		update savings_account
-  		 set auto_saving_bool = 'N'
-  		 where account_number = #{accountNumber}
+  		UPDATE savings_account
+  		 SET auto_saving_bool = 'N'
+  		 WHERE account_number = #{accountNumber}
   		  
   	</update>
   	

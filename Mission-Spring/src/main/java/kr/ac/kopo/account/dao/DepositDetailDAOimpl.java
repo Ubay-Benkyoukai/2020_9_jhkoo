@@ -41,19 +41,34 @@ public class DepositDetailDAOimpl implements DepositDetailDAO {
 
 	@Override
 	public int lastMonthSumByCategory(DepositDetailVO depositDetailVO) {
-		int lastMonthSumByCategory = sqlSession.selectOne("account.dao.DepositDetailDAO.lastMonthSumByCategory", depositDetailVO);
+		int lastMonthSumByCategory;
+		try {
+			lastMonthSumByCategory = sqlSession.selectOne("account.dao.DepositDetailDAO.lastMonthSumByCategory", depositDetailVO);
+		}catch (NullPointerException e) {
+			lastMonthSumByCategory = 0;
+		}
 		return lastMonthSumByCategory;
 	}
 
 	@Override
 	public int nowBalanceByType(DepositDetailVO depositDetailVO) {
-		int nowBalanceByType = sqlSession.selectOne("account.dao.DepositDetailDAO.nowBalanceByType",depositDetailVO);
+		int nowBalanceByType;
+		try {
+			nowBalanceByType = sqlSession.selectOne("account.dao.DepositDetailDAO.nowBalanceByType",depositDetailVO);
+		}catch (NullPointerException e) {
+			nowBalanceByType = 0;
+		}
 		return nowBalanceByType;
 	}
 
 	@Override
 	public int expenditureThisMonth(String accountNumber) {
-		int expenditureThisMonth = sqlSession.selectOne("account.dao.DepositDetailDAO.expenditureThisMonth", accountNumber);
+		int expenditureThisMonth;
+		try {
+			expenditureThisMonth = sqlSession.selectOne("account.dao.DepositDetailDAO.expenditureThisMonth", accountNumber);
+		}catch (NullPointerException e) {
+			expenditureThisMonth = 0;
+		}
 		return expenditureThisMonth;
 	}
 

@@ -6,31 +6,30 @@
 
 	<!-- 이체 목록 -->
 	<select id="getRecentList" resultType="favoriteVO" parameterType="String">
-		select to_account_number as toAccountNumber, to_name as toName, favorite_flag as favoriteFlag 
-			from favorite 
-			where id = #{id}
+		SELECT to_account_number as toAccountNumber, to_name as toName, favorite_flag as favoriteFlag 
+			FROM favorite 
+			WHERE id = #{id}
 	</select>
 
 	<!-- 즐겨찾기 목록에 추가. 이체가 발생하면 그 정보를 즐겨찾기 목록에 추가합니다. -->
 	<insert id="addFavorite" parameterType="favoriteVO">
-		insert into favorite(no, id, to_account_number, to_name)
-		 values(seq_favorite_no.nextval, #{id}, #{toAccountNumber}, #{toName})
+		INSERT INTO favorite(id, to_account_number, to_name)
+		 VALUES(#{id}, #{toAccountNumber}, #{toName})
 	</insert>
 	
 	<!-- 즐겨찾기 상태 변경 flag -->
 	<update id="updateFavorite" parameterType="favoriteVO">
-		update favorite
-		 set
-		 favorite_flag = #{favoriteFlag}
-		 where to_account_number = #{toAccountNumber}
+		UPDATE favorite
+		 SET favorite_flag = #{favoriteFlag}
+		 WHERE to_account_number = #{toAccountNumber}
 	</update>
 
 	<!-- 즐겨찾는 목록 -->
 	<select id="getFavoriteList" resultType="favoriteVO" parameterType="String">
-		select to_account_number as toAccountNumber, to_name as toName
-			from favorite 
-			where id = #{id} 
-			and favorite_flag = '1'		   
+		SELECT to_account_number as toAccountNumber, to_name as toName
+			FROM favorite 
+			WHERE id = #{id} 
+			AND favorite_flag = '1'		   
 	</select>
 
 </mapper>

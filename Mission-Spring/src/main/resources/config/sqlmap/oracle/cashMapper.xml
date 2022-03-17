@@ -6,23 +6,23 @@
 
 	<!-- 현금 내역 추가 -->
   	<insert id="insert" parameterType="cashVO">
-  		insert into cash_manage(no, id, cash, content)
-  		 values(seq_cash_log.nextval, #{id}, #{cash}, #{content})
+  		INSERT INTO cash_manage(id, cash, content)
+  		 VALUES(#{id}, #{cash}, #{content})
   	</insert>
   	
   	<!-- 내역 리스트 조회 -->
   	<select id="selectAll" parameterType="String" resultType="cashVO">
-  		select no, id, cash, content ,
-  			to_char(log_date,'YYYY"년 "MM"월 "DD"일("hh24"시 "mi"분)"') as logDate
-  		 from cash_manage
-  		 where id = #{id}
-  		 order by log_date desc
+  		SELECT no, id, cash, content ,
+  			date_format(log_date,'%Y년 %m월 %d일(%H시 %i분)') as logDate
+  		 FROM cash_manage
+  		 WHERE id = #{id}
+  		 ORDER BY log_date DESC
   	</select>
   	
   	<!-- 내역 삭제 -->
   	<delete id="delete" parameterType="int">
-  		delete from cash_manage
-  		 where no =  #{no}
+  		DELETE FROM cash_manage
+  		 WHERE no =  #{no}
   	</delete>
   	
 </mapper>

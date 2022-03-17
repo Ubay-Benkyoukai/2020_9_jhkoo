@@ -22,7 +22,7 @@ function drawBasic() {
       ]);
 
       var options = {
-        title: '지출 비교 상황',
+        title: '支出 比較 状況',
         chartArea: {width: '50%'},
         hAxis: {
           minValue: 0
@@ -45,16 +45,16 @@ function drawBasic() {
 <br>
 <br>
  -->
-<!-- 도전 공유 ------------------------------------------------------------------------------------->
+<!-- 도전 공유 挑戦共有------------------------------------------------------------------------------------->
 <section class="service-section bg-gray section">
     <div class="container">
         <div class="section-title text-center">
-            <h3>친구들
-                <span>의 공유된 도전</span>
+            <h3>友達
+                <span>の共有された挑戦</span>
             </h3>
-            <p>${ month }월에 공유된 친구들의 도전 목록입니다.<br>
-           	   <span style="color:red">목표는 공유할수록 달성할 확률이 높습니다. 
-           	       더 많은 친구들과 도전을 공유하세요! </span>
+            <p>${ month }月に共有された友達の挑戦リストです。<br>
+           	   <span style="color:red">目標は共有するほど達成する確率が高いです。
+           	       もっとたくさんの友達と挑戦を共有してください！</span>
             </p>
         </div>
         
@@ -67,19 +67,19 @@ function drawBasic() {
                             <img src="${pageContext.request.contextPath }/resources/assets/images/친구.jpg" alt="images" class="img-responsive">                     
                     </div>
                     <div class="image-content text-center">
-                        <span>${ challenge.challengeName }에 도전 중</span>
+                        <span>${ challenge.challengeName }に挑戦中</span>
                         <h6>${ challenge.id }님</h6>
                         <p>
-                        	목표금액은 ${ String.format("%,d", challenge.targetAmount) }이고,<br>
-                                                        현재까지 지출금액은 ${ String.format("%,d", challenge.nowBalanceByType) }입니다.<br>
+                        	目標金額は ${ String.format("%,d", challenge.targetAmount) }で,<br>
+                                                        現在までの支出金額は ${ String.format("%,d", challenge.nowBalanceByType) }です。<br>
  						    <div class="progress">
 			 					<div class="progress-bar " style="width:${(challenge.nowBalanceByType/challenge.targetAmount)*100}%">${Math.round((challenge.nowBalanceByType/challenge.targetAmount)*100)}%</div>
 						    </div>                                                       
                             <c:if test="${ challenge.challengeFail == true }">
-                            	<span style="color:red; font-weight:bold">다음에 친구들과의 약속을 꼭 지켜주세요!</span>
+                            	<span style="color:red; font-weight:bold">今度友達との約束を必ず守ってください!</span>
 							</c:if>
 							<c:if test="${ challenge.challengeFail == false }">
-                            	<span style="color:red; font-weight:bold">도전 진행중입니다. </span>
+                            	<span style="color:red; font-weight:bold">挑戦進行中です。 </span>
 							</c:if>
                         </p>
                     </div>

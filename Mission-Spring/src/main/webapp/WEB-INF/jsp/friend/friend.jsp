@@ -15,10 +15,10 @@
 <section class="service-section bg-gray section">
     <div class="container">
         <div class="section-title text-center">
-            <h3>친구
-                <span>와 도전 공유하기 </span>
+            <h3>友達
+                <span>と挑戦を共有する </span>
             </h3>
-            <p style="color:red">친구들과 자신의 도전을 공유하세요. 목표는 공유할수록 성공 확률이 높아집니다! </p>
+            <p style="color:red">友達と自分の挑戦を共有してください。 目標は共有するほど成功確率が高くなります！ </p>
         </div>
         <div class="row items-container clearfix">
            
@@ -26,8 +26,8 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center" onclick="location.href='${ pageContext.request.contextPath }/friend/sendRequest'">
-                        <h6>요청 보내기</h6>
-                        <p>도전을 공유하고 싶은 친구에게 <br> 요청을 보내세요</p>
+                        <h6>要請を送る</h6>
+                        <p>挑戦を共有したい友達に <br> 要請を送ってください。</p>
                     </div>
                 </div>
             </div>
@@ -36,8 +36,8 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center" onclick="location.href='${ pageContext.request.contextPath }/friend/requestManage'">
-						<h6>요청 관리하기</h6>
-                        <p>자신이 보낸 요청과 받은 요청을 <br> 관리하세요</p>
+						<h6>要請管理</h6>
+                        <p>自分が送った要請と受けた要請を <br> 管理してください。</p>
                     </div>
                 </div>
             </div>
@@ -46,8 +46,8 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center" onclick="location.href='${ pageContext.request.contextPath }/friend/compare'">
-						<h6>공유된 도전 보기</h6>
-                        <p>친구들이 도전에 성공할 수 있게<br> 모니터링하세요</p>
+						<h6>共有された挑戦を見る</h6>
+                        <p>友達が挑戦に成功するように<br> モニタリングしてください。</p>
                     </div>
                 </div>
             </div>

@@ -51,7 +51,7 @@
    <div class="accordion-section">
     <div class="section-title">
         <br><br>
-        <h3>정기 예약 이체 서비스</h3> 
+        <h3>定期予約送金サービス</h3> 	<!-- 정기 예약 이체(송금) 서비스 -->
     </div>
     <div class="accordion-holder">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -59,13 +59,13 @@
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            	주의사항
+                            	注意事項
                         </a>
                     </h4>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        	본인 이외에 서비스 사용을 금지합니다.
+                        	本人以外のサービスの利用はご遠慮ください。
                     </div>
                 </div>
             </div>
@@ -74,13 +74,13 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	정기 예약 이체 설명
+                            定期予約振込み説明 <!-- 정기 예약 이체 설명 -->
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                        	내용
+                        	内容
                     </div>
                 </div>
             </div>
@@ -89,13 +89,13 @@
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree">
-                            	서비스 상세 설명
+                            	サービス詳細説明		<!-- 서비스 상세 설명 -->
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                       	  내용
+                       	  内容
                     </div>
                 </div>
             </div>
@@ -116,8 +116,8 @@
 	            
 	            <div class="section-title">
 	   				 <h3>${ depositAccount.getBankBookKey() }</h3>
-	   				 <p>&nbsp;&nbsp;&nbsp;하나은행 계좌 ${ depositAccount.getAccountNumber() }  
-	   				 &nbsp;&nbsp;&nbsp;잔액 :  ${ String.format("%,d", depositAccount.getBalance()) }원</p>
+	   				 <p>&nbsp;&nbsp;&nbsp;ハナ銀行口座 ${ depositAccount.getAccountNumber() }  
+	   				 &nbsp;&nbsp;&nbsp;残額 :  ${ String.format("%,d", depositAccount.getBalance()) }￥</p>
 					 
 				</div>
 	            <br>
@@ -129,29 +129,29 @@
 	                 
 	                 
 	                <div class="form-group">
-	                	<label>예약 일</label> 
-                    	<form:input path="autoTransDay" class="form-control"  placeholder="숫자(일)만 입력하세요 "/>
+	                	<label>予約日</label> 
+                    	<form:input path="autoTransDay" class="form-control"  placeholder="数字だけ入力してください。"/>
                		 </div> 
 	                   
 					
 	
 	                <div class="form-group">
-	                	<label>계좌 비밀번호 &nbsp;</label> 
+	                	<label>口座パスワード &nbsp;</label> 
 	                	<c:if test="${ depositAccount.getAccountPassword() != '1234' }">
 	                		<form:errors path="accountPassword" class="error" /> 
 	                	</c:if>
-	                    <form:password path="accountPassword" class="form-control" placeholder="계좌 비밀번호 4자리를 입력하세요"/> 
+	                    <form:password path="accountPassword" class="form-control" placeholder="口座の暗証番号4 桁を入力してください。"/> 
 	                </div>
 	                
 	                <div class="form-group">
-	                	<label>이체 보낼 계좌번호 </label> <form:errors path="toAccountNumber" class="error" />
-	                	<form:input path="toAccountNumber" class="form-control" placeholder="'-'을 포함하여 입력하세요"/>
+	                	<label>振込口座番号 </label> <form:errors path="toAccountNumber" class="error" />
+	                	<form:input path="toAccountNumber" class="form-control" placeholder="「-」を含めて入力してください。"/>
 	                </div>	                
 	                
 	                <div class="form-group">                	
 	                	<div class="dropdown">
 	  						<button class="btn btn-secondary dropdown-toggle btn-style-one" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	   							 즐겨찾기 목록에서 계좌를 선택하세요
+	   							 ブックマークリストから口座を選択してください。
 	  						</button>
 							  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							    
@@ -167,21 +167,21 @@
 	                
 	                
 	                <div class="form-group">
-	                	<label>이체 금액 &nbsp;</label> <form:errors path="toAmount" class="error" />
-	                	<form:input id = "toAmount" path="toAmount" class="form-control"  placeholder="0원 "/>
+	                	<label>振込金額 &nbsp;</label> <form:errors path="toAmount" class="error" /> <!-- 이체금액 -->
+	                	<form:input id = "toAmount" path="toAmount" class="form-control"  placeholder="0$ "/>
 	                </div>  
 	                
 	       			<div class="form-group">
 	       				<div class="dropdown">
 	  						<button class="btn btn-secondary dropdown-toggle btn-style-one" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	   							 간편 이체금액 선택
+	   							 簡便振替金額選択
 	  						</button>
 							  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <button type="button" class="btn btn-style-one addMoneyBtn" id="100000" >+10만원</button>
-			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="70000" >+7만원</button>	
-			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="50000" >+5만원</button>
-			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="30000" >+3만원</button>
-			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="10000" >+1만원</button>		    
+							   <button type="button" class="btn btn-style-one addMoneyBtn" id="10000" >+10000￥</button>
+			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="7000" >+7000￥</button>	
+			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="5000" >+5000￥</button>
+			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="3000" >+3000￥</button>
+			                	<button type="button" class="btn btn-style-one addMoneyBtn" id="1000" >+1000￥</button>		    
 							  </div>
   						</div>
 	       			
@@ -193,7 +193,7 @@
 					</div>
 	                
 	                <div class="form-group text-center">
-	                    <button type="submit" class="btn-style-one" >이체하기</button>
+	                    <button type="submit" class="btn-style-one" >振込み</button>
 	                </div>   
 	
 	            </div>

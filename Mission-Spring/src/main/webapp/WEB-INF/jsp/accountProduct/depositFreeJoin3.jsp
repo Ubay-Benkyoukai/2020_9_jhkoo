@@ -75,7 +75,7 @@ $(document).ready(function(){
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="accordion-section">
     <div class="section-title">
-        <h3>상품 정보</h3>
+        <h3>商品情報</h3>
     </div>
     <div class="accordion-holder">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -83,15 +83,15 @@ $(document).ready(function(){
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            	주거래하나 통장 <span>우대사항</span>
+                            	主力ハナ通帳 <span>優待事項</span>
                         </a>
                     </h4>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                       	  주거래하나 우대    :   이 통장에 주거래이체실적 1가지 항목 충족<br>
-                       	 주거래플러스 우대 :   이 통장에 주거래이체실적 2가지 항목 이상 충족<br>
-                       	 하나멤버스 우대    :   하나금융그룹의 하나멤버스 회원
+                       	  主力ハナ 優待    :   この通帳に主な取引振替実績1項目を満たす<br>
+                       主力銀行プラス 優待 :   この通帳に「主な取引振替実績」2項目以上を満たす<br>
+                       	 ハナメンバーズ 優待    :   ハナ金融グループのハナメンバーズ会員
                     </div>
                 </div>
             </div>
@@ -100,19 +100,19 @@ $(document).ready(function(){
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            	제공조건
+                            	提供条件
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                     	급여 입금 :타인으로부터 건별 50만원이상 급여적요* 포함 입금 또는 급여지정일 전후 1영업일내 입금<br>
-                      	연금 입금:4대 공적연금(국민, 공무원, 군인, 사학), 기초(노령)연금, 보훈연금, 산재보험보험급여, KEB하나은행에서 가입한 개인연금(주택연금, 연금신탁, 연금보험, 연금펀드), 기타연금(고객 지정 연금수급일 전후 1영업일에 대량이체방식으로 건당 20만원이상 입금되고 적요에 '연금' 또는 '보험사명'이 기재된 연금)<br>          
-                    	카드 가맹점대금 입금:하나카드/BC카드 가맹점 대금<br>
-          			         아파트관리비 출금 :자동이체방식으로 이체되는 아파트관리비
-          				카드 결제대금 출금 :하나카드/현대카드의 결제대금으로 월 5만원 이상 (신용, 체크 합산)
-          				주택청약종합저축 납입 :KEB하나은행의 본인명의 주택청약종합저축에 납입(청년 우대형 주택청약종합저축 포함)  
-          				공과금 2건 출금 :도시가스요금, 전기료, 통신요금, 보험료 등 지로/CMS/펌뱅킹으로 이체
+                     	給与入金:他人から件別50万ウォン以上の給与適用*含み入金または給与指定日前後1営業日以内入金<br>
+                      	年金入金: 4大公的年金(国民、公務員、軍人、私学)、基礎(老齢)年金、報勲年金、労災保険給与、KEBハナ銀行が加入した個人年金(住宅年金、年金信託、年金保険、年金ファンド)、その他の年金(顧客指定年金受給日前後1営業日に大量振替方式で1件当たり20万ウォン以上入金され、適正に「年金」または「保険会社名」が記載された年金)<br>          
+                    	カード加盟店代金入金:ハナカード/BCカード加盟店代金<br>
+          			         マンション管理費の出金:自動振替方式で振替されるマンション管理費
+          				カード決済代金:ハナカード/現代カードの決済代金で月5万ウォン以上(信用、チェック合算)
+          				住宅請約総合貯蓄の納入:KEBハナ銀行の本人名義の住宅請約総合貯蓄に納入(青年優待型住宅請約総合貯蓄を含む)  
+          				公共料金2件の出金:都市ガス料金、電気料金、通信料金、保険料等、ジロ/CMS/ファームバンキングへ振り込み
                     	
                     </div>
                 </div>
@@ -122,16 +122,16 @@ $(document).ready(function(){
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree">
-                            	우대수수료 내용
+                            	優待手数料の内容
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                        	당행 자동화기기를 통한 마감 후 현금인출 수수료 면제<br>
-                        	당행 자동화기기를 통한 타행이체 수수료 면제<br>
-                        	인터넷뱅킹, 폰뱅킹(ARS), 스마트폰뱅킹을 통한 타행이체 수수료 면제<br>
-                        	납부자자동이체 및 타행자동이체 수수료 면제<br>
+                        	当銀行のATMによる締め切り後、現金引き出し手数料免除<br>
+                        	当銀行のATMを通じた他行振込手数料免除<br>
+                        	インターネットバンキング、携帯バンキング（ARS）、スマートフォンバンキングによる他行振込手数料免除<br>
+                        	納付者の自動振替及び他行自動振替手数料免除<br>
                     </div>
                 </div>
             </div>
@@ -157,28 +157,28 @@ $(document).ready(function(){
   
 
                 <div class="form-group">
-                	<label>비밀번호 &nbsp;</label> <form:errors path="accountPassword" class="error" /> 
-                    <form:password path="accountPassword" class="form-control" placeholder="비밀번호 4자리를 설정하세요"/>
+                	<label>パスワード &nbsp;</label> <form:errors path="accountPassword" class="error" /> 
+                    <form:password path="accountPassword" class="form-control" placeholder="パスワード 4桁を設定してください。"/>
                     
                 </div>
                 
                
                 <div class="form-group">
-                	<label>입출금 자유 예금 계좌 닉네임 &nbsp;</label> <form:errors path="nickName" class="error" />
-                    <form:input path="nickName" class="form-control" placeholder="닉네임을 입력하세요"/> 
+                	<label>入出金自由預金口座のニックネーム &nbsp;</label> <form:errors path="nickName" class="error" />
+                    <form:input path="nickName" class="form-control" placeholder="ニックネームを入力してください。"/> 
                     
                 </div>
                 
                 <div class="form-group">
-                	<label>인증번호 &nbsp;</label>
+                	<label>認証番号 &nbsp;</label>
                 	<button type="button" class="btn btn-style-one" id="certCheck">
-						인증번호 발송하기</button>	
+						認証番号 発送する</button>	
 					<div style="width:385px; float:left;">
-						<form:input id = "certification" path="certification" class="form-control"  placeholder="이메일로 발송된 인증번호를 입력하세요"/>				
+						<form:input id = "certification" path="certification" class="form-control"  placeholder="メールで送信された認証番号を入力してください。"/>				
                 	</div>
                 	<div style="width:100px; float:left;">
                 	<button type="button" class="btn btn-style-one" id="certConfirm" >
-						확인</button>
+						確認</button>
                 	</div>
                 </div>
                 
@@ -187,7 +187,7 @@ $(document).ready(function(){
                 <br>
                 
                 <div class="form-group text-center">
-                    <button type="submit" class="btn-style-one">상품 가입</button>
+                    <button type="submit" class="btn-style-one">商品加入</button>
                 </div>
 
             </div>
@@ -210,17 +210,17 @@ $(document).ready(function(){
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">이메일이 발송되었습니다.</h4>
+          <h4 class="modal-title">メールが送信されました。</h4>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-         	 이메일로 보내진 인증번호 6자리 값을 입력해주시기 바랍니다.
+         	メールで送られた認証番号6桁の値を入力してください。
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">확인</button>          
+          <button type="button" class="btn-style-one" data-dismiss="modal">確認</button>          
         </div>
         
       </div>
@@ -233,17 +233,17 @@ $(document).ready(function(){
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">인증완료</h4>
+          <h4 class="modal-title">認証完了</h4>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-         	 이메일 인증이 완료되었습니다.
+         	 メール認証が完了しました。
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">확인</button>          
+          <button type="button" class="btn-style-one" data-dismiss="modal">確認</button>          
         </div>
         
       </div>

@@ -17,10 +17,10 @@
 <section class="service-section bg-gray section">
     <div class="container">
         <div class="section-title text-center">
-            <h3>예금/적금
-                <span>상품 가입</span>
+            <h3>預金/積金
+                <span>商品加入</span>
             </h3>
-            <p>개설할 상품의 종류를 선택하세요</p>
+            <p>開設する商品の種類を選択してください。</p>
         </div>
         <div class="row items-container clearfix">
            
@@ -30,9 +30,9 @@
                     <div class="image-content text-center" onclick="location.href='${ pageContext.request.contextPath }/product/depositFreeChoose'">
                         <span>Checking account</span>
                         
-                            <h6>입출금 자유 예금</h6>
+                            <h6>入出金自由預金</h6>
                         
-                        <p>입출금 자유 예금은 대표적인 요구불예금으로서 가입대상, 예치금액, 예치기간, 입출금 횟수 등에 아무런 제한 없이 자유롭게 거래할 수 있는 상품입니다.</p>
+                        <p>入出金自由預金は代表的な要求払い預金で、加入対象、預け入れ金額、預け入れ期間、預け入れ回数などに何の制限もなく自由に取り引きすることができる商品です。</p>
                     </div>
                 </div>
             </div>
@@ -43,9 +43,9 @@
                     <div class="image-content text-center" onclick="location.href='${ pageContext.request.contextPath }/product/savingsChoose'">
                         <span>InstallMent saving</span>
                        
-                            <h6>정기 적금</h6>
+                            <h6>定期積み金</h6>
                         
-                        <p>정기적금은 매월 일정금액을 정기적으로 납입하고 만기일에 원리금을 지급받는 상품으로 푼돈을 모아 목돈을 마련하는데 가장 보편적인 장기저축 상품입니다.</p>
+                        <p>定期積金は毎月一定金額を定期的に納入し、満期日に元利金を支給してもらう商品で、はした金を貯めてまとまった金を用意するのに最も普遍的な長期貯蓄商品です。</p>
                     </div>
                 </div>
             </div>

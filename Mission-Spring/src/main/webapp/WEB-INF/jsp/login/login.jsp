@@ -4,21 +4,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Bootstrap Example</title>
+<title>Login Page</title>
 
 <script>
 
 	function checkForm(){
-		let f = document.lform
+		let f = document.contact_form
 
 
 		if (f.id.value == '') {
-			alert("아이디를 입력하세요")
+			alert("IDを入力してください。")
 			f.id.focus()
 			return false
 		}
 		if (f.password.value == '') {
-			alert("비밀번호를 입력하세요")
+			alert("パスワードを入力してください。")
 			f.password.focus()
 			return false
 		}
@@ -43,13 +43,13 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="contact-area">
     <div class="section-title">
-        <h3>로그인
-            <span>해주세요</span>
+        <h3>ログイン
+            <span>してください。</span>
         </h3>
     </div>
     
     
-    <!-- 로그인 form 태그.   parameter : id, password -->
+    <!-- 로그인 form 태그.   parameter : id, password --> <!-- login form tag -->
     <!-- onsubmit 모달로 하기! 모달에 비밀번호찾기, 아이디 찾기 버튼 만들기? -->
     <form name="contact_form" class="default-form contact-form" 
     	  action="${ pageContext.request.contextPath }/login" method="post"
@@ -68,7 +68,7 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group text-center">
-                    <button type="submit" class="btn-style-one">로그인</button>
+                    <button type="submit" class="btn-style-one">ログイン</button>
                 </div>
             </div>
         </div>

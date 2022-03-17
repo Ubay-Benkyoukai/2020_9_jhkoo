@@ -7,26 +7,26 @@
 
 	<!-- 내 나이대가 가장 많이든 입출금 계좌 순서 테이블  -->
   	<select id="ageGroupDepositAccount" resultType="recommendVO" parameterType="String">
-	  	select d.bank_book_key as bankBookKey, count(*) as cnt, m.age_group as ageGroup 
-		 from  dw_account d left join member m  
-		    on d.id = m.id
-		 group by d.bank_book_key, m.age_group
-		 having m.age_group = #{myAgeGroup} 
-		 order  by cnt desc
+	  	SELECT d.bank_book_key as bankBookKey, count(*) as cnt, m.age_group as ageGroup 
+		 FROM  dw_account d LEFT JOIN member m  
+		    ON d.id = m.id
+		 GROUP BY d.bank_book_key, m.age_group
+		 HAVING m.age_group = #{myAgeGroup} 
+		 ORDER BY cnt DESC
   	</select>
 
 	<!-- 나와 같은 직업의 사람들이 가장 많이든 적금 계좌 순서 테이블  -->
 	<select id="jobSavingsAccount" resultType="recommendVO" parameterType="String">
-		 select s.bank_book_key as bankBookKey, count(*) as cnt, j.value as jobKeyName
-			 from  savings_account s 
-		        left join member m  
-			    on s.id = m.id
-		        left join job j
-		        on m.job_key = j.key
+		 SELECT s.bank_book_key as bankBookKey, count(*) as cnt, j.value as jobKeyName
+			 FROM  savings_account s 
+		        LEFT JOIN member m  
+			    ON s.id = m.id
+		        LEFT JOIN job j
+		        ON m.job_key = j.key
 		        
-			 group by s.bank_book_key, j.value
-			 having j.value = #{myJob} 
-			 order  by cnt desc
+			 GROUP BY s.bank_book_key, j.value
+			 HAVING j.value = #{myJob} 
+			 ORDER BY cnt DESC
 	</select>
 
 </mapper>

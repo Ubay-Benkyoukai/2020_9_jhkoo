@@ -23,8 +23,8 @@
                 <div class="contact-area">
                 
 	    <div class="section-title">
-	        <h3>도전 금액
-	            <span>을 설정하세요</span>
+	        <h3>挑戦金額
+	            <span>を設定してください。</span>
 	        </h3>
 	    </div>
 
@@ -32,21 +32,21 @@
 <form class="default-form contact-form" method="post"
           action="${ pageContext.request.contextPath }/challengeProcess">
 
-		<c:if test='${ challengeName.substring(0,2).equals("식비") }' >
+		<c:if test='${ challengeName.substring(0,2).equals("食費") }' >
 			<input type="hidden" name="challengeType" value="3" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,2).equals("카페") }' >
+		<c:if test='${ challengeName.substring(0,3).equals("カフェ") }' >
 			<input type="hidden" name="challengeType" value="4" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,3).equals("편의점") }' >
+		<c:if test='${ challengeName.substring(0,4).equals("コンビニ") }' >
 			<input type="hidden" name="challengeType" value="5" />		
-		</c:if><c:if test='${ challengeName.substring(0,1).equals("술") }' >
+		</c:if><c:if test='${ challengeName.substring(0,1).equals("酒") }' >
 			<input type="hidden" name="challengeType" value="6" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,2).equals("쇼핑") }' >
+		<c:if test='${ challengeName.substring(0,6).equals("ショッピング") }' >
 			<input type="hidden" name="challengeType" value="7" />		
 		</c:if>
-		<c:if test='${ challengeName.substring(0,3).equals("미용") }' >
+		<c:if test='${ challengeName.substring(0,2).equals("美容") }' >
 			<input type="hidden" name="challengeType" value="9" />		
 		</c:if>	
 
@@ -57,13 +57,13 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
             	<div class="form-group">
             		<input type="hidden" name="challengeName" value="${ challengeName }" />
-                    <input type="text" name="targetAmount" class="form-control" placeholder="도전할 금액을 입력하세요"/><span></span>
+                    <input type="text" name="targetAmount" class="form-control" placeholder="挑戦する金額を入力してください。"/><span></span>
                 </div>
             </div>
 
             <div class="col-md-12 col-sm-12 col-xs-12">         
                 <div class="form-group text-center">
-                    <button type="submit" class="btn-style-one">도전 시작하기</button>
+                    <button type="submit" class="btn-style-one">挑戦の始まり</button>
                 </div>
             </div>
         </div>
@@ -78,13 +78,13 @@
       <div class="col-md-6 col-sm-12 col-xs-12">
         <div class="accordion-section">
 		    <div class="section-title">
-		        <h3>주의사항</h3>
+		        <h3>注意事項</h3>
 		        <br>
 		        <br>
 		        <br>
-		        <h4>지난 달 ${ challengeName.substring(0, challengeName.length()-3) } 총 소비액은<br>
-		           <span style="color:red">${ String.format("%,d",lastMonthSumByCatesgory) }</span>원입니다.<br>
-		           <br>해당 카테고리의 지난 달 지출액을 확인하고<br> 신중히 결정하세요!
+		        <h4>先月 ${ challengeName.substring(0, challengeName.length()-3) } 総消費額は<br>
+		           <span style="color:red">${ String.format("%,d",lastMonthSumByCatesgory) }</span>￥です。<br>
+		           <br>該当カテゴリーの先月の支出額を確認して<br> 慎重に決めてください！
 		        </h4>
 		    </div>
 		</div>

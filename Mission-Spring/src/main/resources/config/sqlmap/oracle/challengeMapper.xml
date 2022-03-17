@@ -16,22 +16,23 @@
 
 	<!-- 내 도전 리스트 가져오기 -->
 	<select id="myChallenge" resultMap="challengeMap" parameterType="challengeVO">
-		select challenge_pk, challenge_name, id, challenge_type, target_amount,
-			   to_char(challenge_end_date, 'YYYY"년 "MM"월 "DD"일"') as challenge_end_date
-		 from user_challenge
-		 where id = #{id}
+		SELECT challenge_pk, challenge_name, id, challenge_type, target_amount,
+			   date_format(challenge_end_date, '%Y년 %m월 %d일') as challenge_end_date
+		 FROM user_challenge
+		 WHERE id = #{id}
 	</select>
 
 	<!-- 내 도전 insert -->
   	<insert id="insertMyChallenge" parameterType="challengeVO">
-  		insert into user_challenge(challenge_pk, challenge_name, id, challenge_type, target_amount)
-  		 values(seq_user_challenge_pk.nextval, #{challengeName}, #{id}, #{challengeType}, #{targetAmount})
+  		INSERT INTO user_challenge(challenge_name, id, challenge_type, target_amount, challenge_end_date)
+  		 VALUES(#{challengeName}, #{id}, #{challengeType}, #{targetAmount}, 
+  		 		 date_format(date_add(now(), interval +1 month ), '%Y-%m-%d') )
   	</insert>
   	
   	
   	<!-- 도전 갱신 -->
   	<delete id="challengeDelete">
-  		delete from user_challenge
+  		DELETE FROM user_challenge
   	</delete>
   	
   	

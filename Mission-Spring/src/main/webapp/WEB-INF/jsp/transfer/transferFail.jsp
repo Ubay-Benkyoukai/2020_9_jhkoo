@@ -21,8 +21,8 @@
 			<div class="col-sm-12 col-xs-12">
 				<div class="image-content">
 					<div class="section-title text-center">
-						<h3>이체에
-							<span>실패하였습니다.</span>
+						<h3>振り込み
+							<span>失敗しました。</span>
 						</h3>
 						<p></p>
 						
@@ -31,7 +31,7 @@
 						
 				<div class="col-md-12 col-sm-12 col-xs-12">         
 				    <div class="form-group text-center">
-				        <button onclick="goAccount()" class="btn-style-one">이체 페이지 가기</button>
+				        <button onclick="goAccount()" class="btn-style-one">振込ページへ移動</button>
 				    </div>
 				</div>		
 						

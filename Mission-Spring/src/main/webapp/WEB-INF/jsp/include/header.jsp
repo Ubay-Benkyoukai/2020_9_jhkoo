@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                         <li class="active">
-                              <a href="${pageContext.request.contextPath }/">Home</a>
+                              <a href="${pageContext.request.contextPath }/">ホーム</a>
                         </li>
                         <!-- 
                         <li>
@@ -42,24 +42,24 @@
                         </li>
                          -->
                         <li>
-                              <a href="${pageContext.request.contextPath }/account">계좌 관리</a>
+                              <a href="${pageContext.request.contextPath }/account">口座管理</a>
                         </li>
                         <li>
-                              <a href="${pageContext.request.contextPath }/transferChoose">이체</a>
+                              <a href="${pageContext.request.contextPath }/transferChoose">振り込み</a> 
                         </li>
                         <li>
-                              <a href="${pageContext.request.contextPath }/product">상품 가입</a>
-                        </li>
-                        
-                        <li>
-                        	  <a href = "${pageContext.request.contextPath }/challengeChoose">도전하기</a>
+                              <a href="${pageContext.request.contextPath }/product">商品加入</a>
                         </li>
                         
                         <li>
-                        	  <a href = "${pageContext.request.contextPath }/friend">공유하기</a>
+                        	  <a href = "${pageContext.request.contextPath }/challengeChoose">挑戦</a> <!-- 도전 -->
+                        </li>
+                        
+                        <li>
+                        	  <a href = "${pageContext.request.contextPath }/friend">共有</a> <!-- 공유 -->
                         </li>
                         <li>
-                        	  <a href = "${pageContext.request.contextPath }/eda">분석하기</a>
+                        	  <a href = "${pageContext.request.contextPath }/eda">分析</a> <!-- 분석 -->
                         </li>
                    
 						<%-- 
@@ -85,19 +85,19 @@
 						 --%>
                         <c:choose>
                         	<c:when test="${ empty loginVO }">
-		                         <li><a href="${pageContext.request.contextPath }/login">로그인</a></li>
+		                         <li><a href="${pageContext.request.contextPath }/login">ログイン</a></li>
 		                                              		
                         	</c:when>
                         	<c:otherwise>
                         	<%-- 	<li><a>'${ loginVO.name }'님 환영합니다! </a></li> --%>
-                        		<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a><li>
+                        		<li><a href="${pageContext.request.contextPath }/logout">ログアウト</a><li>
                         	</c:otherwise>
                         </c:choose>
                         
                        
                         <li>
                         	<c:if test="${ empty loginVO }">
-                              <a href="${pageContext.request.contextPath }/join">회원가입</a>                        	
+                              <a href="${pageContext.request.contextPath }/join">会員加入</a>                        	
                         	</c:if>
                         </li>
                         

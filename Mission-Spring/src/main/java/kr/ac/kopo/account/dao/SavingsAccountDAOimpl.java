@@ -25,9 +25,14 @@ public class SavingsAccountDAOimpl implements SavingsAccountDAO {
 	@Override
 	public int totalBalanceById(String id) {
 		
-		int savingsTotalBalanceById = sqlSession.selectOne("account.dao.SavingsAccountDAO.totalBalanceById",id);
-		
+		int savingsTotalBalanceById;
+		try {
+			savingsTotalBalanceById = sqlSession.selectOne("account.dao.SavingsAccountDAO.totalBalanceById",id);
+		}catch (NullPointerException e) {
+			savingsTotalBalanceById = 0;
+		}
 		return savingsTotalBalanceById;
+		
 	}
 
 	@Override

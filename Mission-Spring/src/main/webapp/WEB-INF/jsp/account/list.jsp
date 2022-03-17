@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/table.css"> 
 <script>
 
-	/* 관리 */
+	/* 관리 管理 */
 	function goCashManage(){
 		location.href = "${ pageContext.request.contextPath }/cashManage";
 	}
@@ -24,7 +24,7 @@
 	}
 
 	
-	/* 내역 */
+	/* 내역 内訳 */
 	function goDepositDetail(accountNumber){
 		 location.href = "${ pageContext.request.contextPath}/depositDetail/" + accountNumber;
 	}
@@ -34,13 +34,21 @@
 	}
 	
 	
-	/* 추천 */
+	/* 추천 推薦 */
 	function goDepositRecommend(){
-		location.href = "${ pageContext.request.contextPath }/product/depositFreeExplain" + ${ageGroupDepositAccountBankBook};
+		if( ${ageGroupDepositAccountBankBook} == "0" ){
+			location.href = "${ pageContext.request.contextPath }/product/depositFreeChoose";
+		}else{
+			location.href = "${ pageContext.request.contextPath }/product/depositFreeExplain" + ${ageGroupDepositAccountBankBook};	
+		}
 	}
 	
 	function goSavingsRecommend(){
-		location.href = "${ pageContext.request.contextPath }/product/savingsExplain${jobSavingsAccountBankBook} ";
+		if( ${ jobSavingsAccountBankBook } == "0" ){
+			location.href = "${ pageContext.request.contextPath }/product/savingsChoose";
+		}else{
+			location.href = "${ pageContext.request.contextPath }/product/savingsExplain" + ${jobSavingsAccountBankBook};	
+		}
 	}
 	
 	function goChallenge(){
@@ -48,7 +56,7 @@
 	}
 	
 	
-	/* 잦은 지출 상세 내역 */
+	/* 잦은 지출 상세 내역 頻繁な支出詳細の内訳 */
 	$(document).ready(function(){
 		$('.frequentDetailBtn').click(function(){
 			let btn = this;
@@ -100,35 +108,35 @@
 <br>
 
 	<div class="section-title text-center">
-         <h3>${ loginVO.getName() }님의 ${month}월<br>
-            <span> 순자산은 ${ String.format("%,d", totalBalance) }원입니다 </span><br>
+         <h3>${ loginVO.getName() }様の ${month}月<br>
+            <span> 純資産は ${ String.format("%,d", totalBalance) }￥です。 </span><br>
             
          </h3>
          <c:if test="${ totalBalanceChange < 0 }">
-        	 <h4 style="color:red">지난 달 대비 총 자산이 ${ String.format("%,d", totalBalanceChange) }원 감소했습니다. </h4>
+        	 <h4 style="color:red">先月比総資産が ${ String.format("%,d", totalBalanceChange) }￥　減少しました。 </h4>
          </c:if>
          <c:if test="${ totalBalanceChange > 0 }">
-        	 <h4 style="color:red">지난 달 대비 총 자산이 ${ String.format("%,d", totalBalanceChange) }원 증가했습니다. </h4>
+        	 <h4 style="color:red">先月比総資産が ${ String.format("%,d", totalBalanceChange) }￥ 増加しました。</h4>
          </c:if>
     </div>
 
 <br>
 
 
-<!-- 입출금 자유 ----------------------------------------------------------------------------------------------------------->
+<!-- 입출금 자유 入出金自由----------------------------------------------------------------------------------------------------------->
 
 <div class="container table-wrapper">
   <h2>&nbsp;</h2>
-  <p>입출금 계좌 총액  &nbsp; : &nbsp; <span style="color:red">${ String.format("%,d", depositTotalBalance) }</span> &nbsp; 원</p> 
+  <p>入出金口座の総額  &nbsp; : &nbsp; <span style="color:red">${ String.format("%,d", depositTotalBalance) }</span> &nbsp; ￥</p> 
   <hr>           
   <table class="table table-hover fl-table">
     <thead>
       <tr>
-        <th>통장 이름</th>
-        <th>내용 </th>
-        <th>주거래 계좌</th>
-        <th>잔액</th>
-        <th>상세 내역</th>
+        <th>通帳名</th>
+        <th>内容</th>
+        <th>主取引口座</th>
+        <th>残額</th>
+        <th>詳細の内訳</th>
       </tr>
     </thead>
     <tbody>
@@ -144,16 +152,16 @@
        <td>${ account.getNickName() }</td>
        
        <c:if test="${ account.getMainAccount() == 'Y'}">
-       	<td><span style="color:blue;">주거래 계좌</span></td>
+       	<td><span style="color:blue;">主取引口座</span></td>
        </c:if>
        <c:if test="${ account.getMainAccount() == 'N'}">
        	<td><span>&nbsp;</span></td>
        </c:if>
 
-       <td>${ String.format("%,d", account.getBalance()) }원</td>
+       <td>${ String.format("%,d", account.getBalance()) }￥</td>
        
        <td>
-       	<input type="button" value="상세보기" class="btn-style-one" onclick="goDepositDetail('${account.getAccountNumber()}')">
+       	<input type="button" value="詳細を見る" class="btn-style-one" onclick="goDepositDetail('${account.getAccountNumber()}')">
        </td>
        
        </tr>
@@ -165,20 +173,20 @@
 
 
 
-<!-- 적금 ------------------------------------------------------------------------------------------------------------------>
+<!-- 적금 積金------------------------------------------------------------------------------------------------------------------>
 
 <div class="container table-wrapper">
   <h2>&nbsp;</h2>
-  <p>적금 계좌 총액  &nbsp; : &nbsp; <span style="color:red">${ String.format("%,d", savingsTotalBalance) }</span> &nbsp; 원</p>  
+  <p>積金口座総額  &nbsp; : &nbsp; <span style="color:red">${ String.format("%,d", savingsTotalBalance) }</span> &nbsp; ￥</p>  
   <hr>          
   <table class="table table-hover fl-table">
     <thead>
       <tr>
-        <th>적금 이름</th>
-        <th>내용</th>
-        <th>출금 계좌</th>
-        <th>잔액</th>
-        <th>상세 내역</th>
+        <th>積金名</th>
+        <th>内容</th>
+        <th>出金口座</th>
+        <th>残額</th>
+        <th>詳細の内訳</th>
       </tr>
     </thead>
     <tbody>
@@ -197,10 +205,10 @@
        <td>${ account.getAutoSaving()}</td>
        
 
-       <td>${ String.format("%,d", account.getBalance()) }원</td>
+       <td>${ String.format("%,d", account.getBalance()) }￥</td>
        
        <td>
-       	<input type="button" value="상세보기" class="btn-style-one" onclick="goSavingsDetail('${account.getAccountNumber()}')">
+       	<input type="button" value="詳細を見る" class="btn-style-one" onclick="goSavingsDetail('${account.getAccountNumber()}')">
        </td>
        
        
@@ -214,20 +222,20 @@
 <br>
 <br>
 
-<!--현금  ------------------------------------------------------------------------------------------------------------------->
+<!--현금 現金 ------------------------------------------------------------------------------------------------------------------->
 
 <div class="container ">
 
 	<table class="table table-hover ">
     <tbody>
       <tr>
-       <td id="myCash">보유 현금  &nbsp; : &nbsp; <span style="color:red" >${ String.format("%,d", cash) }</span> &nbsp; 원 </td> 
+       <td id="myCash">保有現金  &nbsp; : &nbsp; <span style="color:red" >${ String.format("%,d", cash) }</span> &nbsp; ￥ </td> 
        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
        
-       <td><input type="button" value="내역관리" class="btn-style-one" onclick="goCashManage()"></td>
+       <td><input type="button" value="内訳管理" class="btn-style-one" onclick="goCashManage()"></td>
     </tbody>
     </table>
 </div>
@@ -237,8 +245,8 @@
 <section class="service-section bg-gray section" style="height:420px">
     <div class="container">
         <div class="section-title text-center">
-            <h3>${ loginVO.name }님
-                <span>에게 추천합니다</span>
+            <h3>${ loginVO.name }様
+                <span>にお勧めします。</span>
             </h3>
         </div>
         <div class="row items-container clearfix">
@@ -249,8 +257,8 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center">
-                        <h6>고객님이<br>진행 중인 도전을 관리하세요! </h6><br>
-                        <input type="button" value="보러가기" class="btn-style-one" onclick="goChallenge()">
+                        <h6>お客様が<br>進行中の挑戦を管理してください！ </h6><br>
+                        <input type="button" value="見に行く" class="btn-style-one" onclick="goChallenge()">
                     </div>
                 </div>
             </div>
@@ -260,12 +268,16 @@
                     
                     <div class="image-content text-center">
                         <h6>'${ loginVO.ageGroup }' Pick <br>
-                                                         입출금 자유 예금 상품은<br>
-                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"1\") }">'하나 플러스통장'입니다</c:if>
-                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"2\") }">'영하나 플러스통장'입니다</c:if>
-                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"3\") }">'주거래 하나 통장'입니다</c:if>
+                                                         入出金自由預金商品は<br>
+                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"0\") }">
+                        	まだありません。<br>
+                        	全体賞品を見に行きましょう。
+                        	</c:if>
+                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"1\") }">'ハナプラス通帳'です。</c:if>
+                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"2\") }">'ヤングハナプラス通帳'です。</c:if>
+                            <c:if test="${ ageGroupDepositAccountBankBook.equals(\"3\") }">'主力ハナ通帳'です。</c:if>
                         </h6>
-                        <input type="button" value="보러가기" class="btn-style-one" onclick="goDepositRecommend()">
+                        <input type="button" value="見に行く" class="btn-style-one" onclick="goDepositRecommend()">
                     
                     </div>
                 </div>
@@ -275,13 +287,18 @@
                 <div class="inner-box">
                     
                     <div class="image-content text-center">
+                    <!-- //내 직업과 같은 사람들이 가장 많이든 적금 계좌 -->
                         <h6>'${ loginVO.jobKey }' Pick <br>
-                        	  정기 적금 상품은<br>
-                        	  <c:if test="${ jobSavingsAccountBankBook.equals(\"1\") }">'하나 원큐 적금'입니다</c:if>
-                            <c:if test="${ jobSavingsAccountBankBook.equals(\"2\") }">'내집마련 적금'입니다</c:if>
-                            <c:if test="${ jobSavingsAccountBankBook.equals(\"3\") }">'꿈하나 적금'입니다</c:if>
+                        	  定期積金賞品は<br>
+                        	<c:if test="${ jobSavingsAccountBankBook.equals(\"0\") }">
+                        	まだありません。<br>
+                        	全体賞品を見に行きましょう。
+                        	</c:if>
+                        	<c:if test="${ jobSavingsAccountBankBook.equals(\"1\") }">'ハナワンキュウ積金'です。</c:if>
+                            <c:if test="${ jobSavingsAccountBankBook.equals(\"2\") }">'マイホームを購入する積金'です。</c:if>
+                            <c:if test="${ jobSavingsAccountBankBook.equals(\"3\") }">'夢ハナ積金'です。</c:if>
                          </h6>
-                        <input type="button" value="보러가기" class="btn-style-one" onclick="goSavingsRecommend()">
+                        <input type="button" value="見に行く" class="btn-style-one" onclick="goSavingsRecommend()">
                     </div>
                 </div>
             </div>
@@ -292,13 +309,13 @@
 </section>
 
 
-<!-- 잦은 거래  --------------------------------------------------------------------------------- -->
+<!-- 잦은 거래 頻繁な取引 --------------------------------------------------------------------------------- -->
 
 <section class="service-section bg-gray section" style="height:420px">
     <div class="container">
         <div class="section-title text-center">
-            <h3>${ month }월
-                <span>잦은 지출 목록입니다</span>
+            <h3>${ month }月
+                <span>頻繁な支出リストです。</span>
             </h3>
         </div>
         <div class="row items-container clearfix">       
@@ -310,8 +327,8 @@
                     
                     <div class="image-content text-center">
                         <h6>${ account.toName }
-                             <br> 총 ${ account.count }번 지출</h6><br>
-                        <input type="button" value="내역보기" class="frequentDetailBtn btn-style-one" id="${ account.accountNumber }.${ account.toName }">
+                             <br> 総 ${ account.count }番 支出</h6><br>
+                        <input type="button" value="内訳を見る" class="frequentDetailBtn btn-style-one" id="${ account.accountNumber }.${ account.toName }">
                     </div>
                 </div>
             </div>
@@ -328,8 +345,8 @@
 <section class="service-section bg-gray section" style="height:420px">
     <div class="container">
         <div class="section-title text-center">
-            <h3>${ month }월
-                <span>지출 Top3입니다</span>
+            <h3>${ month }月
+                <span>支出Top3です。</span>
             </h3>
         </div>
         <div class="row items-container clearfix">       
@@ -340,7 +357,7 @@
                     
                     <div class="image-content text-center">
                         <h6>${ account.toName } 
-                             <br> ${ String.format("%,d", account.amount) }원 지출
+                             <br> ${ String.format("%,d", account.amount) }￥ 支出
                              <br>${ account.logDate }</h6><br>
                     </div>
                 </div>
@@ -362,7 +379,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">잦은 지출 내역보기</h4>
+          <h4 class="modal-title">頻繁な支出内訳を見る</h4>
         </div>
         
         <!-- Modal body -->
@@ -372,7 +389,7 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn-style-one" data-dismiss="modal">확인</button>
+          <button type="button" class="btn-style-one" data-dismiss="modal">確認</button>
         </div>
         
       </div>

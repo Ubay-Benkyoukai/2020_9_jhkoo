@@ -18,7 +18,7 @@
 
       <div align="center">
          <hr width="80%">
-         <h2>게시물 등록폼</h2>
+         <h2>掲示物登録フォーム</h2>
          <hr width="80%">
          <br>
          <!-- spring제공 form태그 : 백앤드에서 validation체크를 해줌으로써 보안적으로 효과를 가짐-->
@@ -27,25 +27,25 @@
          <form:form commandName="boardVO" method="post">
              <table border="1" style="width: 80%;">
                 <tr>
-                   <th width="23%">제목</th>
+                   <th width="23%">題目</th>
                    <td>
                       <form:input path="title"/><form:errors path="title" class="error" />
                    </td>
                 </tr>
                 <tr>
-                   <th>글쓴이 </th>
+                   <th>書き手 </th>
                    <td>
                       <form:input path="writer"/><form:errors path="writer" class="error" />
                    </td>
                 </tr>
                 <tr>
-                   <th>내용</th>
+                   <th>内容</th>
                    <td>
                       <form:textarea path="content" rows="7" cols="50"/><form:errors path="content" class="error" />
                    </td>
                 </tr>
              </table>
-             <button type="submit">등록</button>
+             <button type="submit">登録</button>
          </form:form>
          
          

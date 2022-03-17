@@ -92,7 +92,7 @@
 
 		$(document).on('click', '.delBtn', function(){
 
-			if(!confirm('댓글을 삭제하시겠습니까?')) return; /* 취소하면 그냥 다시 돌아옴 */
+			if(!confirm('コメントを削除しますか?')) return; /* 취소하면 그냥 다시 돌아옴 */
 			
 			let replyNo = $(this).attr('id');
 				
@@ -137,36 +137,36 @@
 	<section>
 		<div align = "center">
 			<hr>
-				<h2>게시판 상세 페이지</h2>
+				<h2>掲示板詳細ページ</h2>
 			<hr>
 			<br>
 			<table border="1">
 				<tr>
-					<th width="25%">번호</th>
+					<th width="25%">番号</th>
 					<td>${ board.no }</td>
 				</tr>
 				<tr>
-					<th width="25%">제목</th>
+					<th width="25%">タイトル</th>
 					<td><c:out value="${ board.title }" /></td>
 				</tr>
 				<tr>
-					<th width="25%">글쓴이</th>
+					<th width="25%">書き手</th>
 					<td>${ board.writer }</td>
 				</tr>
 				<tr>
-					<th width="25%">내용</th>
+					<th width="25%">内容</th>
 					<td>${ board.content }</td>
 				</tr>
 				<tr>
-					<th width="25%">조회수</th>
+					<th width="25%">内容</th>
 					<td>${ board.viewCnt }</td>
 				</tr>
 				<tr>
-					<th width="25%">등록일</th>
+					<th width="25%">登録日</th>
 					<td>${ board.regDate }</td>
 				</tr>
 				<tr>
-					<th>첨부파일</th>
+					<th>添付ファイル</th>
 					<td>
 						<c:forEach items="${ fileList }" var="file">
 							<a href="/Mission-WEB/upload/${ file.fileSaveName }">
@@ -179,18 +179,18 @@
 			</table>
 			<br>
 			<c:if test="${ loginVO.id eq board.writer }">
-				<input type="button" value="수정" onclick="doAction('U')">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="doAction('D')">&nbsp;&nbsp;
+				<input type="button" value="修整" onclick="doAction('U')">&nbsp;&nbsp;
+				<input type="button" value="削除" onclick="doAction('D')">&nbsp;&nbsp;
 			</c:if>
-			<input type="button" value="목록" onclick="doAction('L')">&nbsp;&nbsp;
+			<input type="button" value="目録" onclick="doAction('L')">&nbsp;&nbsp;
 			
 			<br>
 			<hr>
 			<!-- 댓글 -->
 			<form name="rform">	<!-- name주기 -->
-				댓글 : <input type="text" name="content" size="50">
-				이름 : <input type="text" name="writer" size="10"> 
-				<input type="button" value="댓글 추가" id="replyAddBtn">	<!-- 버튼에 id를 줘서, 버특 누르면 나 ~~할거야. 라고 표현! -->
+				コメント : <input type="text" name="content" size="50">
+				名前 : <input type="text" name="writer" size="10"> 
+				<input type="button" value="コメント 追加" id="replyAddBtn">	<!-- 버튼에 id를 줘서, 버특 누르면 나 ~~할거야. 라고 표현! -->
 			</form>
 			
 			<!-- ajax로 들어오는 div-->

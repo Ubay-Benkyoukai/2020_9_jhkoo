@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Join</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script>
 
@@ -20,10 +20,15 @@ function doIdCheck(){
 
 			let idCheckBool = JSON.parse(data); 
 			let str = '';
+			var pattern = /^[a-z0-9]{4,20}$/;
 			if(idCheckBool == true){
-				str = "사용 가능합니다"
+				if(!pattern.test(id)){
+					str = "4字以上、20字以下の『小文字』の英語と数字で入力してください。"
+				} else {
+					str = "使用可能です。"	
+				}
 			} else {
-				str = "중복입니다"
+				str = "重複です。" //중복
 			}
 			
 			$('#idCheck').text(str);
@@ -34,8 +39,8 @@ function doIdCheck(){
 function doJoin(){
 	let idCheck = document.getElementById("idCheck");
 
-	if(idCheck.innerHTML == "중복입니다"){
-		alert("아이디가 중복되어 회원가입이 불가능합니다")
+	if(idCheck.innerHTML == "重複です。"){
+		alert("IDが重複しているので、会員登録はできません。")	//아이디가 중복되어 회원가입이 불가능합니다
 		return false;
 	}
 	return true;
@@ -69,39 +74,43 @@ function doJoin(){
                 <div class="contact-area">
                 
 	    <div class="section-title">
-	        <h3>회원가입
-	            <span>해주세요</span>
+	        <h3>会員登録
+	            <span>してください。</span>
 	        </h3>
 	    </div>
 
 
-	<!-- 회원가입 form -->    
+	<!-- 회원가입 form -->    <!-- join form -->
 	<!-- Spring form태그 이용. -->
 	<!-- 보안적인 측면에서 유효성 검사란 올바르지 않은 데이터가 서버로 전송되거나, DB에 저장되지 않도록 하는 것 -->
-    <form:form commandName="memberVO" class="default-form contact-form"  method="post" name="lform">
+    <form:form commandName="memberVO" class="default-form contact-form"  method="post" name="lform" onsubmit="return doJoin(this)">
         
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
+        
+        	<div>&emsp;<span id="idCheck" style="color:red"></span></div>
+        
+			<div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <form:input type="text" path="id" placeholder="아이디" />
-                    <form:errors path="id" class="error" />
+                    <form:input type="text" path="id" placeholder="ID" />
                     
-                </div>                         
-               
+                </div>    
+                                     
                	<div class="form-group">
-                    <form:input type="password" name="password" path="password" placeholder="비밀번호" />
+                    <form:input type="password" name="password" path="password" placeholder="パスワード" />
                     <form:errors path="password"  class="error" />
                 </div>
             </div>
             
+            
+           
             <div class="col-md-6 col-sm-12 col-xs-12">
                	<div class="form-group text-center">
-                    <button type="submit" class="btn-style-one" onclick="doIdCheck()">중복확인</button>
-                 	 <span id="idCheck" style="color:red"></span>
-                    
+                    <button type="button" class="btn-style-one" onclick="doIdCheck()">重複確認</button> <!-- 중복확인 -->
+					
                 </div>
                	<div class="form-group">
-                    <form:input type="text" path="name" placeholder="이름" />
+                    <form:input type="text" path="name" placeholder="名前" />
+                    <form:errors path="name"  class="error" />
                 </div>
             </div>
             
@@ -110,15 +119,15 @@ function doJoin(){
             
             <div class="col-md-12 col-sm-12 col-xs-12">
             	<div class="form-group">
-                    <form:input type="text" path="phone" placeholder="핸드폰 번호   ex)010-0000-0000" />
+                    <form:input type="text" path="phone" placeholder="電話番号   ex)010-0000-0000" />
                     <form:errors path="phone"  class="error" />
                 </div>
                 <div class="form-group">
-                    <form:input type="text" path="email" placeholder="이메일   ex)xxx@domain.com" />
+                    <form:input type="text" path="email" placeholder="メール   ex)xxx@domain.com" />
                     <form:errors path="email"  class="error" />
                 </div>
                 <div class="form-group">
-                    <form:input type="text" path="address" placeholder="주소   ex)서울시 마포구 상암동 " />
+                    <form:input type="text" path="address" placeholder="住所   ex)東京都中央区日本橋 " />
                 
                 </div>
             </div>
@@ -127,16 +136,16 @@ function doJoin(){
             <div class="col-md-6 col-sm-12 col-xs-12">
                	<div class="form-group">
                     <form:select path="ageGroup">
-                    	<option value="">연령대</option>
-                    	<option value="10대">10대</option>
-                    	<option value="20대">20대</option>
-                    	<option value="30대">30대</option>
-                    	<option value="40대">40대</option>
-                    	<option value="50대">50대</option>
-                    	<option value="60대">60대</option>
-                    	<option value="70대">70대</option>
-                    	<option value="80대">80대</option>
-                    	<option value="90대">90대</option>
+                    	<option value="">年代</option>
+                    	<option value="10代">10代</option>
+                    	<option value="20代">20代</option>
+                    	<option value="30代">30代</option>
+                    	<option value="40代">40代</option>
+                    	<option value="50代">50代</option>
+                    	<option value="60代">60代</option>
+                    	<option value="70代">70代</option>
+                    	<option value="80代">80代</option>
+                    	<option value="90代">90代</option>
                     </form:select>
                     <form:errors path="ageGroup"  class="error" />
                 </div>
@@ -144,9 +153,9 @@ function doJoin(){
             <div class="col-md-6 col-sm-12 col-xs-12">
                	<div class="form-group">
                     <form:select path="gender">
-                    	<option value="">성별</option>
-                    	<option value="M">남</option>
-                    	<option value="F">여</option>
+                    	<option value="">性別</option>
+                    	<option value="M">男性</option>
+                    	<option value="F">女性</option>
                     </form:select>
                     <form:errors path="gender"  class="error" />
                 </div>
@@ -155,12 +164,12 @@ function doJoin(){
             <div class="col-md-6 col-sm-12 col-xs-12">
             	<div class="form-group">
                     <form:select path="propertyStatus" >                    
-                        <option value="">보유 재산 상황</option>
-                        <option value="5천만원 미만">5천만원 미만</option>
-                        <option value="1억원 미만">1억원 미만</option>
-                        <option value="5억원 미만">5억원 미만</option>
-                        <option value="10억원 미만">10억원 미만</option>
-                        <option value="10억원 이상">10억원 이상</option>
+                        <option value="">保有財産の状況</option> 	<!-- 보유 재산 상황 -->
+                        <option value="五百万円未満">五百万円未満</option>
+                        <option value="千万円未満">千万円未満</option>
+                        <option value="五千万円未満">五千万円未満</option>
+                        <option value="一億円未満">一億円未満</option>
+                        <option value="一億円以上">一億円以上</option>
                     </form:select>
                     <form:errors path="propertyStatus"  class="error" />
                 </div>
@@ -169,12 +178,12 @@ function doJoin(){
             <div class="col-md-6 col-sm-12 col-xs-12">
             	<div class="form-group">
                     <form:select path="jobKey" >                    
-                        <option value="">직업 분류</option>
-                        <option value="1">IT직</option>
-                        <option value="2">주부</option>
-                        <option value="3">자영업자</option>
-                        <option value="4">금융직</option>
-                        <option value="5">판매직</option>
+                        <option value="">職業分類</option> <!-- 직업분류 -->
+                        <option value="1">IT職</option>
+                        <option value="2">主婦</option> <!-- 주부 -->
+                        <option value="3">自営業</option> <!-- 자영업자 -->
+                        <option value="4">金融職</option>		<!-- 금융직 -->
+                        <option value="5">販売職</option> 	<!-- 판매직 -->
                     </form:select>
                     <form:errors path="jobKey"  class="error" />
                 </div>
@@ -182,7 +191,7 @@ function doJoin(){
              
             <div class="col-md-12 col-sm-12 col-xs-12">         
                 <div class="form-group text-center">
-                    <button type="submit" class="btn-style-one">가입하기</button>
+                    <button type="submit" class="btn-style-one">会員加入</button>
                 </div>
             </div>
         </div>
@@ -194,7 +203,7 @@ function doJoin(){
       <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="accordion-section">
     <div class="section-title">
-        <h3>반갑습니다!</h3>
+        <h3>歓迎致します!</h3>
     </div>
     <br>
     <br>

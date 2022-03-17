@@ -24,7 +24,7 @@
 		location.href = "${ pageContext.request.contextPath}/goMonthAhead/${depositAccount.getAccountNumber()}/${month}";
 	}
 
-	// 검색 기능 부트스트랩
+	// 검색 기능 부트스트랩  検索機能ブートストラップ
 	$(document).ready(function(){
 		  $("#myInput").on("keyup", function() {
 		          var value = $(this).val().toLowerCase();
@@ -49,12 +49,12 @@
   <h2>&nbsp;</h2>
   <div class="section-title text-center">
             <h3>${ depositAccount.getBankBookKey() }
-                <span>상세 내역입니다</span>
+                <span>詳細の内訳です</span>
            	</h3> 
-            <p>총 잔액 : ${ String.format( "%,d",depositAccount.getBalance() ) }원<br>
-                              계좌 번호 : ${ depositAccount.getAccountNumber() }<br>
+            <p>総残高 : ${ String.format( "%,d",depositAccount.getBalance() ) }￥<br>
+                              口座番号 : ${ depositAccount.getAccountNumber() }<br>
                <c:if test="${ depositAccount.getMainAccount() == 'Y' }">
-               		<span style="color:blue">대표 통장</span>
+               		<span style="color:blue">代表通帳</span>
                </c:if>
             	    
             </p>
@@ -64,29 +64,29 @@
   
   
 <div class="container">
-  <h3>${ month }월 내역 조회중입니다</h3>
+  <h3>${ month }月の内訳を照会中です</h3>
   
   <div class="btn-group" style="float:left;">
-    <button type="button" class="btn btn-style-one" onclick="goMonthAgo()">${month- 1}월 내역 보기</button>
- 	<button type="button" class="btn btn-style-one" onclick="goMonthAhead()">${ month + 1 }월 내역 보기</button>
+    <button type="button" class="btn btn-style-one" onclick="goMonthAgo()">${month- 1}月の内訳を見る</button>
+ 	<button type="button" class="btn btn-style-one" onclick="goMonthAhead()">${ month + 1 }月の内訳を見る</button>
   </div>
   
   
   <div class="dropdown" style="float:left;">
 	  <button class="btn btn-secondary dropdown-toggle btn-style-one" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    카테고리별 내역
+	    カテゴリ別内訳
 	  </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-     <button type="button" class="btn btn-style-one" onclick="category('1')">입금</button>
-    <button type="button" class="btn btn-style-one" onclick="category('2')">이체</button>
-    <button type="button" class="btn btn-style-one" onclick="category('3')">식비</button>
-    <button type="button" class="btn btn-style-one" onclick="category('4')">카페,간식</button>
-    <button type="button" class="btn btn-style-one" onclick="category('5')">편의점,마트</button>
-    <button type="button" class="btn btn-style-one" onclick="category('6')">술,유흥</button>
-    <button type="button" class="btn btn-style-one" onclick="category('7')">쇼핑</button>
-    <button type="button" class="btn btn-style-one" onclick="category('8')">취미,여가</button>
-    <button type="button" class="btn btn-style-one" onclick="category('9')">미용</button>
-    <button type="button" class="btn btn-style-one" onclick="category('10')">주거,통신</button>
+     <button type="button" class="btn btn-style-one" onclick="category('1')">入金</button>
+    <button type="button" class="btn btn-style-one" onclick="category('2')">振り込み</button>
+    <button type="button" class="btn btn-style-one" onclick="category('3')">食費</button>
+    <button type="button" class="btn btn-style-one" onclick="category('4')">カフェ、おやつ</button>
+    <button type="button" class="btn btn-style-one" onclick="category('5')">コンビニ、スーパー</button>
+    <button type="button" class="btn btn-style-one" onclick="category('6')">酒、遊び</button>
+    <button type="button" class="btn btn-style-one" onclick="category('7')">ショッピング</button>
+    <button type="button" class="btn btn-style-one" onclick="category('8')">趣味、余暇</button>
+    <button type="button" class="btn btn-style-one" onclick="category('9')">美容</button>
+    <button type="button" class="btn btn-style-one" onclick="category('10')">住居、通信</button>
   </div>
   </div>
   
@@ -96,7 +96,7 @@
   
   <div align="center" style="float:right;">
 	 <button type="submit" class="btn-style-one" 
-	   onclick="location.href='${ pageContext.request.contextPath }/account '">돌아가기</button>
+	   onclick="location.href='${ pageContext.request.contextPath }/account '">戻る</button>
   </div>
 
   	<!-- 페이지 선택 -->
@@ -119,10 +119,10 @@
   <table class="table table-hover fl-table">
     <thead>
       <tr class="scrollLocation">
-        <th>거래 날짜</th>
-        <th>거래 대상 </th>
-        <th>카테고리</th>
-        <th>거래 금액</th>
+        <th>取引日</th>
+        <th>取引対象 </th>
+        <th>カテゴリー</th>
+        <th>取引金額</th>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -136,11 +136,11 @@
        <td>${ depositDetail.getToName() }</td>
        <td>${ depositDetail.getLogTypeKey() }</td>
        <c:choose>
-       	<c:when test="${depositDetail.getLogTypeKey() eq '입금'}">
-       		<td><span style="color:green;">+ ${ String.format("%,d", depositDetail.getAmount() ) } 원</span></td>
+       	<c:when test="${depositDetail.getLogTypeKey() eq '入金'}">
+       		<td><span style="color:green;">+ ${ String.format("%,d", depositDetail.getAmount() ) } ￥</span></td>
        	</c:when>
        	<c:otherwise>
-       		<td><span style="color:red;">- ${ String.format("%,d", depositDetail.getAmount()) } 원</span></td>
+       		<td><span style="color:red;">- ${ String.format("%,d", depositDetail.getAmount()) } ￥</span></td>
        	</c:otherwise>
        </c:choose>
 
